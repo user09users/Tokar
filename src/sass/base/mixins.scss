@@ -1,0 +1,12 @@
+@use "/src/sass/base/variables.scss" as *;
+
+@mixin button {
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0px 4px 4px 0px rgba(203, 135, 52, 0.2);
+    background: linear-gradient(180.00deg, $main-color, $main-color-dark 100%);
+}

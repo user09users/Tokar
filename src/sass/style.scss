@@ -1,0 +1,14 @@
+@use "/src/sass/libs/modern-normalize.min.css";
+@use "/src/sass/libs/grids-min.css";
+@use "/src/sass/libs/grids-responsive-min.css";
+
+@use "/src/sass/base/basic.scss";
+
+@use"/src/sass/ui/buttons.scss";
+
+@use"/src/sass/blocks/header.scss";
+@use"/src/sass/blocks/footer.scss";
+
+@use"/src/sass/blocks/promo.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
