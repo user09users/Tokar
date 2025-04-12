@@ -13,68 +13,216 @@
 </head>
 
 <body>
-    <div class="promo">
+
+    <div class="menu">
+        <div class="menu__header">
+            <div class="menu__name">Меню</div>
+            <div class="menu__close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="menu__wrapper">
+            <nav>
+                <ul>
+                    <li class="menu__item">
+                        <div class="menu__item-header">
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                            <div class="menu__item-name">Жилое</div>
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                        </div>
+                        <ul class="menu__item-content">
+                            <li class="text_fw300 text_fw300_fz14">Дом из бруса</li>
+                        </ul>
+                    </li>
+                    <li class="menu__item">
+                        <div class="menu__item-header">
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                            <div class="menu__item-name">Коммерческое</div>
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                        </div>
+                        <ul class="menu__item-content">
+                            <li class="text_fw300 text_fw300_fz14">Дом из бруса</li>
+                            <li class="text_fw300 text_fw300_fz14">Коттедж</li>
+                        </ul>
+                    </li>
+                    <li class="menu__item">
+                        <div class="menu__item-header">
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                            <div class="menu__item-name">Садовое</div>
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                        </div>
+                        <ul class="menu__item-content">
+                            <li class="text_fw300 text_fw300_fz14">Дом из бруса</li>
+                            <li class="text_fw300 text_fw300_fz14">Дачный дом</li>
+                        </ul>
+                    </li>
+                    <li class="menu__item">
+                        <div class="menu__item-header">
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                            <div class="menu__item-name">О компании</div>
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                        </div>
+                        <ul class="menu__item-content">
+                            <li class="text_fw300 text_fw300_fz14">Дом из бруса</li>
+                            <li class="text_fw300 text_fw300_fz14">Коттедж</li>
+                            <li class="text_fw300 text_fw300_fz14">Дачный дом</li>
+                        </ul>
+                    </li>
+                    <li class="menu__item">
+                        <div class="menu__item-header">
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                            <div class="menu__item-name">Наши работы</div>
+                            <span class="menu__item-corner"><img src="/src/icons/arrow.svg" alt="arrow"></span>
+                        </div>
+                        <ul class="menu__item-content">
+                            <li class="text_fw300 text_fw300_fz14">Дом из бруса</li>
+                            <li class="text_fw300 text_fw300_fz14">Коттедж</li>
+                            <li class="text_fw300 text_fw300_fz14">Дачный дом</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="menu__contacts">
+                <div class="menu__social">
+                    <div class="menu__social-text">Связаться напрямую:</div>
+                    <ul>
+                        <li class="menu__social-item telegram">
+                            <a href="#" class="telegram">
+                                <img src="/src/icons/social/telegram.svg" alt="telegram">
+                            </a>
+                        </li>
+                        <li class="menu__social-item whatsapp">
+                            <a href="#" class="telephone">
+                                <img src="/src/icons/social/whatsapp.svg" alt="whatsapp">
+                            </a>
+                        </li>
+                        <li class="menu__social-item viber">
+                            <a href="#" class="viber">
+                                <img src="/src/icons/social/viber.svg" alt="viber">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="tel:+380671755630" class="menu__tel"> +3 80 (67) 175 56 30</a>
+                <div class="menu__date">с 09:00 до 18:00 (пн-вс)</div>
+                <button class="button">Заказать звонок</button>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="promo">
         <div class="container">
-            <div class="header">
-                <div class="header__wrapper">
-                    <div class="header__introduction">
-                        <div class="header__img"><img src="/src/icons/logo.png" alt="logo"></div>
-                        <div class="header__text">TokarCompany - производственно -строительная компания</div>
+            <div class=" header__mobile">
+                <div class="header__mobile-wrapper">
+                    <div class="header__mobile-hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                    <div class="social">
-                        <div class="social__text">Связаться напрямую:</div>
+                    <div class="header__mobile-logo">
+                        <img src="/src/icons/logo.png" alt="logo" class="header__mobile-block-logo">
+                    </div>
+                    <div class="header__mobile-phone">
+                        <img src="/src/icons/Phone.svg" alt="phone" class="promo__mobile-block-phone">
+                    </div>
+                </div>
+            </div>
+            <div class="header header__desktop">
+                <div class="header__desktop-wrapper">
+                    <div class="header__desktop-introduction">
+                        <div class="header__desktop-img"><img src="/src/icons/logo.png" alt="logo"></div>
+                        <div class="header__desktop-text">TokarCompany - производственно -строительная компания</div>
+                    </div>
+                    <div class="social__desktop">
+                        <div class="social__desktop-text">Связаться напрямую:</div>
                         <ul>
-                            <li class="social__item telegram">
+                            <li class="social__desktop-item telegram">
                                 <a href="#" class="telegram">
                                     <img src="/src/icons/social/telegram.svg" alt="telegram">
                                 </a>
                             </li>
-                            <li class="social__item whatsapp">
+                            <li class="social__desktop-item whatsapp">
                                 <a href="#" class="telephone">
                                     <img src="/src/icons/social/whatsapp.svg" alt="whatsapp">
                                 </a>
                             </li>
-                            <li class="social__item viber">
+                            <li class="social__desktop-item viber">
                                 <a href="#" class="viber">
                                     <img src="/src/icons/social/viber.svg" alt="viber">
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <div class="header__info">
-                        <a href="tel:+380671755630" class="header__info-tel"> +3 80 (67) 175 56 30</a>
-                        <div class="header__info-date">с 09:00 до 18:00 (пн-вс)</div>
+                    <div class="header__desktop-info">
+                        <a href="tel:+380671755630" class="header__desktop-info-tel"> +3 80 (67) 175 56 30</a>
+                        <div class="header__desktop-info-date">с 09:00 до 18:00 (пн-вс)</div>
                     </div>
-                    <div class="header__order">
+                    <div class="header__desktop-order">
                         <button class="button">Заказать звонок</button>
-                        <div class="header__order-text">Бесплатно по Украине</div>
+                        <div class="header__desktop-order-text">Бесплатно по Украине</div>
                     </div>
-                    <div class="header__language">
-                        <div class="header__language-item">
+                    <div class="header__desktop-language">
+                        <div class="header__desktop-language-item">
                             <span class="white"></span>
                             <span class="blue"></span>
                             <span class="red"></span>
                         </div>
-                        <div class="header__language-arrow"><img src="/src/icons/arror-language.svg" alt="arrow"></div>
+                        <div class="header__desktop-language-arrow"><img src="/src/icons/arrow.svg" alt="arrow"></div>
                     </div>
                 </div>
-                <div class="header__menu">
-                    <div class="header__menu-variations">
-                        <div class="header__menu-item header__menu-item_brown">Жилое</div>
-                        <div class="header__menu-item header__menu-item_brown">Коммерческое</div>
-                        <div class="header__menu-item header__menu-item_brown">Садовое</div>
-                    </div>
-                    <div class="header__menu-info">
-                        <div class="header__menu-item">О компании</div>
-                        <div class="header__menu-item">Наши работы</div>
-                        <div class="header__menu-item">Контакты</div>
+                <div class="header__desktop-menu">
+                    <ul class="header__desktop-menu-variations">
+                        <li class="header__desktop-menu-variations-item"><a href="#">Жилое</a></li>
+                        <li class="header__desktop-menu-variations-item"><a href="#">Коммерческое</a></li>
+                        <li class="header__desktop-menu-variations-item"><a href="#">Садовое</a></li>
+                    </ul>
+                    <ul class="header__desktop-menu-info">
+                        <li class="header__desktop-menu-info-item"><a href="#">О компании</a></li>
+                        <li class="header__desktop-menu-info-item"><a href="#">Наши работы</a></li>
+                        <li class="header__desktop-menu-info-item"><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="promo__wrapper pure-g">
+                <div class="promo__wrapper-info pure-u-1 pure-u-xl-1-2">
+                    <div class="promo__info">TokarCompany - производственно -строительная компания</div>
+                    <h1 class="promo__title title">Производим и устанавливаем строения разных видов в Украине</h1>
+
+                    <div class="promo__text text_fw400">Индивидуально под ваш запрос построим дом, ресторан, баню,
+                        беседку,
+                        мангал или любую
+                        другую постройку
                     </div>
 
+                    <div class="promo__buttons">
+                        <a href="#" class="promo__button-catalog
+                          button-catalog button-catalog_small">Перейти в каталог домов</a>
+                        <a href="#" class="promo__bathhouse">
+                            <div class="promo__bathhouse-circle">
+                                <img src="/src/icons/arrow-orange.svg" alt="arrow">
+                            </div>
+                            <div class="promo__bathhouse-text">Каталог бань</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="promo__wrapper-img pure-u-1 pure-u-xl-1-2">
+                    <div class="promo__img ">
+                        <picture>
+                            <source media="(max-width: 576px)" srcset="/src/img/main-house-min.png">
+                            <source media="(min-width: 576px)" srcset="/src/img/main-house.png">
+                            <img src="/src/img/main-house.png" alt="house">
+                        </picture>
+                        <div class="promo__tree"><img src="/src/img/tree.png" alt="tree"></div>
+                        <div class="promo__scoop"><img src="/src/img/scoop.png" alt="scoop"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
     <script src="/src/js/main.js" type="module"></script>
 </body>
 
