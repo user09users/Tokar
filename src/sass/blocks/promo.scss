@@ -27,6 +27,12 @@
         height: 246.83px;
     }
 
+    &__wrapper {
+        &-info {
+            text-align: center;
+        }
+    }
+
     &__scoop {
         position: absolute;
         bottom: 0;
@@ -98,8 +104,9 @@
 
 @media screen and (min-width: 768px) {
     .promo {
+
         &__img {
-            width: 615px;
+            width: 36.4375rem;
             height: 506px;
         }
 
@@ -162,15 +169,12 @@
                 display: flex;
                 flex-direction: column;
                 width: 551px;
-                align-items: center;
+                text-align: start;
             }
 
             &-img {
                 margin-top: 5px;
                 position: relative;
-                margin-left: auto;
-                width: 589px;
-                height: 506px;
             }
         }
 
@@ -178,6 +182,18 @@
             flex-direction: row;
             gap: 44px;
             margin-top: 26px;
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .promo {
+        &__wrapper {
+            &-img {
+                margin-top: 5px;
+                width: 615px;
+                position: relative;
+            }
         }
     }
 }
