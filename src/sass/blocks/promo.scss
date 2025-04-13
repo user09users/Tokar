@@ -61,42 +61,11 @@
         flex-direction: column;
         gap: 19px;
         align-items: center;
-        order: 3;
 
         a {
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-    }
-
-
-    &__bathhouse {
-        gap: 9px;
-        text-decoration: none;
-
-        &-circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 100%;
-            border: 1px solid $main-color-dark;
-            position: relative;
-
-            img {
-                position: absolute;
-                width: 5px;
-                height: 10px;
-                left: 43%;
-                transform: translateX(-50%);
-                top: 50%;
-                transform: translatey(-50%);
-            }
-        }
-
-        &-text {
-            color: $main-color-dark;
-            font-size: 15px;
-            font-weight: 600;
         }
     }
 }
