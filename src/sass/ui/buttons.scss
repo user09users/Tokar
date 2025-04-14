@@ -23,6 +23,26 @@
     }
 }
 
+.button-mix {
+    margin-top: 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media screen and (min-width: 1200px) {
+
+        flex-direction: row;
+        gap: 44px;
+        margin-top: 26px;
+    }
+}
 
 .button-circe {
     gap: 9px;
@@ -35,14 +55,14 @@
         border: 1px solid $main-color-dark;
         position: relative;
 
-        img {
+        span {
             position: absolute;
-            width: 5px;
-            height: 10px;
-            left: 43%;
+            font-size: 13px;
+            left: 20%;
             transform: translateX(-50%);
-            top: 50%;
+            top: 52%;
             transform: translatey(-50%);
+            color: $main-color-dark;
         }
     }
 
@@ -53,9 +73,18 @@
     }
 }
 
-/*                         <a href="#" class="button-circe">
-                            <div class="button-circe__circe">
-                                <img src="/src/icons/arrow-orange.svg" alt="arrow">
-                            </div>
-                            <div class="button-circe__text">Каталог бань</div>
-                        </a> */
+@media screen and (min-width: 1200px) {
+    .button-catalog {
+        width: 280px;
+        height: 66px;
+        font-size: 14px;
+
+    }
+
+    .button-mix {
+        flex-direction: row;
+        gap: 44px;
+        margin-top: 26px;
+
+    }
+}

@@ -1,13 +1,6 @@
 @use "/src/sass/base/variables.scss" as *;
 
-.title {
-    color: $dark;
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 30px;
-}
-
-.title-fz400 {
+.title-fw400 {
     color: $dark;
     font-size: 24px;
     font-weight: 400;
@@ -15,7 +8,7 @@
     text-align: left;
 }
 
-.title-fz700 {
+.title-fw700 {
     color: $dark;
     font-size: 20px;
     font-weight: 700;
@@ -23,11 +16,28 @@
     text-align: center;
 }
 
+.title-fw800 {
+    color: $dark;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 30px;
+    text-align: center;
+}
+
 @media screen and (min-width: 1200px) {
-    .title-fz700 {
-        color: $dark;
+    .title-fw400 {
+        font-size: 30px;
+    }
+
+    .title-fw700 {
         font-size: 36px;
         line-height: 58px;
+        text-align: left;
+    }
+
+    .title-fw800 {
+        font-size: 38px;
+        line-height: 50px;
         text-align: left;
     }
 }

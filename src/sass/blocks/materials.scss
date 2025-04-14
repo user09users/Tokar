@@ -1,0 +1,135 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.materials {
+    padding-top: 60px;
+    position: relative;
+
+    &__wrapper {
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 76px;
+    }
+
+    &__item {
+        position: relative;
+        background: $white;
+        border-radius: 8px;
+        padding: 96px 15px 30px 15px;
+        box-shadow: 0px 0px 20px 0px rgba(43, 42, 40, 0.2);
+
+        &-title {
+            text-align: center;
+        }
+
+        &-img {
+            position: absolute;
+            top: -43px;
+            width: 173px;
+            height: 124px;
+            object-fit: cover;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &-text {
+            margin-top: 6px;
+        }
+
+        &-number {
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    }
+
+    &__slider {
+        margin-top: 60px;
+        width: 100%;
+
+        img {
+            height: 420px;
+            object-fit: cover;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        &-wrapper {
+            position: relative;
+        }
+
+        &-prev,
+        &-next {
+            cursor: pointer;
+            bottom: 16px;
+            z-index: 10;
+            position: absolute;
+            color: $white;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        &-prev {
+            left: 50%;
+            transform: translateX(-300%);
+        }
+
+        &-next {
+            right: 50%;
+            transform: translateX(300%);
+        }
+
+        .swiper-pagination {
+            bottom: 16px;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: $white;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .materials {
+
+        &__wrapper {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px 30px;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .materials {
+
+        &__item {
+            padding: 42px 40px 50px 45px;
+
+            &-title {
+                text-align: start;
+            }
+
+            &-img,
+            &-number {
+                left: auto;
+                transform: none;
+                right: 26px;
+
+            }
+
+            &-text {
+                margin-top: 10px;
+            }
+        }
+
+        &__buttons {
+            margin-top: 40px;
+        }
+    }
+}

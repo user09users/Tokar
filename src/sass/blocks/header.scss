@@ -1,7 +1,5 @@
 @use "/src/sass/base/variables.scss" as *;
 
-
-
 .header__desktop {
     display: none;
 }
@@ -11,12 +9,16 @@
     height: 55px;
     border-bottom: 1px solid $pale;
 
-
     &-wrapper {
         display: flex;
         justify-content: space-between;
         position: relative;
         align-items: center;
+    }
+
+    &-phone {
+        color: $main-color-dark;
+        font-size: 20px;
     }
 }
 
@@ -108,8 +110,7 @@
             }
 
             &-arrow {
-                width: 6px;
-                height: 3px;
+                font-size: 6px;
                 position: absolute;
                 top: 50%;
                 right: -12px;
@@ -194,13 +195,20 @@
             list-style-type: none;
 
             .telegram {
-                background: $blue;
-                border-radius: 100%;
+                span {
+                    color: $blue;
+                    font-size: 26px;
+                    border-radius: 100%;
+                }
             }
 
             .whatsapp {
                 background: $green;
                 border-radius: 100%;
+
+                span {
+                    color: $white;
+                }
             }
 
             .viber {

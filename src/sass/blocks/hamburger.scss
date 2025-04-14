@@ -132,6 +132,7 @@
             &.active {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 gap: 10px;
             }
         }
@@ -186,13 +187,20 @@
             justify-content: center;
 
             .telegram {
-                background: $blue;
-                border-radius: 100%;
+                span {
+                    color: $blue;
+                    font-size: 26px;
+                    border-radius: 100%;
+                }
             }
 
             .whatsapp {
                 background: $green;
                 border-radius: 100%;
+
+                span {
+                    color: $white;
+                }
             }
 
             .viber {

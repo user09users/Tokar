@@ -1,13 +1,14 @@
 @use "/src/sass/base/variables.scss" as *;
 
-.text_fw400 {
+.text-fw400 {
     color: $dark;
     font-size: 15px;
     font-weight: 400;
     line-height: 24px;
+    text-align: left;
 }
 
-.text_fw300 {
+.text-fw300 {
     color: $dark;
     font-size: 15px;
     font-weight: 300;
@@ -16,16 +17,13 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .text_fw300 {
+    .text-fw300 {
         text-align: left;
-        font-size: 15px;
         line-height: 30px;
     }
 
-    .text_fw400 {
-        color: $dark;
+    .text-fw400 {
         font-size: 18px;
         line-height: 30px;
-        text-align: left;
     }
 }
