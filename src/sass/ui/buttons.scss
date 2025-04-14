@@ -8,19 +8,14 @@
     font-size: 13px;
 }
 
-.button-catalog {
+.button-big {
     @include button;
+    display: flex;
     text-decoration: none;
     font-size: 16px;
     line-height: 16px;
     width: 230px;
     height: 58px;
-
-    @media screen and (min-width: 1200px) {
-        width: 280px;
-        height: 66px;
-        font-size: 14px;
-    }
 }
 
 .button-mix {
@@ -34,13 +29,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    @media screen and (min-width: 1200px) {
-
-        flex-direction: row;
-        gap: 44px;
-        margin-top: 26px;
     }
 }
 
@@ -74,7 +62,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .button-catalog {
+    .button-big {
         width: 280px;
         height: 66px;
         font-size: 14px;

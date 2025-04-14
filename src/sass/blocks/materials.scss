@@ -1,7 +1,7 @@
 @use "/src/sass/base/variables.scss" as *;
 
 .materials {
-    padding-top: 60px;
+    padding: 60px;
     position: relative;
 
     &__wrapper {
@@ -67,7 +67,6 @@
             z-index: 10;
             position: absolute;
             color: $white;
-            outline: none;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -87,7 +86,6 @@
 
         .swiper-pagination-bullet {
             background-color: $white;
-            outline: none;
             -webkit-tap-highlight-color: transparent;
         }
 
