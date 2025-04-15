@@ -5,10 +5,10 @@
 
     &__wrapper {
         margin-top: 20px;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 300px;
+        justify-content: center;
         gap: 26px;
-        align-items: center;
     }
 
     &__item {
@@ -52,14 +52,23 @@
     }
 }
 
+@media screen and (min-width: 768px) {
+    .variations {
+        &__wrapper {
+            grid-template-columns: repeat(2, 300px);
+        }
+    }
+}
+
 @media screen and (min-width: 1200px) {
     .variations {
         padding: 150px 0;
 
         &__wrapper {
             margin-top: 40px;
-            flex-direction: row;
-            gap: 23px;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-between;
+            gap: 0;
             align-items: stretch;
         }
 

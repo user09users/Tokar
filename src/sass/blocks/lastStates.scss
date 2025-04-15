@@ -1,0 +1,126 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.lastStates {
+    padding-top: 60px;
+    background-color: $white;
+    position: relative;
+
+    &__item {
+        position: relative;
+        padding: 5px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+
+        &-img {
+            position: relative;
+        }
+
+        &-label {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            border-radius: 4px;
+            background: $main-color-dark;
+            color: $white;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 12px;
+            width: 114px;
+            height: 34px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-content {
+            margin: 20px 44px 0 0;
+        }
+
+        &-title {
+            color: $dark;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            text-align: center;
+        }
+
+        p {
+            margin-top: 7px;
+            text-align: center;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+
+    .swiper-pagination {
+        position: relative;
+        width: auto;
+        bottom: 0;
+    }
+
+
+    &__slider {
+        padding-top: 22px;
+        width: 100%;
+        position: relative;
+
+        img {
+            width: 370px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        &-wrapper {
+            position: relative;
+        }
+
+        &-next,
+        &-prev {
+            cursor: pointer;
+            z-index: 10;
+            color: $main-color-dark;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: $main-color-dark;
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .lastStates {
+        padding: 150px 0;
+
+        &__item {
+            padding: 0;
+
+            &-content {
+                margin: 27px 5px 0 0;
+            }
+
+            &-title {
+                line-height: 30px;
+            }
+
+            p {
+                margin-top: 15px;
+            }
+        }
+
+        &__nav {
+            justify-content: flex-end;
+        }
+
+    }
+}

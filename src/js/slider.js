@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 
 const slider = () => {
     try {
-        new Swiper('.swiper', {
+        new Swiper('.materials__slider', {
             slidesPerView: 1,
             loop: true,
             pagination: {
@@ -18,15 +18,33 @@ const slider = () => {
                 nextEl: ".icon-right-big",
                 prevEl: ".icon-left-big",
             },
-            /*             breakpoints: {
-                            1200: {
-                                slidesPerView: 3,
-                                spaceBetween: 5
-                            },
-                            1900: {
-                                spaceBetween: 35
-                            },
-                        }, */
+            modules: [Navigation, Pagination],
+
+        });
+        new Swiper('.lastStates__slider', {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".icon-right-big",
+                prevEl: ".icon-left-big",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 3
+                },
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                1900: {
+                    spaceBetween: 35,
+                },
+            },
             modules: [Navigation, Pagination],
 
         });
