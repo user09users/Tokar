@@ -25,7 +25,7 @@ const slider = () => {
             slidesPerView: 1,
             loop: true,
             pagination: {
-                el: ".swiper-pagination",
+                el: ".lastStates__slider-nav",
                 clickable: true,
             },
             navigation: {
@@ -44,6 +44,20 @@ const slider = () => {
                 1900: {
                     spaceBetween: 35,
                 },
+            },
+            modules: [Navigation, Pagination],
+
+        });
+        new Swiper('.ceo__slider', {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: ".ceo__slider-nav",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".icon-right-big",
+                prevEl: ".icon-left-big",
             },
             modules: [Navigation, Pagination],
 
