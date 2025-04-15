@@ -1,6 +1,7 @@
 @use "/src/sass/base/variables.scss" as *;
 
 .ceo {
+    padding-bottom: 69px;
     background-color: $white;
 
     &__title {
@@ -80,5 +81,11 @@
                 height: 470px;
             }
         }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .ceo {
+        padding-bottom: 150px;
     }
 }

@@ -3,6 +3,7 @@ const hamburger = () => {
     const close = document.querySelector('.menu__close');
     const menu = document.querySelector('.menu');
     const items = document.querySelectorAll('.menu__item');
+    const itemsFooter = document.querySelectorAll('.footer__mobile-item');
 
 
     hamburger.addEventListener('click', () => {
@@ -16,6 +17,15 @@ const hamburger = () => {
     items.forEach(item => {
         item.addEventListener('click', () => {
             const content = item.querySelector('.menu__item-content');
+            if (content) {
+                content.classList.toggle('active');
+                item.classList.toggle('active');
+            }
+        });
+    });
+    itemsFooter.forEach(item => {
+        item.addEventListener('click', () => {
+            const content = item.querySelector('.footer__mobile-item-content');
             if (content) {
                 content.classList.toggle('active');
                 item.classList.toggle('active');
