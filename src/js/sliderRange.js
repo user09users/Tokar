@@ -21,13 +21,16 @@
     window.addEventListener('resize', updateSliderUI);
     updateSliderUI();
 }
-export default sliderRange; */
+export default sliderRange;
+
+ */
 
 const sliderRange = () => {
     const sliders = document.querySelectorAll('.styled-slider');
 
     sliders.forEach(slider => {
-        const rangeLabel = slider.parentElement.querySelector('.value-indicator, .range-label');
+        /*    const rangeLabel = slider.parentElement.querySelector('.value-indicator, .range-label'); */
+        const rangeLabel = slider.closest('.slider-container').querySelector('.value-indicator, .range-label');
 
         function updateSliderUI() {
             const min = +slider.min;

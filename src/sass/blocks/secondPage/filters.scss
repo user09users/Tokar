@@ -133,12 +133,12 @@
     }
 }
 
-.range-label {
+.range-label,
+#valueIndicator {
     position: absolute;
-    top: -40px;
-    transform: translateX(-69%);
-    font-size: 14px;
+    top: -30px;
     font-weight: bold;
+    font-size: 9px;
 }
 
 /* 
@@ -171,7 +171,8 @@
     left: 0;
 }
 
-.max-label {
+.max-label,
+.slider-label.max {
     right: 0;
     /*    transform: translateX(50%); */
 }
@@ -193,18 +194,6 @@
 .slider-label.max {
     position: absolute;
     bottom: -25px;
-}
-
-.slider-label.max {
-    right: 0;
-}
-
-#valueIndicator {
-    position: absolute;
-    top: -30px;
-    display: flex;
-    font-weight: bold;
-
 }
 
 /* ::-webkit-slider-thumb Что это: «ползунок» или «ручка»,
