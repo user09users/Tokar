@@ -61,6 +61,22 @@
     }
 }
 
+.button-item {
+    @include button;
+    border-radius: 4px;
+    width: 126px;
+    height: 42px;
+    box-shadow: 0px 4px 4px 0px $shadow-gray;
+    background: linear-gradient(180.00deg, $main-color, $main-color-dark 100%);
+    color: $white;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    display: flex;
+    text-decoration: none;
+
+}
+
 @media screen and (min-width: 1200px) {
     .button-big {
         width: 280px;
@@ -74,5 +90,9 @@
         gap: 44px;
         margin-top: 26px;
 
+    }
+
+    .button-item {
+        width: 112.08px;
     }
 }

@@ -7,19 +7,23 @@
 
 @use"/src/sass/blocks/header.scss";
 @use"/src/sass/blocks/footer.scss";
+@use"/src/sass/blocks/hamburger.scss";
 
 @use"/src/sass/ui/buttons.scss";
 @use"/src/sass/ui/titles.scss";
 @use"/src/sass/ui/text.scss";
 
-@use"/src/sass/blocks/promo.scss";
-@use"/src/sass/blocks/hamburger.scss";
-@use"/src/sass/blocks/reason.scss";
-@use"/src/sass/blocks/catalog.scss";
-@use"/src/sass/blocks/materials.scss";
-@use"/src/sass/blocks/about.scss";
-@use"/src/sass/blocks/variations.scss";
-@use"/src/sass/blocks/lastStates.scss";
-@use"/src/sass/blocks/ceo.scss";
+@use"/src/sass/blocks/firstPage/promo.scss";
+@use"/src/sass/blocks/firstPage/reason.scss";
+@use"/src/sass/blocks/firstPage/catalogFirstPage.scss";
+@use"/src/sass/blocks/firstPage/materials.scss";
+@use"/src/sass/blocks/firstPage/about.scss";
+@use"/src/sass/blocks/firstPage/variations.scss";
+@use"/src/sass/blocks/firstPage/lastStates.scss";
+@use"/src/sass/blocks/firstPage/ceo.scss";
+
+@use"/src/sass/blocks/secondPage/searchPanel.scss";
+@use"/src/sass/blocks/secondPage/catalogSecondPage";
+@use"/src/sass/blocks/secondPage/filters";
 
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');

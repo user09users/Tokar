@@ -1,0 +1,281 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.filters {
+    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 11;
+    transition: 0.5s all;
+    visibility: hidden;
+    opacity: 0;
+    left: -100%;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: $dark;
+    }
+
+    &.active {
+        left: 0%;
+        visibility: visible;
+        opacity: 1;
+        background-color: $white;
+    }
+
+    &__blocks {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__header {
+        height: 61px;
+        padding: 18px 5px;
+        display: flex;
+        justify-content: space-between;
+
+        &-name {
+            color: $dark;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+
+        }
+
+        &-cancel {
+            font-size: 20px;
+        }
+    }
+
+    &__wrapper {
+        margin-top: 20px;
+    }
+
+    &__filter {
+        &-header {
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-radius: 8px;
+            margin: 0 auto;
+            min-height: 60px;
+            box-shadow: 0px 0px 30px 0px $shadow;
+            background: $white;
+            align-items: center;
+
+            div {
+                color: $dark;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 16px;
+            }
+        }
+
+        &.active {
+            .filters__filter-content {
+                display: block;
+            }
+
+            .filters__filter-corner {
+                rotate: 180deg;
+            }
+
+        }
+
+        &-items {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+
+        &-content {
+            display: none;
+            margin-top: 24px;
+            padding: 0 20px;
+        }
+
+        &-name {
+            color: $dark;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 16px;
+            text-align: left;
+        }
+
+        &-item {
+            display: flex;
+            gap: 15px;
+
+            span {
+                color: $main-color-dark;
+            }
+        }
+    }
+
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    margin: 30px auto 30px auto;
+
+    span {
+        color: $dark;
+    }
+}
+
+.range-label {
+    position: absolute;
+    top: -40px;
+    transform: translateX(-69%);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 
+ .dot {
+    position: absolute;
+    top: 61%;
+    width: 20px;
+    height: 20px;
+    border: 3px solid gray;
+    background: white;
+    border-radius: 100%;
+    transform: translateY(-50%);
+    z-index: 2;
+} 
+
+.start-dot {
+    left: 0;
+}
+
+ */
+.label-text {
+    position: absolute;
+    top: 30px;
+    background-color: none;
+    font-size: 13px;
+    color: $dark;
+}
+
+.min-label {
+    left: 0;
+}
+
+.max-label {
+    right: 0;
+    /*    transform: translateX(50%); */
+}
+
+.styled-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    /*  background: $main-color-dark; */
+    background: linear-gradient(to right, $main-color-dark 0%, $main-color-dark var(--percent), rgba(255, 192, 203, 0.2) var(--percent), rgba(255, 192, 203, 0.2) 100%);
+    border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+
+.slider-label.min,
+.slider-label.max {
+    position: absolute;
+    bottom: -25px;
+}
+
+.slider-label.max {
+    right: 0;
+}
+
+#valueIndicator {
+    position: absolute;
+    top: -30px;
+    display: flex;
+    font-weight: bold;
+
+}
+
+/* ::-webkit-slider-thumb Что это: «ползунок» или «ручка»,
+которую перетаскивают по треку в браузерах на движке WebKit (Chrome, Safari, новые версии Edge). Зачем нужно: чтобы убрать стандартный вид и задать свои размеры,
+форму,
+цвет,
+границы,
+тень и т.п. */
+.styled-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 4px solid gray;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -7px;
+    position: relative;
+    z-index: 3;
+}
+
+
+/* ::-moz-range-thumb Что это: «ползунок» в Firefox. Зачем нужно: Firefox игнорирует WebKit‑вариант,
+поэтому копируют те же стили сюда,
+чтобы сделать единый внешний вид. */
+
+
+.styled-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 4px solid gray;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ::-webkit-slider-runnable-track Что это: «дорожка» или «рельс»,
+вдоль которого движется ползунок в WebKit‑браузерах. Зачем нужно: чтобы изменить толщину (height),
+фон (цвет или градиент),
+скругления (border‑radius) и общий стиль трека. */
+
+.styled-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 3px;
+}
+
+
+/* ::-moz-range-track
+Что это: «дорожка» в Firefox.
+
+Зачем нужно: Firefox использует свой псевдо‑элемент для трека — тут задают те же параметры, что и в WebKit‑варианте, чтобы трек выглядел одинаково во всех браузерах. */
+
+.styled-slider::-moz-range-track {
+    height: 6px;
+    border-radius: 3px;
+}
+
+@media screen and (min-width: 1200px) {
+    .filters {
+        padding: 0 20px;
+        position: relative;
+        left: 0%;
+        visibility: visible;
+        opacity: 1;
+        background-color: $white;
+
+        &__filter {
+
+            &-content {
+                padding: 0;
+            }
+        }
+    }
+}

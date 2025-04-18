@@ -1,6 +1,6 @@
 @use "/src/sass/base/variables.scss" as *;
 
-.catalog {
+.catalogFirstPage {
     padding: 60px 0;
     background-color: $white;
 
@@ -19,11 +19,11 @@
             display: flex;
             flex-direction: column;
 
-            img.catalog__item-img {
+            img.catalogFirstPage__item-img {
                 order: 1;
             }
 
-            .catalog__item-wrapper {
+            .catalogFirstPage__item-wrapper {
                 order: 2;
             }
 
@@ -58,7 +58,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .catalog {
+    .catalogFirstPage {
         padding-top: 60px;
 
         &__bg {
@@ -77,12 +77,12 @@
                 grid-template-columns: repeat(2, 1fr);
                 align-items: center;
 
-                img.catalog__item-img {
+                img.catalogFirstPage__item-img {
                     border-radius: 0 40px 0 0;
                     order: 2;
                 }
 
-                .catalog__item-wrapper {
+                .catalogFirstPage__item-wrapper {
                     padding: 28px 20px 34px 15px;
                     order: 1;
                 }
@@ -100,7 +100,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .catalog {
+    .catalogFirstPage {
         padding: 145px 0;
 
         &__bg {
@@ -120,12 +120,12 @@
             .horizontal {
                 grid-template-columns: 350px 420px;
 
-                img.catalog__item-img {
+                img.catalogFirstPage__item-img {
                     width: 420px;
                     height: 310px;
                 }
 
-                .catalog__item-wrapper {
+                .catalogFirstPage__item-wrapper {
                     padding: 45px 65px 60px 50px;
                 }
 

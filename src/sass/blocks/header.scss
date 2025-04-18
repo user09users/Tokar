@@ -10,10 +10,11 @@
     border-bottom: 1px solid $pale;
 
     &-wrapper {
+        padding-top: 13px;
         display: flex;
         justify-content: space-between;
         position: relative;
-        align-items: center;
+        align-items: start;
     }
 
     &-phone {

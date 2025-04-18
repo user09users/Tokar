@@ -5,7 +5,6 @@ const hamburger = () => {
     const items = document.querySelectorAll('.menu__item');
     const itemsFooter = document.querySelectorAll('.footer__mobile-item');
 
-
     hamburger.addEventListener('click', () => {
         menu.classList.add('active');
         document.body.style.overflow = "hidden";
