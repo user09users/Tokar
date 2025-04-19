@@ -118,6 +118,38 @@
             span {
                 color: $main-color-dark;
             }
+
+            .filtersCategoryButton {
+                border: none;
+                background-color: inherit;
+                padding: 0px;
+                cursor: pointer;
+                transition: all 0.5s;
+
+                &.active {
+                    font-weight: 600;
+                    box-shadow: 0px 0px 30px 0px $main-color-dark;
+                    background-color: $main-color-dark;
+                    color: $white;
+                    border-radius: 5px;
+                }
+            }
+
+            .sortBtn {
+                border: none;
+                background-color: inherit;
+                padding: 0px;
+                cursor: pointer;
+                transition: all 0.5s;
+
+                &.active {
+                    font-weight: 600;
+                    box-shadow: 0px 0px 30px 0px $main-color-dark;
+                    background-color: $main-color-dark;
+                    color: $white;
+                    border-radius: 5px;
+                }
+            }
         }
     }
 

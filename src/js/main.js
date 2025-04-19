@@ -7,10 +7,11 @@ import filters from "./filters";
 import sliderRange from "./sliderRange";
 import search from "./search";
 
-import "/src/sass/style.scss";
-
 hamburger();
 slider();
 filters();
 sliderRange();
 search();
+
+import "/src/sass/style.scss";
+
