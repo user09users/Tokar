@@ -10,7 +10,7 @@ export default defineConfig({
 			input: {
 				main: resolve(__dirname, "index.html"),
 				main: resolve(__dirname, "catalog.html"),
-				main: resolve(__dirname, "card.html"),
+				main: resolve(__dirname, "cardPage.html"),
 			},
 		},
 	},

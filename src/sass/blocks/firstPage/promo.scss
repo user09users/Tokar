@@ -1,7 +1,6 @@
 @use "/src/sass/base/variables.scss" as *;
 
 .promo {
-    padding-top: 13px;
     background-color: $baige;
 
     &__info {
@@ -94,7 +93,6 @@
 @media screen and (min-width: 1200px) {
 
     .promo {
-        padding-top: 22px;
 
         &__info {
             display: none;

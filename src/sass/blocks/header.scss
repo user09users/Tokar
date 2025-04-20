@@ -1,5 +1,9 @@
 @use "/src/sass/base/variables.scss" as *;
 
+.header {
+    margin-top: 12px;
+}
+
 .header__desktop {
     display: none;
 }
@@ -24,6 +28,10 @@
 }
 
 @media screen and (min-width: 1200px) {
+    .header {
+        margin-top: 22px;
+    }
+
     .header__desktop {
         display: block;
 
