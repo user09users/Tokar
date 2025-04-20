@@ -254,17 +254,33 @@
             &:hover {
                 width: 280px;
                 height: auto;
+                font-weight: 600;
+                box-shadow: 0px 0px 30px 0px $main-color-dark;
+                /*  background-color: $main-color-dark; */
+                color: $white;
+                border-radius: 5px;
 
                 .catalogSecondPage__item-size:nth-child(1) {
                     flex-direction: column;
                     gap: 0;
                     order: 1;
+                    color: $white;
+
+
+                    span {
+                        color: $white;
+                    }
                 }
 
                 .catalogSecondPage__item-size:nth-child(2) {
                     flex-direction: column;
                     gap: 0;
                     order: 3;
+
+                    span {
+                        font-weight: 500px;
+                        color: $white;
+                    }
                 }
 
                 .catalogSecondPage__item-btn {
@@ -302,6 +318,18 @@
         &__create,
         &__more {
             grid-column: 1 / 4;
+            transition: all 0.5s;
+
+            &:hover {
+                font-weight: 600;
+                box-shadow: 0px 0px 30px 0px $main-color-dark;
+                color: $white;
+                border-radius: 5px;
+            }
+        }
+
+        .catalogSecondPage__more-btn {
+            cursor: pointer;
         }
 
         .page__nav {
