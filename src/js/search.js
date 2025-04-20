@@ -9,12 +9,19 @@ const search = () => {
         const allItems = Array.from(container.querySelectorAll('.catalogSecondPage__item'));
         const createBlock = document.querySelector('.catalogSecondPage__create');
         const moreBlock = document.querySelector('.catalogSecondPage__more');
+        const mobileSearch = document.querySelector('.searchPanel__wrapper-item-search');
+        const mobileSearchBlock = document.querySelector('.catalogSecondPage__search');
+
 
         let activeCategories = [];
         let searchQuery = '';
         let areaValue = parseInt(areaSlider.value);
         let priceValue = parseInt(priceSlider.value);
         let currentSort = null;
+
+        mobileSearch.addEventListener('click', () => {
+            mobileSearchBlock.classList.toggle('visible'); // Use CSS to show/hide
+        });
 
         const applyAllFilters = () => {
             let filteredItems = allItems.filter(item => {
