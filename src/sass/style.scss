@@ -23,7 +23,9 @@
 @use"/src/sass/blocks/firstPage/ceo.scss";
 
 @use"/src/sass/blocks/secondPage/searchPanel.scss";
-@use"/src/sass/blocks/secondPage/catalogSecondPage";
-@use"/src/sass/blocks/secondPage/filters";
+@use"/src/sass/blocks/secondPage/catalogSecondPage.scss";
+@use"/src/sass/blocks/secondPage/filters.scss";
+
+@use"/src/sass/blocks/cardPage/cardSlider.scss";
 
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
