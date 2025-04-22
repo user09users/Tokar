@@ -14,17 +14,6 @@ const filters = () => {
             filtersMenu.classList.remove('active');
             document.body.style.overflow = "";
         });
-
-        filtersBtn.forEach(item => {
-            item.addEventListener('click', () => {
-                const parent = item.parentElement;
-                if (parent && parent.querySelector('.filters__filter-content')) {
-                    parent.classList.toggle('active');
-                } else {
-                    return;
-                };
-            });
-        });
     } catch { };
 
 }
