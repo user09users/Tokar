@@ -12,6 +12,7 @@ export default defineConfig({
 				main: resolve(__dirname, "catalog.html"),
 				main: resolve(__dirname, "cardPage.html"),
 				main: resolve(__dirname, "about.html"),
+				main: resolve(__dirname, "contacts.html"),
 			},
 		},
 	},

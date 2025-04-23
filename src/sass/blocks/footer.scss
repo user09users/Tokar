@@ -57,10 +57,7 @@
 
         ul {
             margin-top: 21px;
-            list-style-type: none;
-            padding: 0;
             width: 100%;
-
         }
 
         &-item {
@@ -165,35 +162,6 @@
             text-align: center;
         }
 
-        ul {
-            padding: 0;
-            display: flex;
-            gap: 4px;
-            justify-content: center;
-
-            .telegram {
-                span {
-                    color: $blue;
-                    font-size: 26px;
-                    border-radius: 100%;
-                }
-            }
-
-            .whatsapp {
-                background: $green;
-                border-radius: 100%;
-
-                span {
-                    color: $white;
-                }
-            }
-
-            .viber {
-                background: $purple;
-                border-radius: 100%;
-            }
-        }
-
         &-date {
             color: $dark;
             font-size: 12px;
@@ -285,10 +253,6 @@
                 display: grid;
                 gap: 100px;
                 grid-template-columns: repeat(2, 1fr);
-
-                ul {
-                    list-style-type: none;
-                }
             }
 
             &-links {

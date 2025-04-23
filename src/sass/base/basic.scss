@@ -41,6 +41,11 @@ body {
     background: $white;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 .container {
     width: 100%;
     padding: 0 10px;
@@ -53,6 +58,13 @@ body {
     font-weight: 400;
     line-height: 17px;
     text-align: center;
+}
+
+.title-wrapper {
+
+    .backButton {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -70,6 +82,46 @@ body {
 
     .page__nav {
         text-align: left;
+    }
+
+    .title-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        .backButton {
+            height: 40px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            cursor: pointer;
+
+            &-circle {
+                width: 30px;
+                height: 30px;
+                border-radius: 100%;
+                align-items: center;
+                border: 1px solid $main-color-dark;
+                position: relative;
+
+                span {
+                    position: absolute;
+                    font-size: 13px;
+                    left: 17%;
+                    transform: translateX(-50%);
+                    top: 50%;
+                    transform: translatey(-50%);
+                    color: $main-color-dark;
+                }
+            }
+
+            &-text {
+                color: $main-color-dark;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 16px;
+                text-align: left;
+            }
+        }
     }
 }
 

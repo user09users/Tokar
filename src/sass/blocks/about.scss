@@ -113,11 +113,10 @@
 
 @media screen and (min-width: 1200px) {
     .about {
-        padding: 150px 0;
+        padding: 32px 0 150px 0;
         position: relative;
 
         &__introduction {
-
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 85px;
