@@ -4,6 +4,18 @@
     padding: 60px 0;
     background: $white;
 
+    &__introduction {
+        display: grid;
+
+        &-text {
+            margin-top: 30px;
+        }
+
+        &-img {
+            margin-top: 20px;
+        }
+    }
+
     &__model {
         display: none;
     }
@@ -104,6 +116,14 @@
         padding: 150px 0;
         position: relative;
 
+        &__introduction {
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 85px;
+            align-items: start;
+        }
+
         &__bg {
             margin-top: 67px;
             width: 1170px;
@@ -168,8 +188,8 @@
             }
         }
 
-        &__btn {
-            margin: 38px auto 0 auto;
+        &__btns {
+            justify-content: center;
         }
     }
 }
