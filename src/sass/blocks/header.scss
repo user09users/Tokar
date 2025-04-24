@@ -1,7 +1,8 @@
 @use "/src/sass/base/variables.scss" as *;
 
 .header {
-    margin-top: 12px;
+    padding-top: 12px;
+    background: $baige;
 }
 
 .header__desktop {
@@ -29,7 +30,7 @@
 
 @media screen and (min-width: 1200px) {
     .header {
-        margin-top: 22px;
+        padding-top: 22px;
     }
 
     .header__desktop {

@@ -24,6 +24,14 @@
     text-align: center;
 }
 
+.title-card {
+    color: $dark;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+}
+
 @media screen and (min-width: 1200px) {
     .title-fw400 {
         font-size: 30px;

@@ -1,0 +1,160 @@
+@use "/src/sass/base/variables.scss" as *;
+
+
+.works {
+    padding-top: 13px;
+
+    &__wrapper {
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 290px);
+        grid-auto-rows: minmax(330px, auto);
+        gap: 25px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__card {
+        padding: 5px;
+        width: 300px;
+        min-height: 330px;
+        border-radius: 0px 40px 0px 0px;
+        box-shadow: 0px 0px 30px 0px $shadow;
+        background: $white;
+
+        &-img {
+            width: 290px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        &-content {
+            padding: 25px 15px 35px 15px;
+        }
+
+        &-wrapper {
+            margin-top: 20px;
+            display: flex;
+            gap: 23px;
+        }
+
+        &-size {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-top: 15px;
+
+            div {
+                width: 32px;
+                height: 32px;
+
+                img {
+                    height: 24px;
+                    width: 24px;
+                }
+            }
+
+            span {
+                color: $dark;
+                display: block;
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 24px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+.button-more {
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+
+    .works {
+        &__wrapper {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 290px);
+            grid-auto-rows: minmax(330px, auto);
+            gap: 25px;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .works {
+        margin-top: 20px;
+
+        &__wrapper {
+            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, 370px);
+            grid-auto-rows: minmax(430px, auto);
+            gap: 25px 13px;
+        }
+
+        .big {
+            grid-column: 2 / 4;
+            width: 765px;
+            height: 430px;
+            display: grid;
+            gap: 55px;
+            grid-template-columns: 245px 1fr;
+
+            .works__card-content {
+                align-content: center;
+                margin-left: 15px;
+            }
+
+            .works__card-wrapper {
+                flex-direction: column;
+
+                width: auto;
+            }
+
+            .works__card-btn {
+                order: 2;
+            }
+
+            .works__card-img {
+                order: 2;
+                width: 463px;
+                height: 420px;
+            }
+        }
+
+        &__card {
+            width: 370px;
+            min-height: 430px;
+            transition: all 0.5s;
+
+            &:hover {
+                box-shadow: 0px 0px 30px 0px $main-color-dark;
+                transform: translateY(-10px);
+            }
+
+            &-img {
+                width: 360px;
+                height: 250.39px;
+            }
+
+            &-content {
+                padding: 25px 15px 35px 15px;
+            }
+
+            &-wrapper {
+                margin-top: 20px;
+                display: flex;
+                gap: 23px;
+            }
+        }
+    }
+
+    .button-more {
+        margin: 20px 0 0 0;
+    }
+}
