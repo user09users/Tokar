@@ -62,6 +62,19 @@ const sliders = () => {
             },
             modules: [Navigation, Pagination],
         });
+        new Swiper('.casesPhotos__slider', {
+            slidesPerView: 1,
+            loop: true,
+            pagination: {
+                el: ".casesPhotos__slider-nav",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".icon-right-big",
+                prevEl: ".icon-left-big",
+            },
+            modules: [Navigation, Pagination],
+        });
 
         // Export the mainSlider instance for external sync
         mainSlider = new Swiper('.cardSlider__slider', {

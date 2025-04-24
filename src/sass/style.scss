@@ -39,4 +39,8 @@
 
 @use"/src/sass/blocks/works.scss";
 
+@use"/src/sass/blocks/cases/cases.scss";
+@use"/src/sass/blocks/cases/casesInfo.scss";
+@use"/src/sass/blocks/cases/casesPhotos.scss";
+
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
