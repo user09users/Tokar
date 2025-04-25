@@ -8,6 +8,7 @@ import sliderRange from "./sliderRange";
 import search from "./search";
 import cardPageSlider from "./cardPageSlider";
 import accordion from "./accordion";
+import modal from "./modal";
 
 hamburger();
 sliders();
@@ -16,6 +17,7 @@ sliderRange();
 search();
 cardPageSlider();
 accordion();
+modal();
 
 import "/src/sass/style.scss";
 
