@@ -12,11 +12,6 @@
     opacity: 0;
     left: -100%;
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
     a {
         text-decoration: none;
         color: $dark;
@@ -46,7 +41,6 @@
             font-size: 16px;
             font-weight: 600;
             line-height: 24px;
-
         }
 
         &-cancel {
@@ -134,14 +128,6 @@
                     color: $white;
                     border-radius: 5px;
                 }
-
-                &:active {
-                    font-weight: 600;
-                    box-shadow: 0px 0px 30px 0px $main-color-dark;
-                    background-color: $main-color-dark;
-                    color: $white;
-                    border-radius: 5px;
-                }
             }
         }
     }
@@ -168,9 +154,6 @@
             rgba(255, 192, 203, 0.2) var(--percent),
             rgba(255, 192, 203, 0.2) 100%);
     border-radius: 3px;
-    /*     outline: none;
-    position: relative;
-    z-index: 1; */
 }
 
 .styled-slider::-webkit-slider-runnable-track,

@@ -3,7 +3,7 @@ import { mainSlider } from "./slider";
 const cardPageSlider = () => {
     const thumbs = document.querySelectorAll('.cardSlider__thumbs-thumb');
 
-    if (!mainSlider) return;
+    if (!mainSlider || thumbs.length === 0) return;
 
     // Sync thumbnails on click
     thumbs.forEach((thumb, index) => {
@@ -20,8 +20,8 @@ const cardPageSlider = () => {
         });
     });
 
-    // Set first one active by default
-    if (thumbs.length) thumbs[0].classList.add('active');
+    // Set the first thumbnail as active by default
+    thumbs[0]?.classList.add('active');
 };
 
 export default cardPageSlider;

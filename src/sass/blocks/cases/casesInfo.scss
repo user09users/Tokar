@@ -110,10 +110,6 @@
             text-align: center;
         }
 
-        &__intro {
-            flex-direction: column;
-            margin-top: 15px;
-        }
 
         &__descr {
 
@@ -150,8 +146,6 @@
                 width: 259px;
                 height: 102px;
                 padding: 16px 20px;
-                display: flex;
-                justify-content: space-between;
                 align-items: center;
 
                 img {

@@ -118,14 +118,14 @@
         width: 280px;
         height: 66px;
         font-size: 14px;
-
+        transition: all 0.5s;
     }
 
     .button-mix {
         flex-direction: row;
         gap: 44px;
         margin-top: 26px;
-
+        transition: all 0.5s;
     }
 
     .button-item {
@@ -136,6 +136,7 @@
         @include button;
         width: 200px;
         height: 50px;
+        transition: all 0.5s;
     }
 
     .button-more {

@@ -1,7 +1,7 @@
 @use "/src/sass/base/variables.scss" as *;
 
 .details {
-    padding-top: 60px;
+    padding: 60px 0;
     background-color: $baige;
 
     &__wrapper {

@@ -6,7 +6,7 @@ const accordion = (blockSelector, headerSelector, contentSelector, subtitleSelec
         const content = contentSelector ? block.querySelector(contentSelector) : null;
         const subTitle = subtitleSelector ? block.querySelector(subtitleSelector) : null;
 
-        if (!header) return; // if there's no header, skip this block
+        if (!header) return;
 
         header.addEventListener('click', () => {
 

@@ -245,7 +245,7 @@
                 <h3 class="cardSlider__consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
                 <div class="cardSlider__consultation-block">
                     <div class="cardSlider__consultation-phone">
-                        <div class="cardSlider__consultation-language">
+                        <div class="language">
                             <span></span>
                             <span></span>
                             <span class="icon-down-open"></span>
@@ -500,26 +500,32 @@
                     <img src="/src/img/cardPage/electricity.jpeg" alt="electricity">
                 </div>
             </div>
-            <div class="consultation">
-                <div class="consultation-block">
-                    <h3 class="consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
-                    <div class="consultation-block-wrapper">
-                        <div class="consultation-phone">
-                            <div class="consultation-language">
-                                <span></span>
-                                <span></span>
-                                <span class="icon-down-open"></span>
+            <section class="consultation">
+                <div class="container">
+                    <div class="consultation">
+                        <div class="consultation-block">
+                            <h3 class="consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
+                            <div class="consultation-block-wrapper">
+                                <div class="consultation-item">
+                                    <div class="language">
+                                        <span></span>
+                                        <span></span>
+                                        <span class="icon-down-open"></span>
+                                    </div>
+                                    <input class="contacts__nav-item-input" type="tel" name="phone" id="phone"
+                                        placeholder="+38 XXX XXX XX XX">
+                                </div>
+                                <a class="button-big consultation-button">Заказать</a>
                             </div>
-                            <input type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                            <div class="consultation-text">Отправляя данные, Вы соглашаетесь на обработку
+                                <span>персональных данных</span>
+                            </div>
                         </div>
-                        <a class="button-big consultation-button">Заказать</a>
-                    </div>
-                    <div class="consultation-text">Отправляя данные, Вы соглашаетесь на обработку
-                        <span>персональных данных</span>
+                        <img class="consultation-block-img" src="/src/img/cardPage/cardPage-man.jpeg"
+                            alt="cardPage-man">
                     </div>
                 </div>
-                <img class="consultation-block-img" src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man">
-            </div>
+            </section>
         </div>
     </section>
 
@@ -796,6 +802,30 @@
             </p>
         </div>
     </section>
+
+    <div data-consultation class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__wrapper">
+            <span data-close class="modal__close icon-cancel"></span>
+            <img src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man" class="modal__img">
+            <div class="modal__content">
+                <h3 class="modal__title title-fw400">Получите ответы на все свои вопросы за 15 минут</h3>
+                <div class="modal__item">
+                    <div class="language">
+                        <span></span>
+                        <span></span>
+                        <span class="icon-down-open"></span>
+                    </div>
+                    <input class="modal__item-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                </div>
+                <a class="button-big modal__button">Заказать</a>
+                <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку
+                    <span>персональных данных</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/src/js/main.js" type="module"></script>
 </body>
 

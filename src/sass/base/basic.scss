@@ -60,10 +60,31 @@ ul {
     text-align: center;
 }
 
-.title-wrapper {
+.language {
+    position: relative;
+    padding: 20px;
 
-    .backButton {
-        display: none;
+    span:nth-child(1) {
+        display: block;
+        width: 30px;
+        height: 10px;
+        background-color: blue;
+    }
+
+    span:nth-child(2) {
+        display: block;
+        width: 30px;
+        height: 10px;
+        background-color: yellow;
+    }
+
+    span:nth-child(3) {
+        font-size: 10px;
+        position: absolute;
+        display: block;
+        right: 5px;
+        color: $dark;
+        top: 23px;
     }
 }
 
@@ -82,46 +103,6 @@ ul {
 
     .page__nav {
         text-align: left;
-    }
-
-    .title-wrapper {
-        display: flex;
-        justify-content: space-between;
-
-        .backButton {
-            height: 40px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            cursor: pointer;
-
-            &-circle {
-                width: 30px;
-                height: 30px;
-                border-radius: 100%;
-                align-items: center;
-                border: 1px solid $main-color-dark;
-                position: relative;
-
-                span {
-                    position: absolute;
-                    font-size: 13px;
-                    left: 17%;
-                    transform: translateX(-50%);
-                    top: 50%;
-                    transform: translatey(-50%);
-                    color: $main-color-dark;
-                }
-            }
-
-            &-text {
-                color: $main-color-dark;
-                font-size: 16px;
-                font-weight: 600;
-                line-height: 16px;
-                text-align: left;
-            }
-        }
     }
 }
 

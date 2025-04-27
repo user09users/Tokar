@@ -74,12 +74,6 @@
 
     .works {
         &__wrapper {
-            margin-top: 25px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, 290px);
-            grid-auto-rows: minmax(330px, auto);
-            gap: 25px;
-            align-items: center;
             justify-content: space-between;
         }
     }
@@ -91,7 +85,6 @@
         margin-top: 20px;
 
         &__wrapper {
-            margin-top: 25px;
             grid-template-columns: repeat(auto-fit, 370px);
             grid-auto-rows: minmax(430px, auto);
             gap: 25px 13px;
@@ -140,16 +133,6 @@
             &-img {
                 width: 360px;
                 height: 250.39px;
-            }
-
-            &-content {
-                padding: 25px 15px 35px 15px;
-            }
-
-            &-wrapper {
-                margin-top: 20px;
-                display: flex;
-                gap: 23px;
             }
         }
     }

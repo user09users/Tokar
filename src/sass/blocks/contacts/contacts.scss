@@ -86,14 +86,26 @@
             border-radius: 0px 40px 0px 0px;
             box-shadow: 0px 0px 30px 0px $shadow;
             background: $white;
+
+            &:nth-child(2) {
+                .contacts__nav-item-input {
+                    padding: 10px;
+                    padding-left: 100px;
+                    width: 160px;
+                    height: 17px;
+                    border: none;
+                    opacity: 0.5;
+                }
+            }
         }
 
         &-item {
             width: 260px;
             height: 50px;
             display: flex;
-            gap: 30px;
-            padding: 12px 25px;
+            gap: 10px;
+            align-items: center;
+            padding: 12px;
             border: 1px solid $pale;
             border-radius: 4px;
             background: $white;
@@ -107,37 +119,9 @@
                 padding: 10px;
                 width: 160px;
                 height: 17px;
-                border: 1px dotted $dark;
+                border: none;
                 opacity: 0.5;
             }
-
-            &-language {
-                position: relative;
-
-                span:nth-child(1) {
-                    display: block;
-                    width: 30px;
-                    height: 10px;
-                    background-color: blue;
-                }
-
-                span:nth-child(2) {
-                    display: block;
-                    width: 30px;
-                    height: 10px;
-                    background-color: yellow;
-                }
-
-                span:nth-child(3) {
-                    font-size: 10px;
-                    position: absolute;
-                    display: block;
-                    top: 6px;
-                    right: -15px;
-                    color: $dark;
-                }
-            }
-
         }
 
         &-text {
@@ -204,7 +188,6 @@
         &__item {
             padding: 40px 32px;
             margin-top: 30px;
-            display: grid;
             grid-template-columns: 400px 1fr;
             justify-content: start;
 
@@ -242,13 +225,6 @@
             &-wrapper {
                 margin-top: 0;
                 padding: 40px 72px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                align-items: center;
-                border-radius: 0px 40px 0px 0px;
-                box-shadow: 0px 0px 30px 0px $shadow;
-                background: $white;
             }
 
             &-map {

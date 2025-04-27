@@ -22,6 +22,12 @@
         align-items: start;
     }
 
+    &-block {
+        &-logo {
+            width: 230px;
+        }
+    }
+
     &-phone {
         color: $main-color-dark;
         font-size: 20px;

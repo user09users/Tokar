@@ -59,14 +59,8 @@
 
 @media screen and (min-width: 768px) {
     .catalogFirstPage {
-        padding-top: 60px;
-
-        &__bg {
-            display: none;
-        }
 
         &__wrapper {
-            padding-top: 20px;
             grid-template-columns: repeat(2, minmax(290px, auto));
 
             .horizontal {
