@@ -62,7 +62,7 @@ ul {
 
 .language {
     position: relative;
-    padding: 20px;
+    padding: 0;
 
     span:nth-child(1) {
         display: block;
@@ -82,9 +82,9 @@ ul {
         font-size: 10px;
         position: absolute;
         display: block;
-        right: 5px;
+        right: -15px;
         color: $dark;
-        top: 23px;
+        top: 5px;
     }
 }
 

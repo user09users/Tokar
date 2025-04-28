@@ -1,5 +1,11 @@
 @use "/src/sass/base/variables.scss" as *;
 
+input {
+    border: none;
+    width: 160px;
+    height: 17px;
+}
+
 .consultation {
     padding: 40px 0 0 0;
     margin: 60px auto 0 auto;
@@ -17,7 +23,7 @@
     }
 
     &-item {
-        margin: 0 auto;
+        margin: 15px auto 0;
         padding: 12px 25px;
         display: flex;
         align-items: center;
@@ -25,12 +31,7 @@
         border-radius: 4px;
         height: 58px;
         width: 300px;
-
-        input {
-            border: 2px dotted $pale;
-            width: 160px;
-            height: 17px;
-        }
+        gap: 20px;
 
         &-language {
             position: relative;

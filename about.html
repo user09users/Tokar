@@ -101,7 +101,7 @@
                 </div>
                 <a href="tel:+380671755630" class="menu__tel"> +3 80 (67) 175 56 30</a>
                 <div class="menu__date">с 09:00 до 18:00 (пн-вс)</div>
-                <button class="button">Заказать звонок</button>
+                <button data-openModal class="button">Заказать звонок</button>
             </div>
         </div>
     </section>
@@ -154,7 +154,7 @@
                         <div class="header__desktop-info-date">с 09:00 до 18:00 (пн-вс)</div>
                     </div>
                     <div class="header__desktop-order">
-                        <button class="button">Заказать звонок</button>
+                        <button data-openModal class="button">Заказать звонок</button>
                         <div class="header__desktop-order-text">Бесплатно по Украине</div>
                     </div>
                     <div class="header__desktop-language">
@@ -313,8 +313,7 @@
             </div>
         </div>
     </section>
-
-    <section class="consultation">
+    <form class="consultation">
         <div class="container">
             <div class="consultation">
                 <div class="consultation-block">
@@ -329,7 +328,7 @@
                             <input class="contacts__nav-item-input" type="tel" name="phone" id="phone"
                                 placeholder="+38 XXX XXX XX XX">
                         </div>
-                        <a class="button-big consultation-button">Заказать</a>
+                        <button type='submit' class="button-big consultation-button">Заказать</button>
                     </div>
                     <div class="consultation-text">Отправляя данные, Вы соглашаетесь на обработку
                         <span>персональных данных</span>
@@ -338,7 +337,7 @@
                 <img class="consultation-block-img" src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man">
             </div>
         </div>
-    </section>
+    </form>
 
     <section class="factory">
         <div class="container">
@@ -524,7 +523,7 @@
                     </div>
                     <a href="tel:+380671755630" class="footer__social-tel"> +3 80 (67) 175 56 30</a>
                     <div class="footer__social-date">с 09:00 до 18:00 (пн-вс)</div>
-                    <button class="button">Заказать звонок</button>
+                    <button data-openModal class="button">Заказать звонок</button>
                 </div>
             </div>
 
@@ -539,7 +538,7 @@
                         <li class="footer__desktop-menu-info-item"><a href="#">О компании</a></li>
                         <li class="footer__desktop-menu-info-item"><a href="#">Наши работы</a></li>
                     </ul>
-                    <button class="button">Заказать звонок</button>
+                    <button data-openModal class="button">Заказать звонок</button>
                 </div>
                 <div class="footer__desktop-wrapper">
                     <div class="footer__desktop-links">
@@ -615,30 +614,28 @@
             </p>
         </div>
     </section>
-
-    <div data-consultation class="modal">
+    <form data-consultation class="modal">
         <div class="modal__overlay"></div>
         <div class="modal__wrapper">
             <span data-close class="modal__close icon-cancel"></span>
             <img src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man" class="modal__img">
             <div class="modal__content">
                 <h3 class="modal__title title-fw400">Получите ответы на все свои вопросы за 15 минут</h3>
-                <div class="modal__item">
-                    <div class="language">
+                <div class="input">
+                    <div class="input-language">
                         <span></span>
                         <span></span>
                         <span class="icon-down-open"></span>
                     </div>
-                    <input class="modal__item-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                    <input class="input-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
                 </div>
-                <a class="button-big modal__button">Заказать</a>
+                <button type='submit' class="button-big modal__button">Заказать</button>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку
                     <span>персональных данных</span>
                 </div>
             </div>
         </div>
-    </div>
-
+    </form>
     <script src="/src/js/main.js" type="module"></script>
 </body>
 

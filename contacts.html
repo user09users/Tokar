@@ -101,7 +101,7 @@
                 </div>
                 <a href="tel:+380671755630" class="menu__tel"> +3 80 (67) 175 56 30</a>
                 <div class="menu__date">с 09:00 до 18:00 (пн-вс)</div>
-                <button class="button">Заказать звонок</button>
+                <button data-openModal class="button">Заказать звонок</button>
             </div>
         </div>
     </section>
@@ -154,7 +154,7 @@
                         <div class="header__desktop-info-date">с 09:00 до 18:00 (пн-вс)</div>
                     </div>
                     <div class="header__desktop-order">
-                        <button class="button">Заказать звонок</button>
+                        <button data-openModal class="button">Заказать звонок</button>
                         <div class="header__desktop-order-text">Бесплатно по Украине</div>
                     </div>
                     <div class="header__desktop-language">
@@ -280,27 +280,27 @@
                     </div>
                 </div>
                 <div class="contacts__nav">
-                    <div class="contacts__nav-wrapper">
+                    <form class="contacts__nav-wrapper">
                         <h3 class="contacts__title title-fw400">Закажите консультацию, если сомневаетесь</h3>
                         <div class="contacts__nav-item">
                             <img class="contacts__nav-item-img" src="/src/icons/User.svg" alt="User">
                             <input class="contacts__nav-item-input" type="input" name="name" id="name"
                                 placeholder="Введите имя">
                         </div>
-                        <div class="contacts__nav-item">
-                            <div class="language">
+                        <div class="input">
+                            <div class="input-language">
                                 <span></span>
                                 <span></span>
                                 <span class="icon-down-open"></span>
                             </div>
-                            <input class="contacts__nav-item-input" type="tel" name="phone" id="phone"
+                            <input class="input-input" type="tel" name="phone" id="phone"
                                 placeholder="+38 XXX XXX XX XX">
                         </div>
-                        <a class="button-big contacts__nav-button">Получить точный расчет</a>
+                        <button type="submit" class="button-big contacts__nav-button">Получить точный расчет</button>
                         <div class="contacts__nav-text">Отправляя данные, Вы соглашаетесь на обработку
                             <span>персональных данных</span>
                         </div>
-                    </div>
+                    </form>
                     <iframe class="contacts__nav-map"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2669.1407439949894!2d23.57495357629003!3d48.01099067122984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473791144d96a467%3A0x680995c0930c4019!2zVGsgU3R5bMq5!5e0!3m2!1sen!2sse!4v1745433679567!5m2!1sen!2sse"
                         style="border:0;" allowfullscreen="" loading="lazy"
@@ -555,7 +555,7 @@
                     </div>
                     <a href="tel:+380671755630" class="footer__social-tel"> +3 80 (67) 175 56 30</a>
                     <div class="footer__social-date">с 09:00 до 18:00 (пн-вс)</div>
-                    <button class="button">Заказать звонок</button>
+                    <button data-openModal class="button">Заказать звонок</button>
                 </div>
             </div>
 
@@ -570,7 +570,7 @@
                         <li class="footer__desktop-menu-info-item"><a href="#">О компании</a></li>
                         <li class="footer__desktop-menu-info-item"><a href="#">Наши работы</a></li>
                     </ul>
-                    <button class="button">Заказать звонок</button>
+                    <button data-openModal class="button">Заказать звонок</button>
                 </div>
                 <div class="footer__desktop-wrapper">
                     <div class="footer__desktop-links">
@@ -646,29 +646,29 @@
             </p>
         </div>
     </section>
-
-    <div data-consultation class="modal">
+    <form data-consultation class="modal">
         <div class="modal__overlay"></div>
         <div class="modal__wrapper">
             <span data-close class="modal__close icon-cancel"></span>
             <img src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man" class="modal__img">
             <div class="modal__content">
                 <h3 class="modal__title title-fw400">Получите ответы на все свои вопросы за 15 минут</h3>
-                <div class="modal__item">
-                    <div class="language">
+                <div class="input">
+                    <div class="input-language">
                         <span></span>
                         <span></span>
                         <span class="icon-down-open"></span>
                     </div>
-                    <input class="modal__item-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                    <input class="input-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
                 </div>
-                <a class="button-big modal__button">Заказать</a>
+                <button type='submit' class="button-big modal__button">Заказать</button>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку
                     <span>персональных данных</span>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+
 
     <script src="/src/js/main.js" type="module"></script>
 </body>

@@ -75,13 +75,15 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: 320px;
+        margin: 0 auto;
 
         &-wrapper {
             margin-top: 20px;
             padding: 40px 0;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 0;
             align-items: center;
             border-radius: 0px 40px 0px 0px;
             box-shadow: 0px 0px 30px 0px $shadow;
@@ -103,6 +105,7 @@
             width: 260px;
             height: 50px;
             display: flex;
+            margin-top: 15px;
             gap: 10px;
             align-items: center;
             padding: 12px;
@@ -138,9 +141,14 @@
         }
 
         &-map {
-            width: 300px;
+            width: 100%;
             height: 420px;
-            margin: 0 auto;
+            margin: 20px auto 0 auto;
+        }
+
+        &-button {
+            margin-top: 15px;
+            width: 260px;
         }
     }
 
@@ -183,8 +191,6 @@
             margin-top: 30px;
         }
 
-
-
         &__item {
             padding: 40px 32px;
             margin-top: 30px;
@@ -217,9 +223,15 @@
 
         &__nav {
             padding: 0;
+            width: 100%;
 
             h3 {
                 margin: 0;
+            }
+
+            &-item,
+            &-button {
+                width: 100%;
             }
 
             &-wrapper {
@@ -230,7 +242,6 @@
             &-map {
                 width: 564px;
                 height: 800px;
-                margin: 0;
             }
         }
 
