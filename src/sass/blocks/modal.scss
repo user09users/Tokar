@@ -1,5 +1,13 @@
 @use "/src/sass/base/variables.scss" as *;
 
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
 .modal {
     position: fixed;
     top: 0;
@@ -49,6 +57,12 @@
 
     &__content {
         padding: 20px;
+
+        &.img {
+            display: block;
+            margin: 20px auto;
+            max-width: 50px;
+        }
     }
 
     &__img {

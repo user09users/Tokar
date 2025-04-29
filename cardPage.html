@@ -803,28 +803,30 @@
         </div>
     </section>
 
-    <form data-form data-consultation class="modal">
+    <div data-consultation class="modal">
         <div class="modal__overlay"></div>
-        <div class="modal__wrapper">
+        <div data-info class="modal__wrapper">
             <span data-close class="modal__close icon-cancel"></span>
             <img src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man" class="modal__img">
             <div class="modal__content">
                 <h3 class="modal__title title-fw400">Получите ответы на все свои вопросы за 15 минут</h3>
-                <div class="input">
-                    <div class="input-language">
-                        <span></span>
-                        <span></span>
-                        <span class="icon-down-open"></span>
+                <form action="#" data-form>
+                    <div class="input">
+                        <div class="input-language">
+                            <span></span>
+                            <span></span>
+                            <span class="icon-down-open"></span>
+                        </div>
+                        <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                     </div>
-                    <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
-                </div>
-                <button type='submit' class="button-big modal__button">Заказать</button>
+                    <button type='submit' class="button-big modal__button">Заказать</button>
+                </form>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку
                     <span>персональных данных</span>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
     <script src="/src/js/main.js" type="module"></script>
 </body>
 
