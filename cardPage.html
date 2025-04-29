@@ -241,7 +241,7 @@
                 </p>
                 <a class="button-big ">Получить точный расчет</a>
             </div>
-            <div class="cardSlider__consultation">
+            <form data-form class="cardSlider__consultation">
                 <h3 class="cardSlider__consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
                 <div class="cardSlider__consultation-block">
                     <div class="cardSlider__consultation-phone">
@@ -250,11 +250,11 @@
                             <span></span>
                             <span class="icon-down-open"></span>
                         </div>
-                        <input modal-inputTel type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                        <input required type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                     </div>
                     <button type='submit' class="button-big cardSlider__consultation-button">Заказать</button>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 
@@ -505,18 +505,18 @@
                     <div class="consultation">
                         <div class="consultation-block">
                             <h3 class="consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
-                            <div class="consultation-block-wrapper">
+                            <form data-form class="consultation-block-wrapper">
                                 <div class="consultation-item">
                                     <div class="language">
                                         <span></span>
                                         <span></span>
                                         <span class="icon-down-open"></span>
                                     </div>
-                                    <input class="contacts__nav-item-input" type="tel" name="phone" id="phone"
+                                    <input required class="contacts__nav-item-input" type="tel" name="phone"
                                         placeholder="+38 XXX XXX XX XX">
                                 </div>
                                 <button type='submit' class="button-big consultation-button">Заказать</button>
-                            </div>
+                            </form>
                             <div class="consultation-text">Отправляя данные, Вы соглашаетесь на обработку
                                 <span>персональных данных</span>
                             </div>
@@ -803,7 +803,7 @@
         </div>
     </section>
 
-    <form data-consultation class="modal">
+    <form data-form data-consultation class="modal">
         <div class="modal__overlay"></div>
         <div class="modal__wrapper">
             <span data-close class="modal__close icon-cancel"></span>
@@ -816,7 +816,7 @@
                         <span></span>
                         <span class="icon-down-open"></span>
                     </div>
-                    <input class="input-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                    <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                 </div>
                 <button type='submit' class="button-big modal__button">Заказать</button>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку

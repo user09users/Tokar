@@ -280,11 +280,11 @@
                     </div>
                 </div>
                 <div class="contacts__nav">
-                    <form class="contacts__nav-wrapper">
+                    <form data-form class="contacts__nav-wrapper">
                         <h3 class="contacts__title title-fw400">Закажите консультацию, если сомневаетесь</h3>
                         <div class="contacts__nav-item">
                             <img class="contacts__nav-item-img" src="/src/icons/User.svg" alt="User">
-                            <input class="contacts__nav-item-input" type="input" name="name" id="name"
+                            <input required class="contacts__nav-item-input" type="input" name="name"
                                 placeholder="Введите имя">
                         </div>
                         <div class="input">
@@ -293,8 +293,7 @@
                                 <span></span>
                                 <span class="icon-down-open"></span>
                             </div>
-                            <input class="input-input" type="tel" name="phone" id="phone"
-                                placeholder="+38 XXX XXX XX XX">
+                            <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                         </div>
                         <button type="submit" class="button-big contacts__nav-button">Получить точный расчет</button>
                         <div class="contacts__nav-text">Отправляя данные, Вы соглашаетесь на обработку
@@ -646,7 +645,7 @@
             </p>
         </div>
     </section>
-    <form data-consultation class="modal">
+    <form data-form data-consultation class="modal">
         <div class="modal__overlay"></div>
         <div class="modal__wrapper">
             <span data-close class="modal__close icon-cancel"></span>
@@ -659,7 +658,8 @@
                         <span></span>
                         <span class="icon-down-open"></span>
                     </div>
-                    <input class="input-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                    <input required required class="input-input" type="tel" name="phone"
+                        placeholder="+38 XXX XXX XX XX">
                 </div>
                 <button type='submit' class="button-big modal__button">Заказать</button>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку

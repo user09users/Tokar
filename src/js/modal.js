@@ -22,10 +22,8 @@ const modal = () => {
     closeBtn.addEventListener('click', closeModal);
     overlay.addEventListener('click', closeModal);
 
-
-
     const showModalByScroll = () => {
-        // Check if the user has scrolled to the bottom of the page
+
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
             openModal();
             window.removeEventListener('scroll', showModalByScroll);

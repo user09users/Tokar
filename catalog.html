@@ -196,7 +196,7 @@
             <h1 class="catalogSecondPage__title title-fw800">Каталог жилых строений</h1>
             <div class="catalogSecondPage__search">
                 <span class="icon-search"></span>
-                <input type="text" id="search" name="search" placeholder="Поиск по жилым строениям...">
+                <input required type="text" id="search" name="search" placeholder="Поиск по жилым строениям...">
             </div>
 
             <div class="catalogSecondPage__blocks">
@@ -407,7 +407,7 @@
                     </div>
                 </div>
                 <div class="catalogSecondPage__blocks-block">
-                    <div id="catalogSecondPage__wrapper" class="catalogSecondPage__wrapper">
+                    <div class="catalogSecondPage__wrapper">
                         <div class="catalogSecondPage__item" data-category="Дома" data-area="135" data-price="1000000"
                             data-popularity="5">
                             <img class="catalogSecondPage__item-img" src="/src/img/secondPage/catalog/bavaria.jpeg"
@@ -857,7 +857,7 @@
         </div>
     </section>
 
-    <form data-consultation class="modal">
+    <form data-form data-consultation class="modal">
         <div class="modal__overlay"></div>
         <div class="modal__wrapper">
             <span data-close class="modal__close icon-cancel"></span>
@@ -870,7 +870,7 @@
                         <span></span>
                         <span class="icon-down-open"></span>
                     </div>
-                    <input class="input-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                    <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                 </div>
                 <button type='submit' class="button-big modal__button">data</button>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку

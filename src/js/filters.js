@@ -2,7 +2,6 @@ const filters = () => {
     const filtersMenu = document.querySelector('.filters')
     const filters = document.querySelector('.searchPanel__wrapper-item');
     const cancel = document.querySelector('.filters__header-cancel');
-    const filtersBtn = document.querySelectorAll('.filters__filter-header');
 
     try {
         filters.addEventListener('click', () => {

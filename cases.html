@@ -238,7 +238,7 @@
                     <h3 class="cases__steps-title title-fw400">Проведем точный расчет <span>в 2 шага</span></h3>
                     <a href="#" class="button-big cases__steps-button">Узнать точную цену</a>
                 </div>
-                <div class="cases__consultation">
+                <form data-form class="cases__consultation">
                     <h3 class="cases__consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
                     <div class="input">
                         <div class="input-language">
@@ -246,13 +246,13 @@
                             <span></span>
                             <span class="icon-down-open"></span>
                         </div>
-                        <input class="input-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                        <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                     </div>
                     <button type="submit" class="button-big cases__consultation-button">Заказать</button>
                     <div class="cases__consultation-text">Отправляя данные, Вы соглашаетесь на обработку
                         <span>персональных данных</span>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -566,7 +566,7 @@
         </div>
     </section>
 
-    <form data-consultation class="modal">
+    <form data-form data-consultation class="modal">
         <div class="modal__overlay"></div>
         <div class="modal__wrapper">
             <span data-close class="modal__close icon-cancel"></span>
@@ -579,7 +579,7 @@
                         <span></span>
                         <span class="icon-down-open"></span>
                     </div>
-                    <input class="input-input" type="tel" name="phone" id="phone" placeholder="+38 XXX XXX XX XX">
+                    <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                 </div>
                 <button type='submit' class="button-big modal__button">Заказать</button>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку
