@@ -62,26 +62,49 @@ const modal = () => {
 
             form.appendChild(statusMessage);
 
-            const request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
-            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            /*  request.setRequestHeader('Content-type', 'application/json charset=utf-8'); */
 
             const formData = new FormData(form);
+            /* 
+             don't use if we don't need to send JSON
+                         const object = {};
+                        formData.forEach((value, key) => object[key] = value);
+                        const json = JSON.stringify(object); */
             const object = {};
             formData.forEach((value, key) => object[key] = value);
-            const json = JSON.stringify(object);
 
-            request.send(json);
-
-            request.addEventListener('load', () => {
-                statusMessage.remove();
-                if (request.status === 200) {
-                    showThanksModal(message.success);
-                    form.reset();
-                } else {
-                    showThanksModal(message.failure);
+            fetch('server.php', {
+                method: 'POST',
+                body: JSON.stringify(object),
+                /*
+                don't use if we don't need to send JSON
+                header: {
+                      'Content-type': 'application/json'
+                  } */
+                header: {
+                    'Content-type': 'application/json'
                 }
-            });
+            })
+                .then((data) => data.text())
+                .then(data => {
+                    console.log(data);
+                    showThanksModal(message.success);
+                }).catch(() => {
+                    showThanksModal(message.failure);
+                }).finally(() => {
+                    form.reset();
+                });
+
+
+            /*   request.addEventListener('load', () => {
+                  statusMessage.remove();
+                  if (request.status === 200) {
+                      showThanksModal(message.success);
+                      form.reset();
+                  } else {
+                      showThanksModal(message.failure);
+                  }
+              }); */
         });
     }
 
