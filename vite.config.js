@@ -9,12 +9,12 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				main: resolve(__dirname, "index.html"),
-				main: resolve(__dirname, "catalog.html"),
-				main: resolve(__dirname, "cardPage.html"),
-				main: resolve(__dirname, "about.html"),
-				main: resolve(__dirname, "contacts.html"),
-				main: resolve(__dirname, "works.html"),
-				main: resolve(__dirname, "cases.html"),
+				catalog: resolve(__dirname, "catalog.html"),
+				cardPage: resolve(__dirname, "cardPage.html"),
+				about: resolve(__dirname, "about.html"),
+				contacts: resolve(__dirname, "contacts.html"),
+				works: resolve(__dirname, "works.html"),
+				cases: resolve(__dirname, "cases.html"),
 			},
 		},
 	},

@@ -1,10 +1,7 @@
 @use "/src/sass/base/variables.scss" as *;
 
-.about {
-    padding: 60px 0;
-    background: $white;
-
-    &__introduction {
+.aboutIntro {
+    &__block {
         display: grid;
 
         &-text {
@@ -15,6 +12,11 @@
             margin: 20px auto 0 auto;
         }
     }
+}
+
+.about {
+    padding: 100px 0;
+    background: $white;
 
     &__model {
         display: none;
@@ -98,7 +100,7 @@
         }
     }
 
-    &__btn {
+    &__btns {
         margin: 25px auto 0 auto;
     }
 }
@@ -112,15 +114,18 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .about {
-        padding: 32px 0 150px 0;
-        position: relative;
 
-        &__introduction {
+    .aboutIntro {
+        &__block {
             grid-template-columns: repeat(2, 1fr);
             gap: 85px;
             align-items: start;
         }
+    }
+
+    .about {
+        padding: 100px 0;
+        position: relative;
 
         &__bg {
             margin-top: 67px;
@@ -153,11 +158,14 @@
         }
 
         &__items {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, 255px);
             margin-top: 190px;
         }
 
         &__item {
+            .divider {
+                width: 255px;
+            }
 
             &-title {
                 text-align: start;

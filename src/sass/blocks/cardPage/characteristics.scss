@@ -24,11 +24,15 @@
     &__size {
         border-bottom: 1px solid $pale;
         display: flex;
+        gap: 10px;
         padding: 17px 6.5px;
+        align-items: center;
 
         &-img {
             width: 40px;
             height: 40px;
+            width: 39px;
+            height: 39px;
         }
 
         &-text {
@@ -87,12 +91,10 @@
 
         &-ul {
             margin-top: 23px;
-            padding: 0;
             display: grid;
             grid-template-columns: 1fr;
             grid-auto-rows: minmax(20px, auto);
             gap: 10px;
-            list-style-type: none;
         }
 
         &-li {
@@ -101,7 +103,6 @@
             align-items: center;
 
             a {
-                text-decoration: none;
                 color: $dark;
                 font-size: 18px;
                 font-weight: 500;

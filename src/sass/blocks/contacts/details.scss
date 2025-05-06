@@ -49,6 +49,10 @@
     .details {
         padding: 150px 0;
 
+        &__title {
+            text-align: center;
+        }
+
         &__wrapper {
             margin-top: 25px;
             grid-template-columns: repeat(auto-fit, 370px);

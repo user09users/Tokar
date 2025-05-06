@@ -26,25 +26,7 @@ const initializeSwiper = (selector, paginationSelector, options = {}) => {
 
 const sliders = () => {
     try {
-        // Initialize sliders
-        initializeSwiper('.materials__slider', ".swiper-pagination");
-        initializeSwiper('.lastStates__slider', ".lastStates__slider-nav", {
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 3,
-                },
-                1200: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                },
-                1900: {
-                    spaceBetween: 35,
-                },
-            },
-        });
-        initializeSwiper('.ceo__slider', ".ceo__slider-nav");
-        initializeSwiper('.casesPhotos__slider', ".casesPhotos__slider-nav");
+
 
         // Initialize the main slider and export it
         mainSlider = initializeSwiper('.cardSlider__slider', ".cardSlider__slider-nav");
@@ -53,4 +35,4 @@ const sliders = () => {
     }
 };
 
-export { sliders, mainSlider };
+export { sliders, mainSlider, initializeSwiper };

@@ -57,13 +57,13 @@
     }
 
     &__thumbs {
-        display: grid;
+        display: flex;
         gap: 5px;
-        grid-template-columns: repeat(5, 1fr);
-        margin-top: 7px;
+        justify-content: center;
+        margin-top: 10px;
 
         &-thumb {
-            width: 71.01px;
+            width: 57.01px;
             height: 54.14px;
             object-fit: cover;
             border-radius: 0px 10.65px 0px 10.65px;
@@ -87,9 +87,10 @@
 
         &-text {
             margin-top: 9px;
+            text-align: center;
         }
 
-        a {
+        button {
             margin-top: 22px;
             cursor: pointer;
         }
@@ -129,6 +130,7 @@
             width: 300px;
         }
     }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -141,8 +143,7 @@
         }
 
         &__thumbs {
-            display: flex;
-            justify-content: space-between;
+            gap: 10px;
 
             &-thumb {
                 width: 100.01px;
@@ -222,10 +223,10 @@
         }
 
         &__thumbs {
+            display: flex;
             flex-direction: column;
             gap: 13px;
-            grid-template-columns: repeat(1, 1fr);
-            grid-auto-rows: 55px;
+            justify-content: start;
 
             &-thumb {
                 width: 150px;

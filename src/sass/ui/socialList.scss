@@ -1,47 +1,56 @@
  @use "/src/sass/base/variables.scss" as *;
 
- .social__list {
-     display: flex;
-     gap: 5px;
-     justify-content: center;
-     margin-top: 10px;
+ .social {
+     &__title {
+         color: $dark;
+         font-size: 12px;
+         font-weight: 600;
+         line-height: 18px;
+     }
 
-     &-item {
-         display: block;
-         border-radius: 100%;
-         width: 26px;
-         height: 26px;
+     &__list {
+         display: flex;
+         gap: 5px;
+         justify-content: center;
+         margin-top: 10px;
 
-         img {
-             color: $white;
-             position: relative;
-             width: 12.46px;
-             height: 12.46px;
-             left: 50%;
-             transform: translateX(-50%) translateY(-50%);
-             top: 50%;
-         }
-
-         &_big {
-             width: 46px;
-             height: 46px;
+         &-item {
+             display: block;
+             border-radius: 100%;
+             width: 26px;
+             height: 26px;
 
              img {
-                 width: 21.23px;
-                 height: 22.38px;
+                 color: $white;
+                 position: relative;
+                 width: 12.46px;
+                 height: 12.46px;
+                 left: 50%;
+                 transform: translateX(-50%) translateY(-50%);
+                 top: 50%;
+             }
+
+             &_big {
+                 width: 46px;
+                 height: 46px;
+
+                 img {
+                     width: 21.23px;
+                     height: 22.38px;
+                 }
              }
          }
-     }
 
-     .telegram {
-         background-color: $blue;
-     }
+         .telegram {
+             background-color: $blue;
+         }
 
-     .whatsapp {
-         background: $green;
-     }
+         .whatsapp {
+             background: $green;
+         }
 
-     .viber {
-         background: $purple;
+         .viber {
+             background: $purple;
+         }
      }
  }

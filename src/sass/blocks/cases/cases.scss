@@ -21,6 +21,10 @@
         &-button {
             margin: 16px auto 0 auto;
         }
+
+        span {
+            color: $main-color-dark;
+        }
     }
 
     &__consultation {
@@ -99,6 +103,10 @@
             &-button {
                 margin-top: 26px;
             }
+        }
+
+        .cardSlider__nav {
+            display: none;
         }
 
         &__consultation {

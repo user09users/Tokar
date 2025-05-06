@@ -1,28 +1,39 @@
 @use "/src/sass/base/variables.scss" as *;
 
 .footer {
+    padding-top: 30px;
     background-color: $baige;
 
-    &__desktop {
-        display: none;
+    &__introduction {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        &-text {
+            width: 229px;
+            color: $dark;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 18px;
+            text-align: center;
+        }
     }
 
-    &__mobile {
+    &__items {
+        margin-top: 30px;
+    }
+
+    &__item {
         position: relative;
-        padding: 60px 0 33px 0;
         width: 100%;
         z-index: 10;
         transition: 0.5s all;
-        margin-top: 60px;
 
         a {
-            text-decoration: none;
             color: $dark;
         }
 
-        .logo {
-            margin: 0 auto;
-        }
 
         &-name {
             color: $dark;
@@ -31,104 +42,58 @@
             line-height: 24px;
         }
 
-        &-close {
-            padding: 8px 0 0 3px;
-            height: 30px;
-            width: 30px;
+        &:nth-child(1) {
+            border-top: 1px solid $pale;
+        }
 
+        &.active {
 
-            span {
-                display: block;
-                width: 25px;
-                height: 1px;
-                background-color: $dark;
-
-                &:nth-child(1) {
-                    transform: translateY(8px) rotate(45deg);
-                }
-
-                &:nth-child(2) {
-                    transform: translateY(8px) rotate(-45deg);
-                }
+            .footer__item-corner {
+                transform: rotate(180deg);
             }
         }
 
 
-
-        ul {
-            margin-top: 21px;
-            width: 100%;
-        }
-
-        &-item {
-            &.active {
-
-                .footer__mobile-item-corner {
-                    transform: rotate(180deg);
-                }
-            }
-
-            img {
-                width: 10px;
-            }
-
-            &-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                min-height: 36px;
-                border-top: 1px solid $pale;
-            }
-
-            &-name {
-                color: $dark;
-                font-size: 14px;
-                font-weight: 700;
-                width: 100%;
-                border: none;
-                background-color: inherit;
-                line-height: 146.19%;
-                text-align: center;
-
-                ul {
-                    display: none;
-
-                    &.acrive {
-                        display: block;
-                    }
-                }
-            }
-
-
-            &-sublist {
-                padding: 0 18px;
-                background-color: $white;
-                display: block;
-                overflow: hidden;
-            }
-
-            &-content {
-                display: none;
-
-                &.active {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 10px;
-                }
-            }
-        }
-
-
-        &-contacts {
-            margin-top: 27px;
+        &-header {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            min-height: 36px;
+            border-bottom: 1px solid $pale;
+        }
 
-            button {
-                margin-top: 10px;
+        &-name {
+            color: $dark;
+            font-size: 14px;
+            font-weight: 700;
+            width: 100%;
+            border: none;
+            background-color: inherit;
+            line-height: 146.19%;
+            text-align: center;
+        }
+
+        &-content {
+            display: none;
+
+            &.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
             }
+        }
+
+    }
+
+    &__contacts {
+        margin-top: 27px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+            margin-top: 10px;
         }
     }
 
@@ -171,7 +136,7 @@
         }
     }
 
-    &__rights {
+    .rights {
         border-top: 1px solid $pale;
         padding: 22px 0 32px 0;
         color: $dark;
@@ -179,151 +144,112 @@
         font-weight: 300;
         line-height: 22px;
         text-align: center;
+        margin-top: 50px;
+    }
+
+    &__button {
+        margin: 15px auto 0 auto;
     }
 }
 
 @media screen and (min-width: 1200px) {
 
     .footer {
-        &__mobile {
-            display: none;
+        position: relative;
+        padding-top: 60px;
+
+        &__introduction {
+            flex-direction: row;
+            column-gap: 27px;
+            position: absolute;
+            right: 0;
+            top: 150px;
         }
 
-        &__rights {
-            padding: 32px;
+        &__wrapper {
+            display: flex;
         }
 
-        &__desktop {
-            display: block;
-            padding: 90px 0 60px 0;
-
-            &-menu {
-                margin-top: 18px;
-                display: flex;
-                gap: 60px;
-                align-items: center;
-                min-height: 72px;
-
-                &-variations {
-                    display: flex;
-                    padding: 0 30px;
-                    background-color: $brown;
-                    gap: 120px;
-                    border-radius: 8px;
-                    min-height: 72px;
-                    box-shadow: 0px 0px 20px 0px $shadow;
-                    align-items: center;
-
-                    &-item {
-                        a {
-                            color: $light;
-                        }
-                    }
-                }
-
-                &-info {
-                    display: flex;
-                    gap: 84px;
-                    min-height: 72px;
-                    align-items: center;
-
-                    &-item {
-                        a {
-                            color: $dark;
-                        }
-                    }
-                }
-
-                &-variations-item,
-                &-info-item {
-                    list-style-type: none;
-
-                    a {
-                        font-size: 16px;
-                        font-weight: 700;
-                        line-height: 146.19%;
-                        text-decoration: none;
-                    }
-                }
-
-            }
+        &__items {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            align-items: center;
 
             &-wrapper {
-                margin-top: 32px;
-                display: grid;
-                gap: 100px;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            &-links {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 34px;
-
-                &-block {
-                    ul {
-                        padding: 0;
-
-                        a {
-                            color: $dark;
-                            font-size: 14px;
-                            font-weight: 300;
-                            line-height: 22px;
-                            text-align: left;
-                            text-decoration: none;
-                        }
-                    }
-                }
-            }
-
-            &-block {
-                display: grid;
-                grid-template-rows: repeat(2, minmax(54px, auto));
-            }
-
-
-            &-introduction {
-                display: grid;
-                gap: 25px;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            &-text {
-                color: $dark;
-                font-size: 13px;
-                font-weight: 600;
-                line-height: 18px;
-                text-align: left;
-            }
-
-            &-contacts {
-                &-block {
-                    margin-top: 40px;
-
-                    .footer__tel {
-                        color: $dark;
-                        font-size: 20px;
-                        font-weight: 700;
-                        line-height: 16px;
-                        text-decoration: none;
-                    }
-
-                    .footer__date {
-                        padding-left: 43px;
-                        color: $dark;
-                        font-size: 12px;
-                        font-weight: 400;
-                        line-height: 18px;
-                    }
-                }
-
+                display: flex;
+                background-color: $brown;
+                border-radius: 8px;
+                box-shadow: 0px 0px 20px 0px $shadow;
             }
         }
 
-        &__social {
-            ul {
-                justify-content: start;
+        &__item {
+            width: 200px;
+            height: 72px;
+
+            &:nth-child(1) {
+                border: none;
             }
+
+
+            .footer__item-corner {
+                display: none;
+            }
+
+
+            &-header {
+                border: none;
+
+                &-event {
+                    pointer-events: none;
+                }
+
+                &_brown {
+                    border-radius: 8px;
+                    box-shadow: 0px 0px 20px 0px $shadow;
+                    background: $brown;
+                }
+            }
+
+            &-name {
+                font-size: 16px;
+
+                &_white {
+                    color: $white;
+                    margin-top: 25px;
+                }
+            }
+
+            &-content {
+                display: flex;
+                flex-direction: column;
+                gap: 0px;
+                margin-right: 54px;
+                margin-top: 40px;
+
+                a {
+                    z-index: 1000;
+                    position: relative;
+                }
+            }
+
+        }
+
+        &__contacts {
+            margin-top: 305px;
+            position: absolute;
+            right: 370px;
+        }
+
+
+
+        &__button {
+            margin-top: 40px;
+        }
+
+        .rights {
+            margin-top: 500px;
         }
     }
 }

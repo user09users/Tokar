@@ -1,12 +1,13 @@
+import useTocarServices from "../services/services";
+
 const modal = () => {
 
-    const openBtn = document.querySelectorAll('[data-openModal');
     const closeBtn = document.querySelector('[data-close]');
     const modal = document.querySelector('[data-consultation]');
     const overlay = document.querySelector('.modal__overlay');
     const forms = document.querySelectorAll('[data-form]');
 
-    const modalWrapper = document.querySelector('.modal__wrapper');
+    const { postData } = useTocarServices();
 
     const openModal = () => {
         modal.classList.add('active');
@@ -18,8 +19,11 @@ const modal = () => {
         document.body.style.overflow = '';
     };
 
-    openBtn.forEach(btn => {
-        btn.addEventListener('click', openModal);
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('[data-openModal]')) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     });
 
     modal.addEventListener('click', (e) => {
@@ -45,12 +49,13 @@ const modal = () => {
     };
 
     forms.forEach(item => {
-        postData(item);
+        bindPostData(item);
     });
 
-    function postData(form) {
+    function bindPostData(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            closeModal();
 
             let statusMessage = document.createElement('img');
             statusMessage.src = message.loading;
@@ -60,32 +65,11 @@ const modal = () => {
             max-width: 50px;
         `;
 
-            form.appendChild(statusMessage);
-
-            /*  request.setRequestHeader('Content-type', 'application/json charset=utf-8'); */
-
+            form.after(statusMessage);
             const formData = new FormData(form);
-            /* 
-             don't use if we don't need to send JSON
-                         const object = {};
-                        formData.forEach((value, key) => object[key] = value);
-                        const json = JSON.stringify(object); */
-            const object = {};
-            formData.forEach((value, key) => object[key] = value);
+            const json = Object.fromEntries(formData.entries());
 
-            fetch('server.php', {
-                method: 'POST',
-                body: JSON.stringify(object),
-                /*
-                don't use if we don't need to send JSON
-                header: {
-                      'Content-type': 'application/json'
-                  } */
-                header: {
-                    'Content-type': 'application/json'
-                }
-            })
-                .then((data) => data.text())
+            postData('http://localhost:3000/requests', json)
                 .then(data => {
                     console.log(data);
                     showThanksModal(message.success);
@@ -93,69 +77,49 @@ const modal = () => {
                     showThanksModal(message.failure);
                 }).finally(() => {
                     form.reset();
+                    statusMessage.remove();
                 });
-
-
-            /*   request.addEventListener('load', () => {
-                  statusMessage.remove();
-                  if (request.status === 200) {
-                      showThanksModal(message.success);
-                      form.reset();
-                  } else {
-                      showThanksModal(message.failure);
-                  }
-              }); */
         });
     }
+    function showThanksModal(text) {
+        // Remove old modal if exists
+        const old = document.querySelector('.thanks-modal');
+        if (old) old.remove();
 
-    function showThanksModal(message) {
-
-        // Clear the wrapper content instead of hiding it and appending another
-        modalWrapper.innerHTML = `
-        <span data-close class="modal__close icon-cancel"></span>
-        <img src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man" class="modal__img">
-        <div class="modal__content">
-            <h3 class="modal__title title-fw400">${message}</h3>
-        </div>
-    `;
-
-        openModal(); // just show the modal again if hidden
-
-        // Close modal after delay and reset wrapper content
-        setTimeout(() => {
-            closeModal();
-
-            // Optional: restore original modal HTML if needed
-            restoreOriginalModalContent();
-        }, 3000);
-    }
-
-    function restoreOriginalModalContent() {
-        modalWrapper.innerHTML = `
-        <span data-close class="modal__close icon-cancel"></span>
-        <img src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man" class="modal__img">
-        <div class="modal__content">
-            <h3 class="modal__title title-fw400">Получите ответы на все свои вопросы за 15 минут</h3>
-            <form action="#" data-form>
-                <div class="input">
-                    <div class="input-language">
-                        <span></span>
-                        <span></span>
-                        <span class="icon-down-open"></span>
+        const thanksModal = document.createElement('div');
+        thanksModal.classList.add('thanks-modal');
+        thanksModal.innerHTML = `
+            <div class="modal active" style="display: block;">
+                <div class="modal__overlay" data-close></div>
+                <div class="modal__wrapper">
+                    <span data-close class="modal__close icon-cancel"></span>
+                    <img src="/src/img/cardPage/cardPage-man.jpeg" alt="cardPage-man" class="modal__img">
+                    <div class="modal__content">
+                        <h3 class="modal__title title-fw400">${text}</h3>
                     </div>
-                    <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
                 </div>
-                <button type='submit' class="button-big modal__button">Заказать</button>
-            </form>
-            <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку
-                <span>персональных данных</span>
             </div>
-        </div>
-    `;
+        `;
+        document.body.append(thanksModal);
+        document.body.style.overflow = 'hidden';
 
-        // Re-bind form listener again since you removed and reinserted it
-        const newForm = modalWrapper.querySelector('[data-form]');
-        postData(newForm);
+        const closeModal = () => {
+            thanksModal.remove();
+            document.body.style.overflow = '';
+        };
+
+        // Auto close after 3 seconds
+        setTimeout(closeModal, 3000);
+
+        // Also close on click
+        thanksModal.addEventListener('click', (e) => {
+            if (
+                e.target.getAttribute('data-close') != null ||
+                e.target.classList.contains('modal__overlay')
+            ) {
+                closeModal();
+            }
+        });
     }
 };
 

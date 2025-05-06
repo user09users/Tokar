@@ -7,11 +7,15 @@ input {
 }
 
 .consultation {
-    padding: 40px 0 0 0;
-    margin: 60px auto 0 auto;
-    background-color: $white;
-    width: 300px;
-    border-radius: 0px 40px 0px 40px;
+    margin-top: 20px;
+
+    &__wrapper {
+        background-color: $baige;
+        width: 300px;
+        border-radius: 0px 40px 0px 40px;
+        padding: 20px 5px;
+        margin: 0 auto;
+    }
 
     &-title {
         text-align: center;
@@ -30,7 +34,7 @@ input {
         border: 1px solid $pale;
         border-radius: 4px;
         height: 58px;
-        width: 300px;
+        width: 100%;
         gap: 20px;
 
         &-language {
@@ -64,7 +68,7 @@ input {
 
     &-button {
         margin: 10px auto 0 auto;
-        width: 300px;
+        width: 100%;
     }
 
 
@@ -83,7 +87,6 @@ input {
 
     &-block-img {
         margin-top: 20px;
-
         border-radius: 0px 40px 0px 40px;
     }
 }
@@ -92,29 +95,34 @@ input {
 
     .consultation {
         margin-top: 150px;
-        padding: 5px;
-        width: 100%;
-        display: flex;
-        gap: 30px;
-        justify-content: space-between;
+
+        &__wrapper {
+            padding: 5px;
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
 
         &-block {
             margin: 0;
-            padding-left: 60px;
+            padding-left: 20px;
 
             &-wrapper {
                 margin-top: 15px;
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 20px;
+            }
+
+            &-img {
+                margin: 0;
+                width: 505px;
+                height: 363px;
             }
         }
 
-        &-block-img {
-            margin: 0;
-            width: 535px;
-            height: 363px;
-        }
+
 
         &-title {
             margin-top: 60px;
@@ -124,6 +132,7 @@ input {
 
         &-item {
             margin: 0;
+            width: 380px;
         }
 
         &-button {

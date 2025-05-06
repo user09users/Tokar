@@ -18,6 +18,13 @@
         background: $white;
         min-height: 425px;
 
+        &:nth-child(2) {
+            img {
+                width: 360px;
+                height: 233px;
+            }
+        }
+
         &-img {
             padding: 5px 5px 0 5px;
 
@@ -66,7 +73,7 @@
             margin-top: 40px;
             grid-template-columns: repeat(3, 1fr);
             justify-content: space-between;
-            gap: 0;
+            gap: 20px 0;
             align-items: stretch;
         }
 
@@ -74,7 +81,15 @@
             width: 370px;
             min-height: 650px;
 
+            &:nth-child(2) {
+                img {
+                    width: 360px;
+                    height: 280px;
+                }
+            }
+
             &-img {
+
                 img {
                     width: 360px;
                     height: 280px;
