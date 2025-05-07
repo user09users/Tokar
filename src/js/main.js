@@ -4,14 +4,14 @@ import "purecss/build/grids-responsive-min.css";
 import useTocarServices from "../services/services";
 
 import accordion from "../../utils/accordion";
-import footer from "../components/footer/footer";
-
 import { sliders } from "../../utils/slider";
+
 import sliderRange from "../components/filters/sliderRange";
 import cardPageSlider from "../components/cardPageSlider/cardPageSlider";
 import modal from "/src/components/modal/modal.js";
 import catalogSecondPage from "../components/catalogSecondPage/catalog";
 import works from "../components/works/works";
+import footer from "../components/footer/footer";
 import lastStates from "../components/lastStates/lastStates";
 import reason from "../components/reason/reason";
 import materials from "../components/materials/materials";
@@ -32,10 +32,11 @@ import casesPhotos from "../components/casesPhotos/casesPhotos";
 document.addEventListener('DOMContentLoaded', () => {
     useTocarServices();
 
+    accordion();
     sliders();
+
     sliderRange();
     cardPageSlider();
-    accordion();
     modal();
     catalogSecondPage();
     works();
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     details();
     itemDescr();
     casesPhotos();
+
 });
 
 import "/src/sass/style.scss";

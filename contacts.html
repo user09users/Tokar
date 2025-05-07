@@ -125,17 +125,22 @@
                         <h3 class="contacts__title title-fw400">Закажите консультацию, если сомневаетесь</h3>
                         <div class="contacts__nav-item">
                             <img class="contacts__nav-item-img" src="/src/icons/User.svg" alt="User">
-                            <input required class="contacts__nav-item-input" type="input" name="name"
+                            <input required class="contacts__nav-item-input" type="input" name="name" data-name
                                 placeholder="Введите имя">
                         </div>
+                        <div class="name-error-message"></div>
+
                         <div class="input">
                             <div class="input-language">
                                 <span></span>
                                 <span></span>
                                 <span class="icon-down-open"></span>
                             </div>
-                            <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
+                            <input required class="input-input" type="tel" data-phone name="phone"
+                                placeholder="+38 XXX XXX XX XX">
                         </div>
+                        <div class="phone-error-message"></div>
+
                         <button type="submit" class="button-big contacts__nav-button">Получить точный расчет</button>
                         <div class="contacts__nav-text">Отправляя данные, Вы соглашаетесь на обработку
                             <span>персональных данных</span>
@@ -223,8 +228,10 @@
                             <span></span>
                             <span class="icon-down-open"></span>
                         </div>
-                        <input required class="input-input" type="tel" name="phone" placeholder="+38 XXX XXX XX XX">
+                        <input required class="input-input" type="tel" data-phone name="phone"
+                            placeholder="+38 XXX XXX XX XX">
                     </div>
+                    <div class="phone-error-message"></div>
                     <button type='submit' class="button-big modal__button">Заказать</button>
                 </form>
                 <div class="modal__text">Отправляя данные, Вы соглашаетесь на обработку

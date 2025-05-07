@@ -6,6 +6,15 @@ input {
     height: 17px;
 }
 
+.just-validate-error-label {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    color: $main-color-dark;
+}
+
 .consultation {
     margin-top: 20px;
 

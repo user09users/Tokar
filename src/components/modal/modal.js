@@ -1,13 +1,13 @@
+import JustValidate from 'just-validate';
 import useTocarServices from "../../services/services";
 
 const modal = () => {
+    const { postData } = useTocarServices();
 
-    const closeBtn = document.querySelector('[data-close]');
     const modal = document.querySelector('[data-consultation]');
+    const closeBtn = document.querySelector('[data-close]');
     const overlay = document.querySelector('.modal__overlay');
     const forms = document.querySelectorAll('[data-form]');
-
-    const { postData } = useTocarServices();
 
     const openModal = () => {
         modal.classList.add('active');
@@ -21,68 +21,85 @@ const modal = () => {
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('[data-openModal]')) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            openModal();
         }
     });
 
     modal.addEventListener('click', (e) => {
-        if (e.target == closeBtn || e.target == overlay || e.target.getAttribute('data-close') == '') {
+        if (
+            e.target === closeBtn ||
+            e.target === overlay ||
+            e.target.getAttribute('data-close') === ''
+        ) {
             closeModal();
-        };
+        }
     });
 
-    const showModalByScroll = () => {
-
+    window.addEventListener('scroll', () => {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
             openModal();
-            window.removeEventListener('scroll', showModalByScroll);
+            window.removeEventListener('scroll', openModal);
         }
-    };
-
-    window.addEventListener('scroll', showModalByScroll);
-
-    const message = {
-        loading: '/src/icons/spinner.svg',
-        success: 'Спасибо! Скоро мы с вами свяжемся.',
-        failure: 'Что-то пошло не так...'
-    };
-
-    forms.forEach(item => {
-        bindPostData(item);
     });
 
-    function bindPostData(form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+    // Loop through all forms
+    forms.forEach((form) => {
+        const validate = new JustValidate(form);
+
+        const phoneField = form.querySelector('[data-phone]');
+        const nameField = form.querySelector('[data-name]');
+
+        if (nameField) {
+            validate.addField('[data-name]', [
+                { rule: 'required' },
+                { rule: 'minLength', value: 2 },
+            ], {
+                errorsContainer: form.querySelector('.name-error-message'),
+            });
+        }
+
+        if (phoneField) {
+            validate.addField('[data-phone]', [
+                { rule: 'required' },
+                { rule: 'number' },
+                { rule: 'minLength', value: 10 },
+                { rule: 'maxLength', value: 12 },
+            ], {
+                errorsContainer: form.querySelector('.phone-error-message'),
+            });
+        }
+
+        validate.onSuccess((event) => {
+            event.preventDefault();
             closeModal();
 
-            let statusMessage = document.createElement('img');
-            statusMessage.src = message.loading;
+            const statusMessage = document.createElement('img');
+            statusMessage.src = '/src/icons/spinner.svg';
             statusMessage.style.cssText = `
-            display: block;
-            margin: 20px auto;
-            max-width: 50px;
-        `;
-
+                display: block;
+                margin: 20px auto;
+                max-width: 50px;
+            `;
             form.after(statusMessage);
+
             const formData = new FormData(form);
             const json = Object.fromEntries(formData.entries());
 
             postData('http://localhost:3000/requests', json)
-                .then(data => {
-                    console.log(data);
-                    showThanksModal(message.success);
-                }).catch(() => {
-                    showThanksModal(message.failure);
-                }).finally(() => {
+                .then(() => {
+                    showThanksModal('Спасибо! Скоро мы с вами свяжемся.');
+                })
+                .catch(() => {
+                    showThanksModal('Что-то пошло не так...');
+                })
+                .finally(() => {
                     form.reset();
                     statusMessage.remove();
                 });
         });
-    }
+    });
+
     function showThanksModal(text) {
-        // Remove old modal if exists
         const old = document.querySelector('.thanks-modal');
         if (old) old.remove();
 
@@ -108,10 +125,8 @@ const modal = () => {
             document.body.style.overflow = '';
         };
 
-        // Auto close after 3 seconds
         setTimeout(closeModal, 3000);
 
-        // Also close on click
         thanksModal.addEventListener('click', (e) => {
             if (
                 e.target.getAttribute('data-close') != null ||
@@ -124,4 +139,3 @@ const modal = () => {
 };
 
 export default modal;
-
