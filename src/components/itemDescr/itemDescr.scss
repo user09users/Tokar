@@ -1,0 +1,164 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.itemDescr {
+
+    padding-top: 60px;
+
+    &__title {
+        text-align: left;
+    }
+
+    &__intro {
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+
+        &-block {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 10px;
+
+            img {
+                top: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+            }
+
+            div {
+                color: $dark;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 22px;
+
+                span {
+                    color: $dark;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+
+    &__descr {
+        margin-top: 15px;
+        display: block;
+
+        &-item {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+
+            div {
+                color: $dark;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 22px;
+            }
+
+            span {
+                color: $dark;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 22px;
+            }
+        }
+    }
+
+    &__images {
+        margin-top: 35px;
+
+        &-ul {
+            display: flex;
+            justify-content: left;
+        }
+
+        &-item {
+            width: 100px;
+            height: 88px;
+            padding: 7px 20px 0 20px;
+            border-right: 1px solid $pale;
+
+            &:nth-child(1) {
+                border-left: 1px solid $pale;
+            }
+
+            img {
+                width: 39px;
+                height: 39px;
+                margin: 0 auto;
+            }
+
+            div {
+                color: $dark;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 36px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .itemDescr {
+
+        &__title {
+            text-align: center;
+        }
+
+
+        &__descr {
+
+            &-item {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .itemDescr {
+        padding: 0;
+
+        &__title {
+            text-align: left;
+        }
+
+        &__intro {
+            margin-top: 24px;
+        }
+
+        &__descr {
+            width: 500px;
+            margin-top: 38px;
+        }
+
+        &__images {
+            margin-top: 40px;
+
+            &-item {
+                width: 259px;
+                height: 102px;
+                padding: 16px 20px;
+                align-items: center;
+
+                img {
+                    width: 53.25px;
+                    height: 53.25px;
+                    margin: 0;
+                }
+
+                div {
+                    font-size: 24px;
+                }
+            }
+        }
+
+    }
+}

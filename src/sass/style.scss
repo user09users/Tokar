@@ -4,45 +4,37 @@
 @use "/src/sass/libs/fontello.css";
 
 @use "/src/sass/base/basic.scss";
-
-@use"/src/sass/blocks/header.scss";
-@use"/src/sass/blocks/footer.scss";
-@use"/src/sass/blocks/hamburger.scss";
+@use"/src/sass/header.scss";
+@use"/src/sass/promo.scss";
+@use"/src/sass/cases.scss";
 
 @use"/src/sass/ui/buttons.scss";
 @use"/src/sass/ui/titles.scss";
 @use"/src/sass/ui/text.scss";
 @use"/src/sass/ui/consultation.scss";
-@use"/src/sass/ui/socialList.scss";
 
-@use"/src/sass/blocks/firstPage/promo.scss";
-@use"/src/sass/blocks/firstPage/reason.scss";
-@use"/src/sass/blocks/firstPage/catalogFirstPage.scss";
-@use"/src/sass/blocks/firstPage/materials.scss";
-@use"/src/sass/blocks/firstPage/variations.scss";
-@use"/src/sass/blocks/firstPage/lastStates.scss";
-@use"/src/sass/blocks/firstPage/ceo.scss";
-
-@use"/src/sass/blocks/secondPage/searchPanel.scss";
-@use"/src/sass/blocks/secondPage/catalogSecondPage.scss";
-@use"/src/sass/blocks/secondPage/filters.scss";
-
-@use"/src/sass/blocks/cardPage/cardSlider.scss";
-@use"/src/sass/blocks/cardPage/characteristics.scss";
-@use"/src/sass/blocks/cardPage/processes.scss";
-@use"/src/sass/blocks/cardPage/factory.scss";
-
-@use"/src/sass/blocks/about.scss";
-
-@use"/src/sass/blocks/contacts/contacts.scss";
-@use"/src/sass/blocks/contacts/details.scss";
-
-@use"/src/sass/blocks/works.scss";
-
-@use"/src/sass/blocks/cases/cases.scss";
-@use"/src/sass/blocks/cases/casesInfo.scss";
-@use"/src/sass/blocks/cases/casesPhotos.scss";
-
-@use"/src/sass/blocks/modal";
+@use"/src/components/aboutStats/about.scss";
+@use"/src/components/footer/footer.scss";
+@use"/src/components/menu/menu.scss";
+@use"/src/components/social/social.scss";
+@use"/src/components/reason/reason.scss";
+@use"/src/components/catalogFirstPage/catalogFirstPage.scss";
+@use"/src/components/materials/materials.scss";
+@use"/src/components/variations/variations.scss";
+@use"/src/components/lastStates/lastStates.scss";
+@use"/src/components/ceo/ceo.scss";
+@use"/src/components/filters/search.scss";
+@use"/src/components/catalogSecondPage/catalogSecondPage.scss";
+@use"/src/components/filters/filters.scss";
+@use"/src/components/cardPageSlider/cardPageSlider.scss";
+@use"/src/components/characteristics/characteristics.scss";
+@use"/src/components/processes/processes.scss";
+@use"/src/components/factory/factory.scss";
+@use"/src/components/works/works.scss";
+@use"/src/components/contacts/contacts.scss";
+@use"/src/components/details/details.scss";
+@use"/src/components/itemDescr/itemDescr.scss";
+@use"/src/components/casesPhotos/casesPhotos.scss";
+@use"/src/components/modal/modal.scss";
 
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');

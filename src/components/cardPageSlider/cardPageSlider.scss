@@ -1,0 +1,253 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.cardPageSlider {
+    background-color: $white;
+    padding-top: 13px;
+
+    &__title {
+        margin-top: 15px;
+
+        text-align: center;
+    }
+
+    &__wrapper {
+        margin-top: 20px;
+    }
+
+    &__nav {
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        bottom: 0px;
+        justify-content: center;
+        padding-bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+
+        .swiper-pagination-bullet {
+            background-color: $white;
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+
+    .swiper-pagination {
+        position: relative;
+        bottom: 0;
+    }
+
+    &__slider {
+        width: 340px;
+        height: 247.37px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0px 40px 0px 40px;
+        }
+
+        &-next,
+        &-prev {
+            cursor: pointer;
+            z-index: 10;
+            color: $white;
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+
+    &__thumbs {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        margin-top: 10px;
+
+        &-thumb {
+            width: 57.01px;
+            height: 54.14px;
+            object-fit: cover;
+            border-radius: 0px 10.65px 0px 10.65px;
+            opacity: 0.5;
+            transition: all 0.5s;
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__price {
+        margin: 30px auto 0 auto;
+        width: 300px;
+        padding: 30px;
+        min-height: 230px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 30px 0px rgba(43, 42, 40, 0.08);
+        background-color: $white;
+
+        &-text {
+            margin-top: 9px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 22px;
+            cursor: pointer;
+        }
+    }
+
+    &__consultation {
+        margin: 40px auto 0 auto;
+        width: 300px;
+
+        &-title {
+            text-align: center;
+        }
+
+        &-block {
+            margin-top: 15px;
+            align-items: center;
+        }
+
+        &-phone {
+            display: flex;
+            align-items: center;
+            border: 1px solid $pale;
+            border-radius: 4px;
+            height: 58px;
+            gap: 20px;
+            padding: 12px;
+
+            input {
+                border: none;
+                width: 118px;
+                height: 17px;
+            }
+        }
+
+        &-button {
+            margin-top: 10px;
+            width: 300px;
+        }
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .cardPageSlider {
+
+
+        &__slider {
+            width: 400px;
+            height: 350px;
+        }
+
+        &__thumbs {
+            gap: 10px;
+
+            &-thumb {
+                width: 100.01px;
+                height: 75.14px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cardPageSlider {
+        padding-top: 60px;
+
+        &__title {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        &__wrapper {
+            margin-top: 40px;
+        }
+
+        &__nav {
+            left: 80%;
+
+            transform: translateX(-50%);
+        }
+
+        &__price {
+            width: 370px;
+            height: 290px;
+            padding: 45px;
+            position: absolute;
+            top: 550px;
+            z-index: 2;
+        }
+
+        &__consultation {
+            padding-left: 20%;
+            align-items: end;
+            width: 100%;
+            min-height: 120px;
+
+            &-title {
+                text-align: right;
+                margin-right: 107px;
+            }
+
+            &-block {
+                flex-direction: row;
+                display: flex;
+                gap: 15px;
+                justify-content: end;
+                align-items: center;
+            }
+
+            &-phone {
+                width: 440px;
+                height: 58px;
+            }
+
+            &-button {
+                margin-top: 0;
+                width: 280px;
+                height: 58px;
+            }
+        }
+
+        &__slider {
+            width: 910px;
+            height: 560px;
+            margin-right: 39px;
+
+            img {
+                margin-right: 20px;
+            }
+        }
+
+        &__thumbs {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            justify-content: start;
+
+            &-thumb {
+                width: 150px;
+                height: 100px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .cardPageSlider {
+        &__slider {
+            width: 930px;
+        }
+
+        &__thumbs {
+
+            &-thumb {
+                width: 170px;
+                height: 100px;
+            }
+        }
+    }
+}
