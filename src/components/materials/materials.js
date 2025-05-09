@@ -1,6 +1,6 @@
 import useTocarServices from "../../services/services";
 
-import { initializeSwiper } from '../../../utils/slider'; // Make sure this is imported
+import { initializeSwiper } from '../../utils/slider'; // Make sure this is imported
 
 const materials = () => {
     const materialsCards = () => {

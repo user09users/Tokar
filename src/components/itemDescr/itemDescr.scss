@@ -73,7 +73,8 @@
 
         &-ul {
             display: flex;
-            justify-content: left;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         &-item {
@@ -105,13 +106,28 @@
 
 @media screen and (min-width: 768px) {
     .itemDescr {
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        margin: 0 auto;
 
         &__title {
             text-align: center;
         }
 
+        &__intro {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
 
         &__descr {
+
+            &-ul {
+                width: 400px;
+                margin: 20px auto 0 auto;
+            }
 
             &-item {
                 flex-direction: row;
@@ -132,15 +148,25 @@
 
         &__intro {
             margin-top: 24px;
+            justify-content: start;
         }
 
         &__descr {
             width: 500px;
             margin-top: 38px;
+
+            &-ul {
+                margin: 20px 0 0 0;
+            }
         }
 
         &__images {
             margin-top: 40px;
+
+            &-ul {
+                justify-content: start;
+                margin-top: 50px;
+            }
 
             &-item {
                 width: 259px;

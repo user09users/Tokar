@@ -3,8 +3,8 @@ import "purecss/build/grids-responsive-min.css";
 
 import useTocarServices from "../services/services";
 
-import accordion from "../../utils/accordion";
-import { sliders } from "../../utils/slider";
+import accordion from "../utils/accordion";
+import { sliders } from "../utils/slider";
 
 import sliderRange from "../components/filters/sliderRange";
 import cardPageSlider from "../components/cardPageSlider/cardPageSlider";

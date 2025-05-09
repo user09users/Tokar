@@ -1,4 +1,4 @@
-import { mainSlider } from "../../../utils/slider";
+import { mainSlider } from "../../utils/slider";
 import useTocarServices from "../../services/services";
 
 

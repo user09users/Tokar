@@ -1,6 +1,6 @@
 import useTocarServices from "../../services/services";
 
-import { initializeSwiper } from '../../../utils/slider';
+import { initializeSwiper } from '../../utils/slider';
 
 const casesPhotos = () => {
     if (

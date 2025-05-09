@@ -7,11 +7,13 @@
   "type": "commonjs",
   "main": "postcss.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
   },
   "dependencies": {
     "braces": "^3.0.3",
     "chokidar": "^4.0.3",
+    "core-js": "^3.42.0",
     "detect-libc": "^1.0.3",
     "esbuild": "^0.25.2",
     "fill-range": "^7.1.1",
@@ -29,11 +31,15 @@
     "purecss": "^3.0.0",
     "react": "^19.1.0",
     "readdirp": "^4.1.2",
+    "regenerator-runtime": "^0.14.1",
     "rollup": "^4.39.0",
     "source-map-js": "^1.2.1",
     "swiper": "^11.2.6",
     "to-regex-range": "^5.0.1"
   },
+  "browserslist": [
+    "> 1%"
+  ],
   "devDependencies": {
     "json-server": "^1.0.0-beta.3",
     "postcss-pxtorem": "^6.1.0",
