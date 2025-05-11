@@ -1045,7 +1045,11 @@
       ]
     }
   ],
+<<<<<<< HEAD
   "casesPhotos": [
+=======
+  "casesSlides": [
+>>>>>>> b64d6a49fdc1fa484f0fd03385000cb72ad49f69
     {
       "images": [
         {

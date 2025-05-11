@@ -1,5 +1,4 @@
 
-/* import './App.css'; */
 import "purecss/build/grids-min.css";
 import "purecss/build/grids-responsive-min.css";
 
@@ -17,11 +16,11 @@ import Footer from "../footer/Footer";
 import LastStates from "../lastStates/LastStates";
 import Reason from "../reason/Reason";
 import Materials from "../materials/Materials";
-import Ceo from "../ceo/CeoSlider";
+import Ceo from "../ceo/Ceo";
 import AboutStats from "../aboutStats/AboutStats";
 import Variations from "../variations/Variations";
 import CatalogFirstPage from "../catalogFirstPage/CatalogFirstPage";
-import Rrocesses from "../processes/Processes";
+import Processes from "../processes/Processes";
 import Characteristics from "../characteristics/Characteristics";
 import FactoryPhotos from "../factory/Factory";
 import Menu from "../menu/Menu";
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Variations();
   Footer();
   CatalogFirstPage();
-  Rrocesses();
+  Processes();
   Characteristics();
   FactoryPhotos();
   Menu();
