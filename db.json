@@ -1,0 +1,1171 @@
+{
+  "social": [
+    {
+      "name": "telegram",
+      "href": "#",
+      "icon": "/src/icons/social/telegram.svg",
+      "alt": "telegram",
+      "id": "0791"
+    },
+    {
+      "name": "whatsapp",
+      "href": "#",
+      "icon": "/src/icons/social/whatsapp.svg",
+      "alt": "whatsapp",
+      "id": "8231"
+    },
+    {
+      "name": "viber",
+      "href": "#",
+      "icon": "/src/icons/social/viber.svg",
+      "alt": "viber",
+      "id": "810e"
+    }
+  ],
+  "menu": [
+    {
+      "title": "Жилое",
+      "items": [
+        {
+          "label": "Коттедж",
+          "href": "#"
+        }
+      ],
+      "id": "ff70"
+    },
+    {
+      "title": "Коммерческое",
+      "items": [
+        {
+          "label": "Дом из бруса",
+          "href": "#"
+        }
+      ],
+      "id": "1b00"
+    },
+    {
+      "title": "Садовое",
+      "items": [
+        {
+          "label": "Дом из бруса",
+          "href": "#"
+        },
+        {
+          "label": "Дачный дом",
+          "href": "#"
+        }
+      ],
+      "id": "168a"
+    },
+    {
+      "title": "О компании",
+      "items": [
+        {
+          "label": "Дом из бруса",
+          "href": "#"
+        }
+      ],
+      "id": "90e0"
+    },
+    {
+      "title": "Наши работы",
+      "items": [
+        {
+          "label": "Коттедж",
+          "href": "#"
+        }
+      ],
+      "id": "a00e"
+    }
+  ],
+  "catalog": [
+    {
+      "title": "Вариант Z-65",
+      "subtitle": "Bavaria",
+      "category": "Дома",
+      "area": 135,
+      "price": 1000000,
+      "popularity": 5,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/bavaria.jpeg",
+      "id": "8b1c"
+    },
+    {
+      "title": "Вариант ST-56",
+      "subtitle": "Barcelona",
+      "category": "Виллы",
+      "area": 249,
+      "price": 2800000,
+      "popularity": 3,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/barcelona.jpeg",
+      "id": "d8e2"
+    },
+    {
+      "title": "Вариант ST-25",
+      "subtitle": "Garden ECO",
+      "category": "Каркасные дома, Особняки",
+      "area": 71,
+      "price": 580000,
+      "popularity": 5,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/garden-ECO.jpeg",
+      "id": "885d"
+    },
+    {
+      "title": "Вариант ST-53",
+      "subtitle": "Feeria",
+      "category": "Дома из блока, Дачи",
+      "area": 53.6,
+      "price": 980000,
+      "popularity": 1,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/feeria.jpeg",
+      "id": "de1b"
+    },
+    {
+      "title": "Вариант LX-75",
+      "subtitle": "JULIA",
+      "category": "Дачи",
+      "area": 187,
+      "price": 2350000,
+      "popularity": 3,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/julia.jpeg",
+      "id": "4e78"
+    },
+    {
+      "title": "Вариант ST-49v2",
+      "subtitle": "Nevada",
+      "category": "Дома из профилированого бруса, Базы отдыха",
+      "area": 146,
+      "price": 2421000,
+      "popularity": 3,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/nevada.jpeg",
+      "id": "35ec"
+    },
+    {
+      "title": "Вариант OS-77",
+      "subtitle": "Milano",
+      "category": "Коттеджи, Усадьбы, Каркасные дома, Дачи",
+      "area": 192,
+      "price": 3260000,
+      "popularity": 4,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/milano.jpeg",
+      "id": "3692"
+    },
+    {
+      "title": "Вариант ST-22",
+      "subtitle": "Classic",
+      "category": "Виллы",
+      "area": 131,
+      "price": 1200000,
+      "popularity": 1,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/classic.jpeg",
+      "id": "6060"
+    },
+    {
+      "title": "Вариант ST-65",
+      "subtitle": "Elegant",
+      "category": "Усадьбы",
+      "area": 112,
+      "price": 2300000,
+      "popularity": 5,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/elegant.jpeg",
+      "id": "64c1"
+    },
+    {
+      "title": "Вариант ST-16",
+      "subtitle": "Classic Plus",
+      "category": "Гостинницы",
+      "area": 110,
+      "price": 920000,
+      "popularity": 3,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/classic-plus.jpeg",
+      "id": "f0d2"
+    },
+    {
+      "title": "Вариант ST-23",
+      "subtitle": "ECO Soul",
+      "category": "Дома, Каркасные дома",
+      "area": 186,
+      "price": 2150000,
+      "popularity": 2,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/ECO-soul.jpeg",
+      "id": "8803"
+    },
+    {
+      "title": "Вариант ST-99",
+      "subtitle": "Edinburgh",
+      "category": "Дома, Дома из блока, Каркасные дома",
+      "area": 250,
+      "price": 2458000,
+      "popularity": 3,
+      "dimensions": "7,5х9 м",
+      "image": "/src/img/secondPage/catalog/edinburgh.jpeg",
+      "id": "fd92"
+    }
+  ],
+  "works": [
+    {
+      "title": "Дом на Осокорках (2020)",
+      "area": 135,
+      "image": "/src/img/works/works-1.jpeg",
+      "alt": "works-1",
+      "link": "#",
+      "id": "03b5"
+    },
+    {
+      "title": "135 м2",
+      "area": 187,
+      "image": "/src/img/works/works-2.jpeg",
+      "alt": "works-2",
+      "link": "#",
+      "id": "5b4f"
+    },
+    {
+      "title": "Дом в Стоянке",
+      "area": 135,
+      "image": "/src/img/works/works-3.jpeg",
+      "alt": "works-3",
+      "link": "#",
+      "id": "5742"
+    },
+    {
+      "title": "Дом в Жулянах",
+      "area": 249,
+      "image": "/src/img/works/works-4.jpeg",
+      "alt": "works-4",
+      "link": "#",
+      "id": "3175"
+    },
+    {
+      "title": "Дом в с. Петровцы (2016)",
+      "area": 135,
+      "image": "/src/img/works/works-5.jpeg",
+      "alt": "works-5",
+      "link": "#",
+      "class": "big",
+      "id": "0f31"
+    },
+    {
+      "title": "Дом в Киеве, Осокорки (2018)",
+      "area": 135,
+      "image": "/src/img/works/works-6.jpeg",
+      "alt": "works-6",
+      "link": "#",
+      "id": "5a55"
+    },
+    {
+      "title": "Дом в Белогородке",
+      "area": 135,
+      "image": "/src/img/works/works-7.jpeg",
+      "alt": "works-7",
+      "link": "#",
+      "id": "eadf"
+    },
+    {
+      "title": "Дом в Требухове",
+      "area": 135,
+      "image": "/src/img/works/works-8.jpeg",
+      "alt": "works-8",
+      "link": "#",
+      "id": "21ad"
+    }
+  ],
+  "lastStates": [
+    {
+      "label": "Архитектура",
+      "title": "Готовый загородный дом или самостоятельное строительство?",
+      "description": "Купить или построить дом с нуля – неизбежный вопрос, когда возникает желание приобрести частную недвижимость за городом.",
+      "image": "/src/img/houses/lastStates/StateHouse-1.jpeg",
+      "id": "991f"
+    },
+    {
+      "label": "Архитектура",
+      "title": "Авторские проекты домов – почему эксклюзив выгоднее",
+      "description": "Владельцу предстоит решить вопрос: купить готовый типовой вариант или заказать индивидуальный.",
+      "image": "/src/img/houses/lastStates/StateHouse-2.jpeg",
+      "id": "da33"
+    },
+    {
+      "label": "Архитектура",
+      "title": "Красивые дома: 100+ фото лучших проектов",
+      "description": "Современная малоэтажная застройка в России представлена как типовыми архитектурными решениями, популярными.",
+      "image": "/src/img/houses/lastStates/StateHouse-3.jpeg",
+      "id": "5e4a"
+    },
+    {
+      "label": "Архитектура",
+      "title": "Готовый загородный дом или самостоятельное строительство?",
+      "description": "Купить или построить дом с нуля – неизбежный вопрос, когда возникает желание приобрести частную недвижимость за городом.",
+      "image": "/src/img/houses/lastStates/StateHouse-1.jpeg",
+      "id": "62c1"
+    },
+    {
+      "label": "Архитектура",
+      "title": "Авторские проекты домов – почему эксклюзив выгоднее",
+      "description": "Владельцу предстоит решить вопрос: купить готовый типовой вариант или заказать индивидуальный.",
+      "image": "/src/img/houses/lastStates/StateHouse-2.jpeg",
+      "id": "7266"
+    }
+  ],
+  "reasons": [
+    {
+      "icon": "/src/icons/reason/design.svg",
+      "alt": "design",
+      "text": "Эксклюзивный дизайн\nНе имеющий аналогов в Украине",
+      "id": "3268"
+    },
+    {
+      "icon": "/src/icons/reason/development.svg",
+      "alt": "development",
+      "text": "Разработка модели\nИндивидуальной с помощью 3D-визуализации в нашем приложении",
+      "id": "b841"
+    },
+    {
+      "icon": "/src/icons/reason/certificate.svg",
+      "alt": "certificate",
+      "text": "Сертификаты качества\nПодтверждают наши материалы и комплектующие",
+      "id": "5fcb"
+    },
+    {
+      "icon": "/src/icons/reason/contract.svg",
+      "alt": "contract",
+      "text": "Работа под ключ\nВ среднем за Х дней от установки фундамента до сдачи объекта в эксплуатацию",
+      "id": "290f"
+    }
+  ],
+  "materials": [
+    {
+      "image": "/src/img/houses/materials/3d-model.png",
+      "alt": "3d-model",
+      "title": "Создание <br>3D-макета",
+      "text": "Это визуализация строения через экран гаджета. Макет создается индивидуально для клиента. Главная задача 3D-визуализации: учесть все детали в разработке и показать конечный вид проекта в оригинальном цвете и размере, используя актуальные материалы и наполнение внутри.",
+      "number": "/src/img/numbers/number-1.svg",
+      "numberAlt": "number-1",
+      "id": "f825"
+    },
+    {
+      "image": "/src/img/houses/materials/measurements.png",
+      "alt": "measurements",
+      "title": "Взятие замеров и <br>создание фундамента.",
+      "text": "Мы выезжаем на объект, обсуждаем задачу, выявляем потребность клиента и берем замеры. Строим несущую конструкцию, которая выдержит нагрузку от здания и погодных условий. Профессионалы используют лазерный уровень и качественные материалы, чтобы фундамент получился максимально крепким и ровным.",
+      "number": "/src/img/numbers/number-2.svg",
+      "numberAlt": "number-2",
+      "id": "c5a3"
+    },
+    {
+      "image": "/src/img/houses/materials/structure.png",
+      "alt": "structure",
+      "title": "Производство<br> конструкции",
+      "text": "На одном из 4 заводов по всей территории Украины мы производим конструкцию по техническому заданию. Задание создается и согласуется с вами через прописанный договор в начале работ.",
+      "number": "/src/img/numbers/number-3.svg",
+      "numberAlt": "number-3",
+      "id": "083b"
+    },
+    {
+      "image": "/src/img/houses/materials/instalation.png",
+      "alt": "instalation",
+      "title": "Монтажные<br> работы",
+      "text": "Выполним полный объем работ: от возведения фундамента до устройства кровли. В конечном итоге, можно будет сразу использовать строение, а не докупать материал на собственные деньги. Проведем сантехнические работы до полной сдачи проекта.",
+      "number": "/src/img/numbers/number-4.svg",
+      "numberAlt": "number-4",
+      "id": "40d7"
+    }
+  ],
+  "materialsSlider": [
+    {
+      "image": "/src/img/main-slide.jpeg",
+      "alt": "main-slide",
+      "id": "ad5f"
+    },
+    {
+      "image": "/src/img/main-slide.jpeg",
+      "alt": "main-slide",
+      "id": "348f"
+    },
+    {
+      "image": "/src/img/main-slide.jpeg",
+      "alt": "main-slide",
+      "id": "ae30"
+    },
+    {
+      "image": "/src/img/main-slide.jpeg",
+      "alt": "main-slide",
+      "id": "a2ff"
+    },
+    {
+      "image": "/src/img/main-slide.jpeg",
+      "alt": "main-slide",
+      "id": "5940"
+    }
+  ],
+  "ceoSlider": [
+    {
+      "image": "/src/img/houses/houseCEO.jpeg",
+      "alt": "houseCEO",
+      "id": "42e5"
+    },
+    {
+      "image": "/src/img/houses/houseCEO.jpeg",
+      "alt": "houseCEO",
+      "id": "9628"
+    },
+    {
+      "image": "/src/img/houses/houseCEO.jpeg",
+      "alt": "houseCEO",
+      "id": "d1d6"
+    }
+  ],
+  "aboutStats": [
+    {
+      "titlePrefix": "",
+      "titleHighlight": "21",
+      "titleSuffix": " год",
+      "text": "Работаем на рынке Украины с 1998 года",
+      "id": "dc02"
+    },
+    {
+      "titlePrefix": "",
+      "titleHighlight": "300+",
+      "titleSuffix": "",
+      "text": "Позиций различных строений",
+      "id": "95fa"
+    },
+    {
+      "titlePrefix": "до",
+      "titleHighlight": "7%",
+      "titleSuffix": "",
+      "text": "Влажность просушенного дерева, что соответствует нормативам ГОСТ",
+      "id": "06fc"
+    },
+    {
+      "titlePrefix": "в",
+      "titleHighlight": "1,5",
+      "titleSuffix": " раза",
+      "text": "Стоимость доставки ниже рыночной",
+      "id": "967a"
+    }
+  ],
+  "variations": [
+    {
+      "image": "/src/img/houses/variations/residentialSmall.jpeg",
+      "alt": "residentialSmall",
+      "title": "Жилые строения",
+      "links": [
+        "Дома из профилированого бруса",
+        "Дома из оцилиндрованого",
+        "Каркасные дома",
+        "Дома из блока"
+      ],
+      "id": "c4e3"
+    },
+    {
+      "image": "/src/img/houses/catalog/commerical.jpeg",
+      "alt": "commerical",
+      "title": "Коммерческие",
+      "links": [
+        "Базы отдыха",
+        "Гостинницы",
+        "Рестораны",
+        "Кафе",
+        "Магазины"
+      ],
+      "id": "00fd"
+    },
+    {
+      "image": "/src/img/houses/variations/gardenUtility.jpeg",
+      "alt": "gardenUtility",
+      "title": "Садовые и хоз",
+      "links": [
+        "Деревянные бании",
+        "Беседки",
+        "Альтанки",
+        "Детские игровые площадки",
+        "Гаражи",
+        "Деревянные детские домики",
+        "Мангальные зоны и барбекю",
+        "Кухни"
+      ],
+      "id": "3d6b"
+    }
+  ],
+  "navigation": [
+    {
+      "category": "Жилое",
+      "links": [
+        {
+          "name": "Дома из профилированого бруса",
+          "url": "#"
+        },
+        {
+          "name": "Дома из оцилиндрованого бруса",
+          "url": "#"
+        },
+        {
+          "name": "Каркасные дома",
+          "url": "#"
+        },
+        {
+          "name": "Дома из блока",
+          "url": "#"
+        }
+      ],
+      "id": "782b"
+    },
+    {
+      "category": "Коммерческое",
+      "links": [
+        {
+          "name": "Базы отдыха",
+          "url": "#"
+        },
+        {
+          "name": "Гостинницы",
+          "url": "#"
+        },
+        {
+          "name": "Рестораны",
+          "url": "#"
+        },
+        {
+          "name": "Кафе",
+          "url": "#"
+        },
+        {
+          "name": "Магазины",
+          "url": "#"
+        }
+      ],
+      "id": "57e4"
+    },
+    {
+      "category": "Садовое",
+      "links": [
+        {
+          "name": "Деревянные бани",
+          "url": "#"
+        },
+        {
+          "name": "Беседки",
+          "url": "#"
+        },
+        {
+          "name": "Альтанки",
+          "url": "#"
+        },
+        {
+          "name": "Детские игровые площадки",
+          "url": "#"
+        },
+        {
+          "name": "Гаражи",
+          "url": "#"
+        },
+        {
+          "name": "Деревянные детские домики",
+          "url": "#"
+        },
+        {
+          "name": "Мангальные зоны и барбекю",
+          "url": "#"
+        },
+        {
+          "name": "Кухни",
+          "url": "#"
+        }
+      ],
+      "id": "31d9"
+    }
+  ],
+  "catalogFirstPage": [
+    {
+      "title": "Жилое",
+      "description": "Раздел с домами, дачами, коттеджами, виллами, усадьбами и особняками",
+      "image": "/src/img/houses/catalog/commerical.jpeg",
+      "alt": "commerical",
+      "linkText": "Ознакомиться с проектами",
+      "linkHref": "#",
+      "id": "2a5e"
+    },
+    {
+      "title": "Коммерческое",
+      "description": "Раздел с базами отдыха, гостиницами, ресторанами, кафе и магазинами",
+      "image": "/src/img/houses/catalog/garden.jpeg",
+      "alt": "garden",
+      "linkText": "Ознакомиться с проектами",
+      "linkHref": "#",
+      "id": "3c30"
+    },
+    {
+      "title": "Садовое",
+      "description": "Раздел с банями, беседками, альтанками, гаражами, кухнями, площадками, мангальными зонами и барбекю",
+      "image": "/src/img/houses/catalog/residential.jpeg",
+      "alt": "residential",
+      "linkText": "Ознакомиться с проектами",
+      "linkHref": "#",
+      "layout": "horizontal",
+      "id": "45ea"
+    }
+  ],
+  "processes": [
+    {
+      "title": "Процесс 1",
+      "subtitle": "Общение с экспертами",
+      "steps": [
+        {
+          "image": "/src/icons/processes/processes-1/meeting.svg",
+          "alt": "meeting",
+          "text": "Ваше знакомство с представителем компании."
+        },
+        {
+          "image": "/src/icons/processes/processes-1/interests.svg",
+          "alt": "interests",
+          "text": "Ваше знакомство с представителем компании."
+        },
+        {
+          "image": "/src/icons/processes/processes-1/agreement.svg",
+          "alt": "agreement",
+          "text": "Ваше знакомство с представителем компании."
+        }
+      ],
+      "id": "57a8"
+    },
+    {
+      "title": "Процесс 2",
+      "subtitle": "Подбор варианта",
+      "steps": [
+        {
+          "image": "/src/icons/processes/processes-2/create.svg",
+          "alt": "create",
+          "text": "Создание индивидуального 3D-макета вашего проекта."
+        },
+        {
+          "image": "/src/icons/processes/processes-2/contract.svg",
+          "alt": "contract",
+          "text": "Заключение договора по выбранному варианту."
+        },
+        {
+          "image": "/src/icons/processes/processes-2/payment.svg",
+          "alt": "payment",
+          "text": "Оплата предоплаты проекта."
+        }
+      ],
+      "id": "0f95"
+    },
+    {
+      "title": "Процесс 3",
+      "subtitle": "Процесс работы и сдача проекта",
+      "steps": [
+        {
+          "image": "/src/icons/processes/processes-3/prepare.svg",
+          "alt": "prepare",
+          "text": "Подготовка фундамента и материалов, конструкции."
+        },
+        {
+          "image": "/src/icons/processes/processes-3/delivery.svg",
+          "alt": "delivery",
+          "text": "Доставка на место и монтажные работы."
+        },
+        {
+          "image": "/src/icons/processes/processes-3/result.svg",
+          "alt": "result",
+          "text": "Сдача проекта на месте и оплата оставшийся части суммы"
+        }
+      ],
+      "id": "57c2"
+    }
+  ],
+  "characteristics": [
+    {
+      "sizes": [
+        {
+          "image": "/src/icons/sizes/length-big.svg",
+          "alt": "length-big",
+          "text": "4x5м"
+        },
+        {
+          "image": "/src/icons/sizes/floors-big.svg",
+          "alt": "floors-big",
+          "text": "2 этажа"
+        },
+        {
+          "image": "/src/icons/sizes/area-big.svg",
+          "alt": "area-big",
+          "text": "20м²"
+        }
+      ],
+      "info": {
+        "image": "/src/img/secondPage/catalog/barcelona.jpeg",
+        "alt": "barcelona",
+        "name": "Barcelona",
+        "technologies": {
+          "image": "/src/icons/characteristics/technologies.svg",
+          "alt": "technologies",
+          "text": "Дом из газоблока и кирпича"
+        },
+        "construction_time": {
+          "image": "/src/icons/characteristics/Clock.svg",
+          "alt": "Clock",
+          "text": "30 дней"
+        },
+        "links": [
+          {
+            "text": "Фундамент",
+            "url": "#"
+          },
+          {
+            "text": "Стиль",
+            "url": "#"
+          },
+          {
+            "text": "Окна и входные двери",
+            "url": "#"
+          },
+          {
+            "text": "Внутренняя отделка",
+            "url": "#"
+          },
+          {
+            "text": "Кровля",
+            "url": "#"
+          },
+          {
+            "text": "Фасад",
+            "url": "#"
+          },
+          {
+            "text": "Электросеть",
+            "url": "#"
+          },
+          {
+            "text": "Процесс работы",
+            "url": "#"
+          }
+        ]
+      },
+      "images": [
+        {
+          "title": "Фундамент",
+          "src": "/src/img/cardPage/foundation.jpeg",
+          "alt": "foundation"
+        },
+        {
+          "title": "Стиль",
+          "src": "/src/img/cardPage/style.jpeg",
+          "alt": "style"
+        },
+        {
+          "title": "Окна и входные двери",
+          "src": "/src/img/cardPage/windows.jpeg",
+          "alt": "win-doors-1",
+          "extraSrc": "/src/img/cardPage/doors.jpeg",
+          "extraAlt": "win-doors-2"
+        },
+        {
+          "title": "Внутренняя отделка",
+          "src": "/src/img/cardPage/decoration.jpeg",
+          "alt": "decoration"
+        },
+        {
+          "title": "Фасад",
+          "src": "/src/img/cardPage/facade.jpeg",
+          "alt": "facade"
+        },
+        {
+          "title": "Кровля",
+          "src": "/src/img/cardPage/roof.jpeg",
+          "alt": "roof"
+        },
+        {
+          "title": "Электросеть",
+          "src": "/src/img/cardPage/electricity.jpeg",
+          "alt": "electricity"
+        }
+      ],
+      "id": "6819"
+    }
+  ],
+  "factoryPhotos": [
+    {
+      "src": "/src/img/factory/factory-1.jpeg",
+      "alt": "factory-1",
+      "id": "5f32"
+    },
+    {
+      "src": "/src/img/factory/factory-2.jpeg",
+      "alt": "factory-2",
+      "id": "9206"
+    },
+    {
+      "src": "/src/img/factory/factory-3.jpeg",
+      "alt": "factory-3",
+      "id": "c50a"
+    }
+  ],
+  "contacts": [
+    {
+      "type": "Телефоны",
+      "icon": "/src/icons/contacts/phone.svg",
+      "alt": "phone",
+      "items": [
+        {
+          "label": "Отдел продаж:",
+          "value": "+38 (098) 188 55 66"
+        },
+        {
+          "label": "Отдел логистики:",
+          "value": "+38 (068) 704 37 77"
+        }
+      ],
+      "buttonText": "Позвонить компании",
+      "id": "6153"
+    },
+    {
+      "type": "Почта",
+      "icon": "/src/icons/contacts/email.svg",
+      "alt": "email",
+      "items": [
+        {
+          "label": "Отдел продаж:",
+          "value": "sales.tokarmebel@gmail.com"
+        },
+        {
+          "label": "Отдел логистики:",
+          "value": "logistics.tokarmebel@gmail.com"
+        }
+      ],
+      "buttonText": "Написать на почту (отвечаем ...)",
+      "id": "6cdd"
+    },
+    {
+      "type": "График работы",
+      "icon": "/src/icons/contacts/schedule.svg",
+      "alt": "schedule",
+      "items": [
+        {
+          "label": "Пн. - Пт.:",
+          "value": "с 9:00 до 18:00"
+        },
+        {
+          "label": "Сб. - Вс.:",
+          "value": "Выходной"
+        }
+      ],
+      "buttonText": "Посетить лично в офис",
+      "id": "28c3"
+    },
+    {
+      "type": "Мессенджеры",
+      "icon": "/src/icons/contacts/messengers.svg",
+      "alt": "messengers",
+      "socials": [
+        {
+          "name": "telegram",
+          "href": "#",
+          "icon": "/src/icons/social/telegram.svg",
+          "alt": "telegram"
+        },
+        {
+          "name": "whatsapp",
+          "href": "#",
+          "icon": "/src/icons/social/whatsapp.svg",
+          "alt": "whatsapp"
+        },
+        {
+          "name": "viber",
+          "href": "#",
+          "icon": "/src/icons/social/viber.svg",
+          "alt": "viber"
+        }
+      ],
+      "buttonText": "Написать в соцсети (отвечаем ...)",
+      "id": "17c8"
+    }
+  ],
+  "details": [
+    {
+      "label": "Наименование компании",
+      "value": "Tokar Mebel",
+      "id": "d52d"
+    },
+    {
+      "label": "КПП",
+      "value": "644901001",
+      "id": "6637"
+    },
+    {
+      "label": "БИК",
+      "value": "046526969",
+      "id": "3514"
+    },
+    {
+      "label": "Юридический адрес",
+      "value": "г. Тячев, ТЦ \"Стиль\"",
+      "id": "2235"
+    },
+    {
+      "label": "ИНН",
+      "value": "027811001",
+      "id": "aaaf"
+    },
+    {
+      "label": "Корреспондентский счет",
+      "value": "30101810600002500957",
+      "id": "8015"
+    },
+    {
+      "label": "Регистрационный номер",
+      "value": "02428896",
+      "id": "ab30"
+    },
+    {
+      "label": "Расчетный счет",
+      "value": "40602810206000050025",
+      "id": "f043"
+    }
+  ],
+  "cardPageSlides": [
+    {
+      "src": "/src/img/secondPage/catalog/barcelona.jpeg",
+      "alt": "barcelona",
+      "id": "0edc"
+    },
+    {
+      "src": "/src/img/secondPage/catalog/elegant.jpeg",
+      "alt": "elegant",
+      "id": "fc5a"
+    },
+    {
+      "src": "/src/img/secondPage/catalog/milano.jpeg",
+      "alt": "milano",
+      "id": "8850"
+    },
+    {
+      "src": "/src/img/secondPage/catalog/edinburgh.jpeg",
+      "alt": "edinburgh",
+      "id": "5eea"
+    },
+    {
+      "src": "/src/img/secondPage/catalog/classic-plus.jpeg",
+      "alt": "classic-plus",
+      "id": "8e7a"
+    }
+  ],
+  "casesCardPageSlides": [
+    {
+      "src": "/src/img/secondPage/catalog/barcelona.jpeg",
+      "alt": "barcelona",
+      "id": "e172"
+    },
+    {
+      "src": "/src/img/secondPage/catalog/elegant.jpeg",
+      "alt": "elegant",
+      "id": "d8c8"
+    },
+    {
+      "src": "/src/img/secondPage/catalog/milano.jpeg",
+      "alt": "milano",
+      "id": "dcfd"
+    }
+  ],
+  "cards": [
+    {
+      "id": "1",
+      "title": "Характеристики",
+      "intro": {
+        "technologies": "Дом из газоблока и кирпича",
+        "constructionTime": "30 дней"
+      },
+      "description": [
+        {
+          "label": "Стиль",
+          "value": "Финский"
+        },
+        {
+          "label": "Фундамент",
+          "value": "Свайно-винтовой"
+        },
+        {
+          "label": "Утепление стен",
+          "value": "RockWool, 150 мм"
+        },
+        {
+          "label": "Кровля",
+          "value": "GrandLine"
+        },
+        {
+          "label": "Окна",
+          "value": "Двойной стеклопакет Rehau"
+        },
+        {
+          "label": "Отделка фасада",
+          "value": "Имитация бруса"
+        },
+        {
+          "label": "Наружная покраска",
+          "value": "Tikkurila"
+        },
+        {
+          "label": "Чистовая отделка",
+          "value": "Имитация бруса"
+        },
+        {
+          "label": "Отделка парной",
+          "value": "Осина"
+        },
+        {
+          "label": "Печь",
+          "value": "Термофор Витрувия"
+        }
+      ],
+      "features": [
+        {
+          "icon": "/src/icons/sizes/length-big.svg",
+          "alt": "length",
+          "text": "20м²"
+        },
+        {
+          "icon": "/src/icons/sizes/floors-big.svg",
+          "alt": "floors",
+          "text": "2 этажа"
+        },
+        {
+          "icon": "/src/icons/sizes/area-big.svg",
+          "alt": "area",
+          "text": "4x5м"
+        }
+      ]
+    }
+  ],
+  "casesPhotos": [
+    {
+      "images": [
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-1.jpeg",
+          "alt": "casesPhoto-1"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-2.jpeg",
+          "alt": "casesPhoto-2"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-3.jpeg",
+          "alt": "casesPhoto-3"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-4.jpeg",
+          "alt": "casesPhoto-4"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-5.jpeg",
+          "alt": "casesPhoto-5"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-6.jpeg",
+          "alt": "casesPhoto-6"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-7.jpeg",
+          "alt": "casesPhoto-7"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-8.jpeg",
+          "alt": "casesPhoto-8"
+        }
+      ],
+      "id": "2f8b"
+    },
+    {
+      "images": [
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-1.jpeg",
+          "alt": "casesPhoto-1"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-2.jpeg",
+          "alt": "casesPhoto-2"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-3.jpeg",
+          "alt": "casesPhoto-3"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-4.jpeg",
+          "alt": "casesPhoto-4"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-5.jpeg",
+          "alt": "casesPhoto-5"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-6.jpeg",
+          "alt": "casesPhoto-6"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-7.jpeg",
+          "alt": "casesPhoto-7"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-8.jpeg",
+          "alt": "casesPhoto-8"
+        }
+      ],
+      "id": "ce9c"
+    },
+    {
+      "images": [
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-1.jpeg",
+          "alt": "casesPhoto-1"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-2.jpeg",
+          "alt": "casesPhoto-2"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-3.jpeg",
+          "alt": "casesPhoto-3"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-4.jpeg",
+          "alt": "casesPhoto-4"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-5.jpeg",
+          "alt": "casesPhoto-5"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-6.jpeg",
+          "alt": "casesPhoto-6"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-7.jpeg",
+          "alt": "casesPhoto-7"
+        },
+        {
+          "src": "/src/img/casesPhotos/casesPhoto-8.jpeg",
+          "alt": "casesPhoto-8"
+        }
+      ],
+      "id": "1bf3"
+    }
+  ],
+  "requests": [
+    {
+      "id": "082e",
+      "phone": "4575786998"
+    },
+    {
+      "id": "93bd",
+      "phone": "54346654645"
+    }
+  ]
+}

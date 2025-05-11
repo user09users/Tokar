@@ -1,0 +1,43 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.searchPanel {
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        height: 38px;
+        justify-content: space-around;
+        width: 100%;
+        border: 2px solid $pale;
+
+        &-item {
+            display: block;
+            background-color: inherit;
+            border: none;
+            align-items: center;
+            width: 50%;
+            height: 100%;
+
+            span {
+                font-size: 24px;
+                color: $pale;
+            }
+
+            &:not(:first-child) {
+                border-left: 2px solid $pale;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .catalogSecondPage__search {
+        display: block;
+        position: absolute;
+    }
+
+    .searchPanel {
+        display: none;
+    }
+}

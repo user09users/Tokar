@@ -1,0 +1,167 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.promoMain {
+    background-color: $white;
+
+    &__info {
+        display: block;
+        width: 255px;
+        color: $dark;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 18px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__title {
+        margin-top: 16px;
+    }
+
+    &__img {
+        margin: 0 auto;
+        position: relative;
+        object-fit: cover;
+        width: 300px;
+        height: 246.83px;
+    }
+
+    &__text {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+
+        &-info {
+            text-align: center;
+        }
+    }
+
+    &__scoop {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 83.12px;
+        height: 62px;
+        object-fit: cover;
+    }
+
+    &__tree {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 74.71px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .promoMain {
+
+        &__img {
+            width: 100%;
+            height: 506px;
+            justify-content: center;
+            display: flex;
+        }
+
+        &__scoop {
+            bottom: 24px;
+            left: 70px;
+            width: 121px;
+            height: 113px;
+        }
+
+        &__tree {
+            top: 30px;
+            right: 74px;
+            width: 122px;
+            height: 91px;
+            object-fit: cover;
+
+            img {
+                width: 122px;
+                height: 91px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .promoMain {
+
+        &__info {
+            display: none;
+        }
+
+        &__title {
+            margin-top: 120px;
+        }
+
+        &__subtitle {
+            padding-top: 8px;
+            color: $dark;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        &__scoop {
+            bottom: 50px;
+            left: 0px;
+            width: 121px;
+            height: 113px;
+        }
+
+        &__tree {
+            top: 0px;
+            right: 0px;
+            width: 122px;
+            height: 91px;
+            object-fit: cover;
+
+            img {
+                width: 122px;
+                height: 91px;
+            }
+        }
+
+
+        &__wrapper {
+            flex-direction: row;
+
+            &-info {
+                display: flex;
+                flex-direction: column;
+                width: 551px;
+                text-align: start;
+            }
+
+            &-img {
+                margin-top: 5px;
+                position: relative;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .promoMain {
+        &__wrapper {
+            &-img {
+                width: 615px;
+            }
+        }
+
+        &__scoop {
+            bottom: 50px;
+            left: 20px;
+            width: 121px;
+            height: 113px;
+        }
+    }
+}

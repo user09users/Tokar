@@ -1,0 +1,161 @@
+@use "/src/sass/base/mixins.scss" as *;
+@use "/src/sass/base/variables.scss" as *;
+
+.button {
+    @include button;
+    width: 160px;
+    height: 46px;
+    font-size: 13px;
+    transition: all 0.5s;
+
+    &:hover {
+        font-weight: 600;
+        box-shadow: 0px 0px 30px 0px $main-color-dark;
+        border-radius: 5px;
+    }
+}
+
+.button-big {
+    @include button;
+    display: flex;
+    font-size: 16px;
+    width: 230px;
+    height: 58px;
+}
+
+.button-mix {
+    margin-top: 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+}
+
+.button-circe {
+    gap: 9px;
+    text-decoration: none;
+
+    &__circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        border: 1px solid $main-color-dark;
+        position: relative;
+
+        span {
+            position: absolute;
+            font-size: 13px;
+            left: 20%;
+            transform: translateX(-50%);
+            top: 52%;
+            transform: translatey(-50%);
+            color: $main-color-dark;
+        }
+    }
+
+    &__text {
+        color: $main-color-dark;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}
+
+.button-item {
+    @include button;
+    border-radius: 4px;
+    width: 126px;
+    height: 42px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+
+}
+
+.button-works {
+    @include button;
+    width: 150px;
+    height: 42px;
+}
+
+.button-more {
+    margin: 15px auto 0 auto;
+    width: 300px;
+    height: 60px;
+    border: none;
+    gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: $baige;
+    border-radius: 0px 40px 0px 0px;
+    box-shadow: 0px 0px 30px 0px $shadow;
+
+    span {
+        font-size: 20px;
+        opacity: 0.5;
+    }
+
+    div {
+        color: $dark;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 28px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .button-more {
+        margin-top: 20px;
+        width: 100%;
+        grid-column: 1 / 3;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .button-big {
+        width: 280px;
+        height: 66px;
+        font-size: 14px;
+        transition: all 0.5s;
+    }
+
+    .button-mix {
+        flex-direction: row;
+        gap: 44px;
+        margin-top: 26px;
+        transition: all 0.5s;
+    }
+
+    .button-item {
+        width: 112.08px;
+    }
+
+    .button-works {
+        @include button;
+        width: 200px;
+        height: 50px;
+        transition: all 0.5s;
+    }
+
+    .button-more {
+        cursor: pointer;
+        transition: all 0.5s;
+        margin-top: 20px;
+        grid-column: 1 / 4;
+
+        &:hover {
+            font-weight: 600;
+            box-shadow: 0px 0px 30px 0px $main-color-dark;
+            border-radius: 5px;
+        }
+    }
+}

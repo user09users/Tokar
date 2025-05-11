@@ -1,0 +1,207 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.header {
+    padding: 12px 0;
+    background: $baige;
+}
+
+.header__desktop {
+    display: none;
+}
+
+.header__mobile {
+    display: block;
+    height: 55px;
+    border-bottom: 1px solid $pale;
+
+    &-wrapper {
+        padding-top: 13px;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        align-items: start;
+    }
+
+    &-block {
+        &-logo {
+            width: 230px;
+        }
+    }
+
+    &-phone {
+        color: $main-color-dark;
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .header {
+        padding: 22px;
+    }
+
+    .header__desktop {
+        display: block;
+
+        &-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-text {
+            width: 255px;
+            color: $dark;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 18px;
+            letter-spacing: 8%;
+        }
+
+        &-introduction {
+            display: flex;
+            column-gap: 27px;
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            text-align: right;
+
+            &-tel {
+                color: $dark;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 16px;
+                text-decoration: none;
+            }
+
+            &-date {
+                color: $dark;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 8%;
+            }
+        }
+
+        &-order {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+
+            &-text {
+                text-align: center;
+                color: $dark;
+                font-size: 11px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 8%;
+            }
+        }
+
+        &-language {
+            position: relative;
+            right: 12px;
+
+            &-item {
+
+                .white {
+                    background-color: #fff;
+                }
+
+                .blue {
+                    background-color: $blue-dark;
+                }
+
+                .red {
+                    background-color: $red;
+                }
+
+                span {
+                    display: block;
+                    width: 21px;
+                    height: 5px;
+                }
+            }
+
+            &-arrow {
+                font-size: 6px;
+                position: absolute;
+                top: 50%;
+                right: -12px;
+            }
+        }
+
+        &-menu {
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            min-height: 72px;
+
+            &-variations {
+                display: flex;
+                justify-content: space-around;
+                width: 620px;
+                background-color: $brown;
+                border-radius: 8px;
+                box-shadow: 0px 0px 20px 0px rgba(43, 42, 40, 0.2);
+                align-items: center;
+            }
+
+            &-info {
+                display: flex;
+                justify-content: flex-end;
+                gap: 84px;
+                width: 620px;
+                align-items: center;
+            }
+
+            &-info-item {
+
+                a {
+                    color: $dark;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 146.19%;
+                }
+            }
+
+            &-variations-item {
+
+                a {
+                    color: $light;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 146.19%;
+                }
+            }
+
+        }
+    }
+
+    .social__desktop {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        &-text {
+            color: $dark;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 18px;
+        }
+
+        &-item {
+            display: flex;
+            place-content: center;
+            place-items: center;
+            width: 26px;
+            height: 26px;
+        }
+    }
+
+    .header__mobile {
+        display: none;
+    }
+}

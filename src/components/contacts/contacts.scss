@@ -1,0 +1,252 @@
+@use "/src/sass/base/variables.scss" as *;
+
+.contacts {
+    margin: 13px 0 60px 0;
+
+    &__title {
+        margin-top: 15px;
+    }
+
+    &__wrapper {
+        margin-top: 10px;
+    }
+
+    &__contacts {
+
+        &-list {
+            margin-top: 20px;
+        }
+    }
+
+    &__item {
+        margin-top: 20px;
+        padding: 35px 30px;
+        display: grid;
+        gap: 12px;
+        justify-content: center;
+        border-radius: 0px 40px 0px 0px;
+        box-shadow: 0px 0px 30px 0px $shadow;
+        background: $white;
+
+        &-block:nth-child(1) {
+            order: 2;
+        }
+
+        &-elem {
+            display: flex;
+            flex-direction: column;
+
+            &-name {
+                color: $dark;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 22px;
+                text-align: center;
+            }
+
+            &-link {
+                color: $dark;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 22px;
+                text-align: center;
+            }
+        }
+
+        &-button {
+            color: $main-color-dark;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 16px;
+            text-align: center;
+        }
+
+        &-img {
+            margin: 0 auto;
+            width: 50px;
+            height: 46.43px;
+            color: $main-color-dark;
+        }
+    }
+
+
+    &__nav {
+        padding: 40px 20px 35px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 320px;
+        margin: 0 auto;
+
+        &-wrapper {
+            margin-top: 20px;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: center;
+            border-radius: 0px 40px 0px 0px;
+            box-shadow: 0px 0px 30px 0px $shadow;
+            background: $white;
+
+            &:nth-child(2) {
+                .contacts__nav-item-input {
+                    padding: 10px;
+                    padding-left: 100px;
+                    width: 160px;
+                    height: 17px;
+                    border: none;
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        &-item {
+            width: 260px;
+            height: 50px;
+            display: flex;
+            margin-top: 15px;
+            gap: 10px;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid $pale;
+            border-radius: 4px;
+            background: $white;
+
+            &-img {
+                width: 26px;
+                height: 26px;
+            }
+
+            &-input {
+                padding: 10px;
+                width: 160px;
+                height: 17px;
+                border: none;
+                opacity: 0.5;
+            }
+        }
+
+        &-text {
+            margin-top: 20px;
+            font-weight: 300;
+            text-align: center;
+
+            span {
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 20px;
+                color: $main-color-dark;
+            }
+        }
+
+        &-map {
+            width: 100%;
+            height: 420px;
+            margin: 20px auto 0 auto;
+        }
+
+        &-button {
+            margin-top: 15px;
+            width: 260px;
+        }
+    }
+
+    &__addr {
+
+        margin-top: 30px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            margin-top: 7px;
+        }
+
+        &-route {
+            margin-top: 10px;
+            color: $main-color-dark;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 16px;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    .contacts {
+        margin: 20px 0 150px 0;
+
+        &__wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 37px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        &__title {
+            margin-top: 30px;
+        }
+
+        &__item {
+            padding: 40px 32px;
+            margin-top: 30px;
+            grid-template-columns: 400px 1fr;
+            justify-content: start;
+
+            &-block {
+                justify-content: start;
+            }
+
+            &-title {
+                text-align: start;
+            }
+
+            &-elem {
+                flex-direction: row;
+                gap: 30px;
+                margin-top: 6px;
+            }
+
+            &-button {
+                margin-top: 13px;
+            }
+
+            &-img {
+                order: 2;
+                margin-top: 35px;
+            }
+        }
+
+        &__nav {
+            padding: 0;
+            width: 100%;
+
+            h3 {
+                margin: 0;
+            }
+
+            &-item,
+            &-button {
+                width: 100%;
+            }
+
+            &-wrapper {
+                margin-top: 0;
+                padding: 40px 72px;
+            }
+
+            &-map {
+                width: 564px;
+                height: 800px;
+            }
+        }
+
+        .social__list {
+            justify-content: start;
+        }
+    }
+}
