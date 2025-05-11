@@ -7,12 +7,12 @@ import useTocarServices from "../../services/services";
 import accordion from "../../utils/accordion";
 import { sliders } from "../../utils/slider";
 
-import SliderRange from "../filters/SliderRange";
+import SliderRange from "../catalogPageFilters/SliderRange";
 import CardPageSlider from "../cardPageSlider/CardPageSlider";
 import Modal from "../modal/Modal";
 import CatalogSecondPage from "components/catalogSecondPage/CatalogSecondPage";
 import Works from "../works/Works";
-import Footer from "../footer/Footer";
+import Footer from "../footerSection/Footer";
 import LastStates from "../lastStates/LastStates";
 import Reason from "../reason/Reason";
 import Materials from "../materials/Materials";
