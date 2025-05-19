@@ -1,66 +1,86 @@
-import React from "react";
+import { Component } from 'react';
+import TocarService from 'services/services';
+import Spinner from 'components/spinner/Spinner';
+import ErrorMessage from 'components/errorMessage/ErrorMessage';
 
-const Reason = () => {
-    return (
-        <section className="reason">
-            <div className="container">
-                <div className="reason__wrapper">
-                    <h2 className="title-fw700">Почему выбирают нас:</h2>
-                    <ul className="reason__list">
+import './reason.scss';
+class Reason extends Component {
+    state = {
+        itemsList: [],
+        error: false,
+        loading: true
+    };
+    tocarService = TocarService();
 
-                        <li className="reason__item">
-                            <img
-                                src="/icons/reason/design.svg" // Corrected path
-                                alt="design"
-                                className="reason__item-img"
-                            />
-                            <p className="reason__item-text text-fw300">
-                                Эксклюзивный дизайн<br />
-                                Не имеющий аналогов в Украине
-                            </p>
-                        </li>
+    componentDidMount() {
+        this.tocarService.getData('reasons')
+            .then(this.onItemsLoaded)
+            .catch(this.onError);
+    }
 
-                        <li className="reason__item">
-                            <img
-                                src="/icons/reason/development.svg" // Corrected path
-                                alt="development"
-                                className="reason__item-img"
-                            />
-                            <p className="reason__item-text text-fw300">
-                                Разработка модели<br />
-                                Индивидуальной с помощью 3D-визуализации в нашем приложении
-                            </p>
-                        </li>
+    onItemsLoaded = (itemsList) => {
+        this.setState({
+            itemsList,
+            loading: false
+        })
+    }
 
-                        <li className="reason__item">
-                            <img
-                                src="/icons/reason/certificate.svg" // Corrected path
-                                alt="certificate"
-                                className="reason__item-img"
-                            />
-                            <p className="reason__item-text text-fw300">
-                                Сертификаты качества<br />
-                                Подтверждают наши материалы и комплектующие
-                            </p>
-                        </li>
+    onError = () => {
+        this.setState({
+            error: true,
+            loading: false
+        })
+    }
 
-                        <li className="reason__item">
-                            <img
-                                src="/icons/reason/contract.svg" // Corrected path
-                                alt="contract"
-                                className="reason__item-img"
-                            />
-                            <p className="reason__item-text text-fw300">
-                                Работа под ключ<br />
-                                В среднем за Х дней от установки фундамента до сдачи объекта в эксплуатацию
-                            </p>
-                        </li>
 
-                    </ul>
+    renderItems = (arr) => {
+        const items = arr.map(item => {
+            const { icon, alt, title, text, id } = item;
+            return (
+
+                <li className="reason__item" key={id}>
+                    <img
+                        src={icon}
+                        alt={alt}
+                        className="reason__item-img"
+                    />
+                    <h3 className='reason__item-title'>{title}</h3>
+                    <p className="reason__item-text text-fw300">
+                        {text}
+                    </p>
+                </li>
+            )
+        });
+        return (
+            <ul className="reason__list" >
+                {items}
+            </ul>
+        )
+    }
+
+    render() {
+
+        const { itemsList, error, loading } = this.state;
+
+        const items = this.renderItems(itemsList);
+
+        const errorMessage = error ? <ErrorMessage /> : null;
+        const spinner = loading ? <Spinner /> : null;
+        const content = !(loading || error) ? items : null;
+
+        return (
+            <section className="reason">
+                <div className="container">
+                    <div className="reason__wrapper">
+                        <h2 className="title-fw700">Почему выбирают нас:</h2>
+                        {errorMessage}
+                        {spinner}
+                        {content}
+                    </div>
                 </div>
-            </div>
-        </section>
-    );
+            </section>
+        );
+    }
 };
 
 export default Reason;

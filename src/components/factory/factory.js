@@ -1,4 +1,4 @@
-import React from "react";
+import './factory.scss';
 
 const Factory = () => {
     return (

@@ -1,40 +1,126 @@
-@use "../sass/base/basic.scss";
-
 @use "../sass/ui/buttons.scss";
 @use "../sass/ui/titles.scss";
 @use "../sass/ui/text.scss";
-@use "../components/Consultation/consultation.scss";
-
-@use "../components/promoMain/promoMain.scss";
-@use "../components/cases/cases.scss";
-@use "../components/header/header.scss";
-@use "../components/aboutStats/about.scss";
-@use "../components/footer/footer.scss";
-@use "../components/menu/menu.scss";
-@use "../components/social/social.scss";
-@use "../components/reason/reason.scss";
-@use "../components/catalogFirstPage/catalogFirstPage.scss";
-@use "../components/materials/materials.scss";
-@use "../components/variations/variations.scss";
-@use "../components/lastStates/lastStates.scss";
-@use "../components/ceo/ceo.scss";
-@use "../components/filters/search.scss";
-@use "../components/catalogSecondPage/catalogSecondPage.scss";
-@use "../components/filters/filters.scss";
-@use "../components/cardPageSlider/cardPageSlider.scss";
-@use "../components/characteristics/characteristics.scss";
-@use "../components/processes/processes.scss";
-@use "../components/factory/factory.scss";
-@use "../components/works/works.scss";
-@use "../components/contacts/contacts.scss";
-@use "../components/details/details.scss";
-@use "../components/itemDescr/itemDescr.scss";
-@use "../components/casesPhotos/casesPhotos.scss";
-@use "../components/modal/modal.scss";
-
-@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+@use "/src/sass/variables.scss" as *;
 
 @import "../sass/libs/modern-normalize.min.css";
 @import "../sass/libs/grids-min.css";
 @import "../sass/libs/grids-responsive-min.css";
 @import "../sass/libs/fontello.css";
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+figure,
+p,
+ol,
+ul {
+    margin: 0;
+}
+
+ol[role="list"],
+ul[role="list"] {
+    list-style: none;
+    padding-inline: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+}
+
+html {
+    font-family: "Gilroy", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: $white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    padding: 0 10px;
+    position: relative;
+}
+
+.page__nav {
+    color: $gray;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: center;
+}
+
+.language {
+    position: relative;
+    padding: 0;
+
+    span:nth-child(1) {
+        display: block;
+        width: 30px;
+        height: 10px;
+        background-color: blue;
+    }
+
+    span:nth-child(2) {
+        display: block;
+        width: 30px;
+        height: 10px;
+        background-color: yellow;
+    }
+
+    span:nth-child(3) {
+        font-size: 10px;
+        position: absolute;
+        display: block;
+        right: -15px;
+        color: $dark;
+        top: 5px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 0;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .page__nav {
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .container {
+        max-width: 1170px;
+    }
+}

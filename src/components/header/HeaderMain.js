@@ -1,6 +1,6 @@
-import React from "react";
+import './header.scss';
 
-const HeaderMain = () => {
+const HeaderMain = ({ toggleModal }) => {
     return (
         <section className="header">
             <div className="container">
@@ -65,7 +65,7 @@ const HeaderMain = () => {
 
                         {/* Call Request Button */}
                         <div className="header__desktop-order">
-                            <button data-openmodal="true" className="button">Заказать звонок</button>
+                            <button data-openmodal="true" onClick={toggleModal} className="button">Заказать звонок</button>
                             <div className="header__desktop-order-text">Бесплатно по Украине</div>
                         </div>
 

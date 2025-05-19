@@ -1,162 +1,102 @@
-import React from "react";
+import { Component } from 'react';
+import TocarService from 'services/services';
+import Spinner from 'components/spinner/Spinner';
+import ErrorMessage from 'components/errorMessage/ErrorMessage';
 
-const Variations = () => {
-    return (
-        <section className="variations">
-            <div className="container">
-                <h2 className="title-fw700">Мы разделяем 3 вида строений</h2>
+import './variations.scss';
 
-                <div className="variations__wrapper">
-                    {/* Variation 1: Жилые строения */}
-                    <div className="variations__item">
-                        <div className="variations__item-img">
-                            <img
-                                src="/img/houses/variations/residentialSmall.jpeg" // Corrected path
-                                alt="residentialSmall"
-                            />
-                        </div>
-                        <div className="variations__item-content">
-                            <h3 className="variations__item-title title-fw400">Жилые строения</h3>
-                            <ul className="variations__list">
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Дома из профилированого бруса</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Дома из оцилиндрованого</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Каркасные дома</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Дома из блока</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+class Variations extends Component {
+
+    state = {
+        itemsList: [],
+        error: false,
+        loading: true
+    };
+    tocarService = TocarService();
+
+    componentDidMount() {
+        this.tocarService.getData('variations')
+            .then(this.onItemsLoaded)
+            .catch(this.onError);
+    }
+
+    onItemsLoaded = (itemsList) => {
+        this.setState({
+            itemsList,
+            loading: false
+        })
+    }
+
+    onError = () => {
+        this.setState({
+            error: true,
+            loading: false
+        })
+    }
+
+    renderItems = (arr) => {
+        const items = arr.map(item => {
+
+            const { image, alt, title, links, id } = item;
+
+            const itemLinks = links.map(({ text, id }) => {
+                return (
+                    <li key={id}>
+                        <a href="#">
+                            <span className="icon-right-open-big"></span>
+                            <div className="text-fw300">{text}</div>
+                        </a>
+                    </li>
+                )
+            });
+
+            return (
+                <div className="variations__item" key={id}>
+                    <div className="variations__item-img">
+                        <img
+                            src={image}
+                            alt={alt}
+                        />
                     </div>
-
-                    {/* Variation 2: Коммерческие */}
-                    <div className="variations__item">
-                        <div className="variations__item-img">
-                            <img
-                                src="/img/houses/catalog/commerical.jpeg" // Corrected path
-                                alt="commerical"
-                            />
-                        </div>
-                        <div className="variations__item-content">
-                            <h3 className="variations__item-title title-fw400">Коммерческие</h3>
-                            <ul className="variations__list">
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Базы отдыха</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Гостинницы</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Рестораны</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Кафе</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Магазины</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Variation 3: Садовые и хоз */}
-                    <div className="variations__item">
-                        <div className="variations__item-img">
-                            <img
-                                src="/img/houses/variations/gardenUtility.jpeg" // Corrected path
-                                alt="gardenUtility"
-                            />
-                        </div>
-                        <div className="variations__item-content">
-                            <h3 className="variations__item-title title-fw400">Садовые и хоз</h3>
-                            <ul className="variations__list">
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Деревянные бании</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Беседки</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Альтанки</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Детские игровые площадки</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Гаражи</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Деревянные детские домики</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Мангальные зоны и барбекю</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="icon-right-open-big"></span>
-                                        <div className="text-fw300">Кухни</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div className="variations__item-content">
+                        <h3 className="variations__item-title title-fw400">{title}</h3>
+                        <ul className="variations__list">
+                            {itemLinks}
+                        </ul>
                     </div>
                 </div>
+            )
+        });
+
+        return (
+            <div className="variations__wrapper">
+                {items}
             </div>
-        </section>
-    );
+        )
+    }
+
+
+    render() {
+
+        const { itemsList, error, loading } = this.state;
+
+        const items = this.renderItems(itemsList);
+
+        const spinner = loading ? <Spinner /> : null;
+        const errorMessage = error ? <ErrorMessage /> : null;
+        const content = !(error || loading) ? items : null;
+
+        return (
+            <section className="variations">
+                <div className="container">
+                    <h2 className="title-fw700">Мы разделяем 3 вида строений</h2>
+                    {errorMessage}
+                    {spinner}
+                    {content}
+                </div>
+            </section>
+        );
+    }
 };
 
 export default Variations;

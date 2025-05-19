@@ -1,4 +1,4 @@
-import React from 'react'; // Import React as usual for the component
+import './cases.scss';
 
 const CasesSection = () => {
     return (

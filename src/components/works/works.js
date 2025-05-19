@@ -1,4 +1,5 @@
 import React from "react";
+import './works.scss';
 
 const Works = () => {
     return (

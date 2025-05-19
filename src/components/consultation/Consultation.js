@@ -1,3 +1,5 @@
+import './consultation.scss';
+
 const Consultation = () => {
     return (
         <section className="consultation">

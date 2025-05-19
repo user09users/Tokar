@@ -1,4 +1,4 @@
-import React from 'react'; // Importing React as usual for the component
+import './cardPageSlider.scss';
 
 const CardPageSlider = () => {
     return (

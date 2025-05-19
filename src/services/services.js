@@ -1,24 +1,20 @@
-const useTocarServices = () => {
+const TocarService = () => {
     const postData = async (url, data) => {
         try {
-            // Stringify the data object before sending in the body
             let res = await fetch(url, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data)  // Convert data to a JSON string
+                body: JSON.stringify(data)
             });
 
-            // Check if the response is okay (status code 2xx)
             if (!res.ok) {
                 throw new Error(`Failed to post data to ${url}, status = ${res.status}`);
             }
 
-            // Check if the response body is empty
             const json = await res.json();
 
-            // If the response body is empty, handle it
             if (!json) {
                 throw new Error('No response data');
             }
@@ -31,27 +27,34 @@ const useTocarServices = () => {
         }
     };
 
-    const getData = async (url) => {
-        try {
-            const res = await fetch(url);
+    const getResource = async (url) => {
+        let res = await fetch(url);
 
-            if (!res.ok) {
-                throw new Error(`Could not fetch ${url}, status = ${res.status}`);
-            }
-
-            const json = await res.json();
-            return json;
-
-        } catch (error) {
-            console.error('Error in getData:', error);
-            throw error;
+        if (!res.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
         }
+
+        return await res.json();
+    }
+
+    const getData = async (url) => {
+        const res = await getResource(`http://localhost:5000/${url}`);
+
+        return res;
+    };
+
+
+    const getCatalog = async (url, start = 0, limit = 4) => {
+        const res = await getResource(`http://localhost:5000/${url}?_start=${start}&_limit=${limit}`);
+
+        return res;
     };
 
     return {
         postData,
-        getData
+        getData,
+        getCatalog
     };
 };
 
-export default useTocarServices;
+export default TocarService;

@@ -1,4 +1,4 @@
-@use "/src/sass/base/variables.scss" as *;
+@use "/src/sass/variables.scss" as *;
 
 .promoMain {
     background-color: $white;
@@ -34,6 +34,7 @@
     &__wrapper {
         display: flex;
         flex-direction: column;
+        margin-top: 20px;
 
         &-info {
             text-align: center;

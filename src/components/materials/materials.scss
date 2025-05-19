@@ -1,4 +1,4 @@
-@use "/src/sass/base/variables.scss" as *;
+@use "/src/sass/variables.scss" as *;
 
 .materials {
     padding: 60px;
@@ -121,6 +121,7 @@
 
             &-title {
                 text-align: start;
+                width: 300px
             }
 
             &-img,

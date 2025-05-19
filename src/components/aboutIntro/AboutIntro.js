@@ -1,3 +1,5 @@
+import './aboutIntro.scss';
+
 const AboutIntro = () => {
     return (
         <section className="aboutIntro">

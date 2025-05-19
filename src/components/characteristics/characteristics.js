@@ -1,4 +1,4 @@
-import React from "react";
+import './characteristics.scss';
 
 const Characteristics = () => {
     return (

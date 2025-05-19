@@ -1,4 +1,5 @@
 import React from "react";
+import './promoMain.scss';
 
 const PromoMain = () => {
     return (

@@ -1,3 +1,5 @@
+import './casesPhotos.scss';
+
 const CasesPhotos = () => {
     return (
         <section className="casesPhotos">

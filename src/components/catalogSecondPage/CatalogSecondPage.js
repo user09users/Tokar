@@ -1,115 +1,136 @@
-const CatalogSecondPage = () => {
+import { Component } from 'react';
+import TocarService from 'services/services';
+import Spinner from 'components/spinner/Spinner';
+import ErrorMessage from 'components/errorMessage/ErrorMessage';
 
-    /*     <section class="searchPanel">
-        <div class="searchPanel__wrapper">
-            <button class="searchPanel__wrapper-item"><span class="icon-filter"></span></button>
-            <button class="searchPanel__wrapper-item searchPanel__wrapper-item-search"><span
-                    class="icon-search"></span></button>
-        </div>
-    </section> */
-    return (
-        <section className="catalogSecondPage">
-            <div className="container">
-                <div className="page__nav">Главная страница / Жилое</div>
-                <h1 className="catalogSecondPage__title title-fw800">Каталог жилых строений</h1>
-                <div className="catalogSecondPage__search">
-                    <span className="icon-search"></span>
-                    <input required type="text" id="search" name="search" placeholder="Поиск по жилым строениям..." />
-                </div>
+import './catalogSecondPage.scss';
 
-                <div className="catalogSecondPage__blocks">
-                    <div className="catalogSecondPage__blocks-block">
-                        <div className="filters">
-                            <div className="filters__header">
-                                <div className="filters__header-name">Фильтры</div>
-                                <span className="icon-cancel filters__header-cancel"></span>
-                            </div>
-                            <div className="filters__wrapper">
-                                <nav>
-                                    <ul className="filters__blocks">
-                                        <li className="filters__filter">
-                                            <div className="filters__filter-header">
-                                                <div>Подкатегория</div>
-                                                <span className="icon-down-open filters__filter-corner"></span>
-                                            </div>
-                                            <div className="filters__filter-content">
-                                                <div className="filters__filter-name">Дома и жилые строения</div>
-                                                <ul className="filters__filter-items">
-                                                    <li className="filters__filter-item">
-                                                        <span className="icon-right-open-big"></span>
-                                                        <button className="filtersCategoryButton">Дома</button>
-                                                    </li>
-                                                    {/* Add more filter items here */}
-                                                </ul>
-                                            </div>
-                                        </li>
+class CatalogSecondPage extends Component {
+    state = {
+        itemsList: [],
+        loading: true,
+        error: false,
+        newItemsLoading: false,
+        start: 0,
+        itemsEnded: false
+    };
 
-                                        <li className="filters__filter">
-                                            <div className="filters__filter-header">
-                                                <div>Сортировать по:</div>
-                                                <span className="icon-down-open filters__filter-corner"></span>
-                                            </div>
-                                            <div className="filters__filter-content">
-                                                <ul className="filters__filter-items">
-                                                    <li className="filters__filter-item">
-                                                        <span className="icon-right-open-big"></span>
-                                                        <button className="sortBtn">Алфавиту</button>
-                                                    </li>
-                                                    {/* Add more sort options here */}
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
+    tocarService = TocarService();
 
-                    <div className="catalogSecondPage__blocks-block">
-                        <div className="catalogSecondPage__wrapper">
-                            <div className="catalogSecondPage__create">
-                                <div className="catalogSecondPage__create-info">
-                                    <h3 className="catalogSecondPage__create-title title-fw400">Нет подходящего проекта?</h3>
-                                    <p className="catalogSecondPage__create-text tex-fw300">Мы разработаем проект индивидуально под ваш запрос с помощью 3D-макета</p>
-                                    <a href="#" className="button-big catalogSecondPage__item-btn">Разработать проект</a>
-                                </div>
-                                <div className="catalogSecondPage__create-block">
-                                    <img className="catalogSecondPage__create-img" src="/img/secondPage/create-man.jpeg" alt="create-man" />
-                                </div>
-                            </div>
+    componentDidMount() {
+        const { start } = this.state;
+        this.onRequest('catalog', start);
+    }
 
-                            <button data-buttonMore className="button-more">
-                                <span className="icon-arrows-cw"></span>
-                                <div>Показать еще больше</div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    onRequest = (url, start) => {
+        this.onItemsLoading();
 
-            <div className="catalogSecondPage__wrapper">
-                <div className="catalogSecondPage__item">
-                    <img className="catalogSecondPage__item-img" src="/img/secondPage/catalog/bavaria.jpeg" alt="bavaria" />
+        this.tocarService.getCatalog(url, start, 4)
+            .then(newItems => this.onItemsLoaded(newItems))
+            .catch(this.onError);
+    };
+
+    onItemsLoading = () => {
+        this.setState({ newItemsLoading: true });
+    };
+
+    onItemsLoaded = (newItems) => {
+        this.setState(({ itemsList, start }) => {
+            const itemsEnded = newItems.length < 4;
+
+            return {
+                itemsList: [...itemsList, ...newItems],
+                loading: false,
+                newItemsLoading: false,
+                start: start + 4,
+                itemsEnded
+            };
+        });
+    };
+
+    onError = () => {
+        this.setState({
+            error: true,
+            loading: false
+        });
+    };
+
+    renderItems = (arr) => {
+        const items = arr.map(item => {
+            const { title, subtitle, category, price, popularity, area, dimensions, image, id } = item;
+
+            return (
+                <div
+                    className="catalogSecondPage__item"
+                    key={id}
+                    data-popularity={popularity}
+                    data-price={price}
+                    data-category={category}
+                    data-area={area}
+                    data-dimensions={dimensions}
+                >
+                    <img className="catalogSecondPage__item-img" src={image} alt={subtitle} />
                     <div className="catalogSecondPage__item-content">
-                        <h3 className="catalogSecondPage__item-title">Вариант Z-65 <span>Bavaria</span></h3>
+                        <h3 className="catalogSecondPage__item-title">{title} <span>{subtitle}</span></h3>
                         <div className="catalogSecondPage__item-content-wrapper">
                             <div className="catalogSecondPage__item-size">
-                                <div><img src="/icons/sizes/area.svg" alt="area" /></div>
-                                <span>7,5х9 м</span>
+                                <div><img src="/src/icons/sizes/area.svg" alt="area" /></div>
+                                <span>{dimensions}</span>
                             </div>
                             <div className="catalogSecondPage__item-size">
-                                <div><img src="/icons/sizes/length.svg" alt="length" /></div>
-                                <span>135 м2</span>
+                                <div><img src="/src/icons/sizes/length.svg" alt="length" /></div>
+                                <span>{area} м2</span>
                             </div>
                             <a href="#" className="button-item catalogSecondPage__item-btn">Ознакомиться</a>
-                            <div className="catalogSecondPage__item-price">1,000,000 грн</div>
+                            <div className="catalogSecondPage__item-price">{price} грн</div>
                         </div>
                     </div>
                 </div>
-                {/* Other catalog items */}
-            </div>
-        </section>
-    );
-};
+            );
+        });
 
+        return (
+            <div className="catalogSecondPage__wrapper">
+                {items}
+            </div>
+        );
+    };
+
+    render() {
+        const { itemsList, loading, error, newItemsLoading, start, itemsEnded } = this.state;
+
+        const errorMessage = error ? <ErrorMessage /> : null;
+        const spinner = loading && !newItemsLoading ? <Spinner /> : null;
+        const content = !(loading || error) ? this.renderItems(itemsList) : null;
+
+        return (
+            <section className="catalogSecondPage">
+                <div className="container">
+                    <div className="page__nav">Главная страница / Жилое</div>
+                    <h1 className="catalogSecondPage__title title-fw800">Каталог жилых строений</h1>
+                    <div className="catalogSecondPage__search">
+                        <span className="icon-search"></span>
+                        <input required type="text" id="search" name="search" placeholder="Поиск по жилым строениям..." />
+                    </div>
+
+                    {errorMessage}
+                    {spinner}
+                    {content}
+
+                    {!itemsEnded && !loading && (
+                        <button className="button-item catalogSecondPage__item-btn"
+                            disabled={newItemsLoading}
+                            onClick={() => this.onRequest('catalog', start)}>
+                            Ознакомиться</button>
+                    )}
+                </div>
+            </section>
+        );
+    }
+}
+
+/* CatalogSecondPage.propTypes = {
+    item: PropTypes.object
+}
+ */
 export default CatalogSecondPage;

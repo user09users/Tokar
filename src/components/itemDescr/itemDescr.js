@@ -1,4 +1,4 @@
-import React from 'react';
+import './itemDescr.scss';
 
 const ItemDescr = () => {
     return (

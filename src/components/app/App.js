@@ -1,18 +1,9 @@
 
 import "purecss/build/grids-min.css";
 import "purecss/build/grids-responsive-min.css";
+import { Component } from "react";
 
-import useTocarServices from "../../services/services";
-
-import accordion from "../../utils/accordion";
-import { sliders } from "../../utils/slider";
-
-import SliderRange from "../catalogPageFilters/SliderRange";
-import CardPageSlider from "../cardPageSlider/CardPageSlider";
-import Modal from "../modal/Modal";
-import CatalogSecondPage from "components/catalogSecondPage/CatalogSecondPage";
-import Works from "../works/Works";
-import Footer from "../footerSection/Footer";
+import Footer from "../footer/Footer";
 import LastStates from "../lastStates/LastStates";
 import Reason from "../reason/Reason";
 import Materials from "../materials/Materials";
@@ -20,90 +11,53 @@ import Ceo from "../ceo/Ceo";
 import AboutStats from "../aboutStats/AboutStats";
 import Variations from "../variations/Variations";
 import CatalogFirstPage from "../catalogFirstPage/CatalogFirstPage";
-import Processes from "../processes/Processes";
-import Characteristics from "../characteristics/Characteristics";
-import FactoryPhotos from "../factory/Factory";
-import Menu from "../menu/Menu";
-import Social from "../social/Social";
-import Contacts from "../contacts/Contacts";
-import Details from "../details/Details";
-import ItemDescr from "../itemDescr/ItemDescr";
-import CasesPhotos from "../casesPhotos/CasesPhotos";
 import HeaderMain from "components/header/HeaderMain";
 import PromoMain from "components/promoMain/PromoMain";
-
-document.addEventListener('DOMContentLoaded', () => {
-  useTocarServices();
-
-  accordion();
-  sliders();
-
-  SliderRange();
-  CardPageSlider();
-  Modal();
-  CatalogSecondPage();
-  Works();
-  LastStates();
-  Reason();
-  Materials();
-  Ceo();
-  AboutStats();
-  Variations();
-  Footer();
-  CatalogFirstPage();
-  Processes();
-  Characteristics();
-  FactoryPhotos();
-  Menu();
-  Social();
-  Contacts();
-  Details();
-  ItemDescr();
-  CasesPhotos();
-
-});
+import ErrorBoundary from "components/errorBoundary/ErrorBoundary";
+import Modal from "components/modal/Modal";
 
 
 
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <HeaderMain />
-      </header>
-      <main>
-        <PromoMain />
-        <Reason />
-        <CatalogFirstPage />
-        <Materials />
-        <AboutStats />
-        <Variations />
-        <LastStates />
-        <Ceo />
-        <Footer />
-      </main>
-    </div>
-  );
+  state = {
+    show: false
+  }
+
+  toggleModal = () => {
+    this.setState({
+      show: true
+    })
+  }
+
+  render() {
+
+    return (
+      <div className="App">
+        <header>
+          <HeaderMain toggleModal={this.toggleModal} />
+        </header>
+        <main>
+          <PromoMain />
+          <ErrorBoundary>
+            <Reason />
+          </ErrorBoundary>
+          <CatalogFirstPage />
+          <Materials />
+          <AboutStats />
+          <Variations />
+          <LastStates />
+          <Ceo />
+          <Footer />
+          <Modal
+            show={this.state.show}
+            onClose={() => this.setState({ show: false })}
+            onScrollToBottom={() => this.setState({ show: true })} />
+
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
-
-
-
-/*          initializeSwiper('.lastStates__slider', ".lastStates__slider-nav", {
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 3,
-                        },
-                        1200: {
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                        },
-                        1900: {
-                            spaceBetween: 35,
-                        },
-                    },
-                }); */
-

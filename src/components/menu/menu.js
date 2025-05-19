@@ -1,3 +1,5 @@
+import './menu.scss';
+
 const Menu = () => {
     return (
         <section className="menu">

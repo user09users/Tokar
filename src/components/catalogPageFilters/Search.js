@@ -4,8 +4,10 @@ const Search = () => {
         const filtersCategoryButton = document.querySelectorAll('.filtersCategoryButton');
         const container = document.querySelector('.catalogSecondPage__wrapper');
         const sortBtns = document.querySelectorAll('.sortBtn');
+
         const areaSlider = document.querySelector('input[type="range"][id="myRange"]');
         const priceSlider = document.querySelector('input[type="range"][id="priceRange"]');
+
         const allItems = Array.from(container.querySelectorAll('.catalogSecondPage__item'));
         const createBlock = document.querySelector('.catalogSecondPage__create');
         const moreBlock = document.querySelector('.catalogSecondPage__more');
