@@ -1,86 +1,55 @@
-import { Component } from 'react';
-import TocarService from 'services/services';
+import { useState, useEffect } from 'react';
+import useTocarService from 'services/services';
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
 
 import './reason.scss';
-class Reason extends Component {
-    state = {
-        itemsList: [],
-        error: false,
-        loading: true
-    };
-    tocarService = TocarService();
 
-    componentDidMount() {
-        this.tocarService.getData('reasons')
-            .then(this.onItemsLoaded)
-            .catch(this.onError);
-    }
+const Reason = () => {
+    const [itemsList, setItemsList] = useState([]);
 
-    onItemsLoaded = (itemsList) => {
-        this.setState({
-            itemsList,
-            loading: false
-        })
-    }
+    const { loading, error, getData } = useTocarService();
 
-    onError = () => {
-        this.setState({
-            error: true,
-            loading: false
-        })
-    }
+    useEffect(() => {
+        getData('reasons')
+            .then(onItemsLoaded);
+    }, []);
 
+    const onItemsLoaded = (items) => setItemsList(items);
 
-    renderItems = (arr) => {
+    const renderItems = (arr) => {
         const items = arr.map(item => {
             const { icon, alt, title, text, id } = item;
             return (
-
                 <li className="reason__item" key={id}>
-                    <img
-                        src={icon}
-                        alt={alt}
-                        className="reason__item-img"
-                    />
+                    <img src={icon} alt={alt} className="reason__item-img" />
                     <h3 className='reason__item-title'>{title}</h3>
-                    <p className="reason__item-text text-fw300">
-                        {text}
-                    </p>
+                    <p className="reason__item-text text-fw300">{text}</p>
                 </li>
-            )
+            );
         });
-        return (
-            <ul className="reason__list" >
-                {items}
-            </ul>
-        )
-    }
 
-    render() {
+        return <ul className="reason__list">{items}</ul>;
+    };
 
-        const { itemsList, error, loading } = this.state;
+    const items = renderItems(itemsList);
 
-        const items = this.renderItems(itemsList);
+    const errorMessage = error ? <ErrorMessage /> : null;
+    const spinner = loading ? <Spinner /> : null;
+    const content = !(loading || error) ? items : null;
 
-        const errorMessage = error ? <ErrorMessage /> : null;
-        const spinner = loading ? <Spinner /> : null;
-        const content = !(loading || error) ? items : null;
-
-        return (
-            <section className="reason">
-                <div className="container">
-                    <div className="reason__wrapper">
-                        <h2 className="title-fw700">Почему выбирают нас:</h2>
-                        {errorMessage}
-                        {spinner}
-                        {content}
-                    </div>
+    return (
+        <section className="reason">
+            <div className="container">
+                <div className="reason__wrapper">
+                    <h2 className="title-fw700">Почему выбирают нас:</h2>
+                    {errorMessage}
+                    {spinner}
+                    {content}
                 </div>
-            </section>
-        );
-    }
+            </div>
+        </section>
+    );
 };
 
 export default Reason;

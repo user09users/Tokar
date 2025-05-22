@@ -1,51 +1,21 @@
-const TocarService = () => {
-    const postData = async (url, data) => {
-        try {
-            let res = await fetch(url, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
+import { useHttp } from "../hooks/http.hook";
 
-            if (!res.ok) {
-                throw new Error(`Failed to post data to ${url}, status = ${res.status}`);
-            }
+const useTocarService = () => {
 
-            const json = await res.json();
+    const { loading, error, request, clearError } = useHttp();
 
-            if (!json) {
-                throw new Error('No response data');
-            }
-
-            return json;
-
-        } catch (error) {
-            console.error('Error in postData:', error);
-            throw error;
-        }
-    };
-
-    const getResource = async (url) => {
-        let res = await fetch(url);
-
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-        }
-
-        return await res.json();
+    const postData = (data) => {
+        request(`http://localhost:5000/requests`, 'POST', data);
     }
 
     const getData = async (url) => {
-        const res = await getResource(`http://localhost:5000/${url}`);
+        const res = await request(`http://localhost:5000/${url}`);
 
         return res;
     };
 
-
     const getCatalog = async (url, start = 0, limit = 4) => {
-        const res = await getResource(`http://localhost:5000/${url}?_start=${start}&_limit=${limit}`);
+        const res = await request(`http://localhost:5000/${url}?_start=${start}&_limit=${limit}`);
 
         return res;
     };
@@ -53,8 +23,11 @@ const TocarService = () => {
     return {
         postData,
         getData,
-        getCatalog
+        getCatalog,
+        loading,
+        error,
+        clearError
     };
 };
 
-export default TocarService;
+export default useTocarService;

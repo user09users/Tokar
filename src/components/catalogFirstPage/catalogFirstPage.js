@@ -1,41 +1,24 @@
-import { Component } from 'react';
-import TocarService from 'services/services';
+import { useState, useEffect } from 'react';
+import useTocarService from 'services/services';
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
 
 import './catalogFirstPage.scss';
 
-class CatalogFirstPage extends Component {
+const CatalogFirstPage = () => {
 
-    state = {
-        itemsList: [],
-        loading: true,
-        error: false
-    }
+    const [itemsList, setItemsList] = useState([]);
 
-    tocarService = TocarService();
+    const { loading, error, getData } = useTocarService();
 
-    componentDidMount() {
-        this.tocarService.getData('catalogFirstPage')
-            .then(this.onItemsLoaded)
-            .catch(this.onError)
-    }
+    useEffect(() => {
+        getData('catalogFirstPage')
+            .then(onItemsLoaded)
+    }, []);
 
-    onItemsLoaded = (itemsList) => {
-        this.setState({
-            itemsList,
-            loading: false
-        });
-    }
+    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
 
-    onError = () => {
-        this.setState({
-            error: true,
-            loading: false
-        });
-    }
-
-    renderItems(arr) {
+    function renderItems(arr) {
         const items = arr.map(item => {
 
             const { title, description, image, alt, linkText, linkHref, id, layout } = item;
@@ -69,29 +52,24 @@ class CatalogFirstPage extends Component {
     }
 
 
-    render() {
+    const items = renderItems(itemsList);
 
-        const { itemsList, loading, error } = this.state;
+    const spinner = loading ? <Spinner /> : null;
+    const errorMessage = error ? <ErrorMessage /> : null;
+    const content = !(loading || error) ? items : null;
 
-        const items = this.renderItems(itemsList);
+    return (
+        <section className="catalogFirstPage">
+            <img src="/img/catalog-gazebo.jpeg" alt="gazebo" className="catalogFirstPage__bg" />
+            <div className="container">
+                <h2 className="title-fw700">Каталог проектов</h2>
 
-        const spinner = loading ? <Spinner /> : null;
-        const errorMessage = error ? <ErrorMessage /> : null;
-        const content = !(loading || error) ? items : null;
-
-        return (
-            <section className="catalogFirstPage">
-                <img src="/img/catalog-gazebo.jpeg" alt="gazebo" className="catalogFirstPage__bg" />
-                <div className="container">
-                    <h2 className="title-fw700">Каталог проектов</h2>
-
-                    {spinner}
-                    {errorMessage}
-                    {content}
-                </div>
-            </section>
-        );
-    }
+                {spinner}
+                {errorMessage}
+                {content}
+            </div>
+        </section>
+    );
 };
 
 export default CatalogFirstPage;

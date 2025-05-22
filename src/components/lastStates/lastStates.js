@@ -1,31 +1,19 @@
-import { Component } from 'react';
-import TocarService from 'services/services';
+import { useState, useEffect } from 'react';
+import useTocarService from 'services/services';
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
 import { initializeSwiper } from 'utils/slider';
 
 import './lastStates.scss';
 
-class LastStates extends Component {
+const LastStates = () => {
 
-    state = {
-        itemsList: [],
-        loading: true,
-        error: false,
-        swiperInitialized: false
-    }
+    const [swiperInitialized, setSwiperInitialized] = useState(false);
+    const [itemsList, setItemsList] = useState([]);
 
-    tocarService = TocarService();
-
-
-    componentDidUpdate(prevProps, prevState) {
-        const { sliderList, swiperInitialized, loading, error } = this.state;
-
-        if (
-            !swiperInitialized &&
-            !loading &&
-            !error
-        ) {
+    const { loading, error, getData } = useTocarService();
+    useEffect(() => {
+        if (!loading && !error && !swiperInitialized && itemsList.length > 0) {
             initializeSwiper(
                 '.lastStates__slider',
                 '.lastStates__slider-nav',
@@ -45,32 +33,15 @@ class LastStates extends Component {
                     },
                 }
             );
-            this.setState({ swiperInitialized: true }); // prevent reinitialization
+            setSwiperInitialized(true);
         }
-    }
+    }, [itemsList, loading, error, swiperInitialized]);
 
-    componentDidMount() {
-        this.tocarService.getData('lastStates')
-            .then(this.onItemsLoaded)
-            .catch(this.onError)
-    }
+    useEffect(() => { getData('lastStates').then(onItemsLoaded) }, []);
 
-    onItemsLoaded = (itemsList) => {
-        this.setState({
-            itemsList,
-            loading: false
-        });
-    }
+    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
 
-    onError = () => {
-        this.setState({
-            error: true,
-            loading: false
-        });
-    }
-
-
-    renderItems(arr) {
+    function renderItems(arr) {
         const items = arr.map(item => {
             const { label, title, description, image, alt, id } = item;
 
@@ -97,37 +68,33 @@ class LastStates extends Component {
             </div>
         )
     }
-    render() {
 
-        const { itemsList, loading, error } = this.state;
+    const items = renderItems(itemsList);
 
-        const items = this.renderItems(itemsList);
+    const spinner = loading ? <Spinner /> : null;
+    const errorMessage = error ? <ErrorMessage /> : null;
+    const content = !(loading || error) ? items : null;
 
-        const spinner = loading ? <Spinner /> : null;
-        const errorMessage = error ? <ErrorMessage /> : null;
-        const content = !(loading || error) ? items : null;
+    return (
+        <section className="lastStates">
+            <div className="container">
+                <h2 className="title-fw700">Последние статьи</h2>
 
-        return (
-            <section className="lastStates">
-                <div className="container">
-                    <h2 className="title-fw700">Последние статьи</h2>
-
-                    <div className="lastStates__slider-wrapper">
-                        <div className="swiper lastStates__slider">
-                            <div className="lastStates__nav">
-                                <span className="lastStates__slider-prev icon-left-big"></span>
-                                <div className="swiper-pagination lastStates__slider-nav"></div>
-                                <span className="lastStates__slider-next icon-right-big"></span>
-                            </div>
-                            {spinner}
-                            {errorMessage}
-                            {content}
+                <div className="lastStates__slider-wrapper">
+                    <div className="swiper lastStates__slider">
+                        <div className="lastStates__nav">
+                            <span className="lastStates__slider-prev icon-left-big"></span>
+                            <div className="swiper-pagination lastStates__slider-nav"></div>
+                            <span className="lastStates__slider-next icon-right-big"></span>
                         </div>
+                        {spinner}
+                        {errorMessage}
+                        {content}
                     </div>
                 </div>
-            </section>
-        );
-    }
+            </div>
+        </section>
+    );
 };
 
 export default LastStates;

@@ -23,16 +23,13 @@ const initializeSwiper = (selector, paginationSelector, options = {}) => {
         ...options, // Allow overriding or adding custom options
     });
 };
-
+/* 
 const sliders = () => {
     try {
-
-
-        // Initialize the main slider and export it
         mainSlider = initializeSwiper('.cardPageSlider__slider', ".cardPageSlider__slider-nav");
     } catch (e) {
         console.error('Swiper initialization failed:', e);
     }
 };
-
-export { sliders, mainSlider, initializeSwiper };
+ */
+export { /* sliders, mainSlider, */ initializeSwiper };

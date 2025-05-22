@@ -1,40 +1,22 @@
-import { Component } from 'react';
-import TocarService from 'services/services';
+import { useEffect, useState } from 'react';
+import useTocarService from 'services/services';
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
 
 import './variations.scss';
 
-class Variations extends Component {
+const Variations = () => {
 
-    state = {
-        itemsList: [],
-        error: false,
-        loading: true
-    };
-    tocarService = TocarService();
+    const [itemsList, setItemsList] = useState([]);
 
-    componentDidMount() {
-        this.tocarService.getData('variations')
-            .then(this.onItemsLoaded)
-            .catch(this.onError);
-    }
+    const { loading, error, getData } = useTocarService();
 
-    onItemsLoaded = (itemsList) => {
-        this.setState({
-            itemsList,
-            loading: false
-        })
-    }
+    useEffect(() => { getData('variations').then(onItemsLoaded) }, []);
 
-    onError = () => {
-        this.setState({
-            error: true,
-            loading: false
-        })
-    }
+    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
 
-    renderItems = (arr) => {
+
+    const renderItems = (arr) => {
         const items = arr.map(item => {
 
             const { image, alt, title, links, id } = item;
@@ -76,27 +58,22 @@ class Variations extends Component {
     }
 
 
-    render() {
+    const items = renderItems(itemsList);
 
-        const { itemsList, error, loading } = this.state;
+    const spinner = loading ? <Spinner /> : null;
+    const errorMessage = error ? <ErrorMessage /> : null;
+    const content = !(error || loading) ? items : null;
 
-        const items = this.renderItems(itemsList);
-
-        const spinner = loading ? <Spinner /> : null;
-        const errorMessage = error ? <ErrorMessage /> : null;
-        const content = !(error || loading) ? items : null;
-
-        return (
-            <section className="variations">
-                <div className="container">
-                    <h2 className="title-fw700">Мы разделяем 3 вида строений</h2>
-                    {errorMessage}
-                    {spinner}
-                    {content}
-                </div>
-            </section>
-        );
-    }
+    return (
+        <section className="variations">
+            <div className="container">
+                <h2 className="title-fw700">Мы разделяем 3 вида строений</h2>
+                {errorMessage}
+                {spinner}
+                {content}
+            </div>
+        </section>
+    );
 };
 
 export default Variations;
