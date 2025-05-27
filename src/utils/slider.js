@@ -4,8 +4,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-let mainSlider;
-
 // Reusable Swiper initialization function
 const initializeSwiper = (selector, paginationSelector, options = {}) => {
     return new Swiper(selector, {
@@ -23,13 +21,5 @@ const initializeSwiper = (selector, paginationSelector, options = {}) => {
         ...options, // Allow overriding or adding custom options
     });
 };
-/* 
-const sliders = () => {
-    try {
-        mainSlider = initializeSwiper('.cardPageSlider__slider', ".cardPageSlider__slider-nav");
-    } catch (e) {
-        console.error('Swiper initialization failed:', e);
-    }
-};
- */
-export { /* sliders, mainSlider, */ initializeSwiper };
+
+export { initializeSwiper };

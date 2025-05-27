@@ -1,12 +1,15 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
+import ModalContext from "Context/modal/ModalContext";
 import './modal.scss';
 
-const Modal = ({ show, setShow, onScrollToBottom, onClose }) => {
+const Modal = () => {
     const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
+
+    const { show, closeModal, onScrollToBottom } = useContext(ModalContext);
 
     const handleScroll = useCallback(() => {
         if (
-            window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+            window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10 &&
             !hasScrolledToBottom
         ) {
             setHasScrolledToBottom(true);
@@ -24,32 +27,21 @@ const Modal = ({ show, setShow, onScrollToBottom, onClose }) => {
     }, [handleScroll]);
 
     useEffect(() => {
-        if (show) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-
-        return () => {
-            document.body.style.overflow = '';
-        };
+        if (show) { document.body.style.overflow = 'hidden'; }
+        else { document.body.style.overflow = ''; }
+        return () => { document.body.style.overflow = ''; };
     }, [show]);
-
-    const closeModal = () => {
-        setShow(false);
-        document.body.style.overflow = '';
-    };
 
     if (!show) return null; // ← also fixed this logic: modal should render only when show is true
 
     return (
         <div data-consultation className={`modal ${show ? "active" : ""}`}>
-            <div className="modal__overlay" onClick={onClose}></div>
+            <div className="modal__overlay" onClick={closeModal}></div>
             <div data-info className="modal__wrapper">
                 <span
                     data-close
                     className="modal__close icon-cancel"
-                    onClick={closeModal} // ✅ fixed incorrect usage of `this.props`
+                    onClick={closeModal}
                 ></span>
                 <img
                     src="/img/cardPage/cardPage-man.jpeg"

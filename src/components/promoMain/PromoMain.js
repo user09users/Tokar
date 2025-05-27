@@ -1,5 +1,6 @@
 import React from "react";
 import './promoMain.scss';
+import { Link } from "react-router-dom";
 
 const PromoMain = () => {
     return (
@@ -19,7 +20,7 @@ const PromoMain = () => {
                             другую постройку
                         </div>
                         <div className="button-mix">
-                            <a href="#" className="button-big">Перейти в каталог домов</a>
+                            <Link to="/catalog" className="button-big">Перейти в каталог домов</Link>
                             <a href="#" className="button-circe">
                                 <div className="button-circe__circle">
                                     <span className="icon-right-open-big"></span>
@@ -34,7 +35,7 @@ const PromoMain = () => {
                             <picture>
                                 <source media="(max-width: 576px)" srcSet="/img/main-house-min.png" /> {/* Corrected path */}
                                 <source media="(min-width: 576px)" srcSet="/img/main-house.png" /> {/* Corrected path */}
-                                <img src="/img/img/main-house.png" alt="house" /> {/* Corrected path */}
+                                <img src="/img/main-house.png" alt="house" /> {/* Corrected path */}
                             </picture>
                             <div className="promoMain__tree">
                                 <img src="/img/tree.png" alt="tree" /> {/* Corrected path */}

@@ -22,6 +22,22 @@
         align-items: start;
     }
 
+    &-hamburger {
+        width: 25px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+
+        span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            border: 2px solid $main-color-dark;
+        }
+    }
+
     &-block {
         &-logo {
             width: 230px;

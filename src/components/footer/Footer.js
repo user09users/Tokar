@@ -7,10 +7,18 @@ import './footer.scss';
 import '../social/social.scss';
 
 const Footer = () => {
-    const [itemsList, setItemsList] = useState([]);
-
     const { loading, error, getData } = useTocarService();
 
+    const [itemsList, setItemsList] = useState([]);
+    const [openIndexes, setOpenIndexes] = useState([]);
+
+    const toggleOpenIndexes = id => {
+        setOpenIndexes(prev =>
+            prev.includes(id)
+                ? prev.filter(item => item !== id)
+                : [...prev, id]
+        )
+    }
     useEffect(() => {
         getData('navigation')
             .then(onItemsLoaded);
@@ -20,6 +28,7 @@ const Footer = () => {
     function renderItems(arr) {
         const items = arr.map(item => {
             const { category, links, id } = item;
+            const isOpen = openIndexes.includes(id);
 
             const renderedLinks = links.map(link => {
                 const { url, name, id: linkId } = link;
@@ -31,13 +40,13 @@ const Footer = () => {
             });
 
             return (
-                <li className="footer__item" key={id}>
-                    <div className="footer__item-header footer__item-header-event">
+                <li className={`footer__item ${isOpen ? 'active' : ''}`} key={id}>
+                    <div className="footer__item-header footer__item-header-event" onClick={() => toggleOpenIndexes(id)}>
                         <span className="footer__item-corner"><span className="icon-down-open"></span></span>
                         <div className="footer__item-name footer__item-name_white">{category}</div>
                         <span className="footer__item-corner"><span className="icon-down-open"></span></span>
                     </div>
-                    <ul className="footer__item-content">
+                    <ul className={`footer__item-content ${isOpen ? 'active' : ''}`}>
                         {renderedLinks}
                     </ul>
                 </li>

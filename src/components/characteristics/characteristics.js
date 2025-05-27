@@ -1,169 +1,75 @@
+import React from 'react';
 import './characteristics.scss';
+import Spinner from 'components/spinner/Spinner';
+import ErrorMessage from 'components/errorMessage/ErrorMessage';
+const Characteristics = ({ characteristics, loading, error }) => {
+    if (loading) return <Spinner />;
+    if (error || !characteristics) return <ErrorMessage message={error} />;
 
-const Characteristics = () => {
+    const { sizes, info, images } = characteristics;
+
     return (
         <section className="characteristics">
             <div className="container">
                 <div className="characteristics__wrapper">
-                    <h2 className="characteristics__title title-fw800">
-                        Характеристика строения:
-                    </h2>
+                    <h2 className="characteristics__title title-fw800">Характеристика строения:</h2>
 
-                    {/* SIZES Section */}
+                    {/* Sizes */}
                     <div className="characteristics__sizes">
-                        <div className="characteristics__size">
-                            <img
-                                className="characteristics__size-img"
-                                src="/icons/sizes/length-big.svg"
-                                alt="length-big"
-                            />
-                            <div className="characteristics__size-text">4x5м</div>
-                        </div>
-                        <div className="characteristics__size">
-                            <img
-                                className="characteristics__size-img"
-                                src="/icons/sizes/floors-big.svg"
-                                alt="floors-big"
-                            />
-                            <div className="characteristics__size-text">2 этажа</div>
-                        </div>
-                        <div className="characteristics__size">
-                            <img
-                                className="characteristics__size-img"
-                                src="/icons/sizes/area-big.svg"
-                                alt="area-big"
-                            />
-                            <div className="characteristics__size-text">20м²</div>
-                        </div>
+                        {sizes.map(({ text, image, alt }, index) => (
+                            <div className="characteristics__size" key={index}>
+                                <img src={image} alt={alt} />
+                                <div className="characteristics__size-text">{text}</div>
+                            </div>
+                        ))}
                     </div>
 
-                    {/* INFO Section */}
+                    {/* Info block */}
                     <div className="characteristics__info">
-                        <img
-                            className="characteristics__info-img"
-                            src="/img/secondPage/catalog/barcelona.jpeg"
-                            alt="barcelona"
-                        />
+                        <div className="characteristics__info-img">
+                            <img className="characteristics__info-img" src={info.image} alt={info.alt} />
+                        </div>
+
                         <div className="characteristics__info-descr">
-                            <div className="characteristics__info-name title-fw400">
-                                Barcelona
-                            </div>
+                            <div className="characteristics__info-name title-fw400">{info.name}</div>
 
                             <div className="characteristics__info-tech">
-                                <img
-                                    src="/icons/characteristics/technologies.svg"
-                                    alt="technologies"
-                                />
+                                <img src="/icons/characteristics/technologies.svg" alt="technologies" />
                                 <div>
                                     Технологии: <br />
-                                    <span>Дом из газоблока и кирпича</span>
+                                    <span>{info.technologies.text}</span>
                                 </div>
                             </div>
 
                             <div className="characteristics__info-time">
-                                <img
-                                    src="/icons/characteristics/Clock.svg"
-                                    alt="Clock"
-                                />
+                                <img src="/icons/characteristics/Clock.svg" alt="Clock" />
                                 <div>
                                     Сроки строительства: <br />
-                                    <span>30 дней</span>
-                                </div>
-                            </div>
-
-                            <div className="characteristics__info-ul">
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Фундамент</a>
-                                </div>
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Стиль</a>
-                                </div>
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Окна и входные двери</a>
-                                </div>
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Внутренняя отделка</a>
-                                </div>
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Кровля</a>
-                                </div>
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Фасад</a>
-                                </div>
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Электросеть</a>
-                                </div>
-                                <div className="characteristics__info-li">
-                                    <span className="icon-right-open-big"></span>
-                                    <a href="#">Процесс работы</a>
+                                    <span>{info.construction_time.text}</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* IMAGES Section */}
-                    <div className="characteristics__images">
-                        <div className="characteristics__image">
-                            <h3 className="title-fw800">Фундамент</h3>
-                            <img
-                                src="/img/cardPage/foundation.jpeg"
-                                alt="foundation"
-                            />
-                        </div>
-                        <div className="characteristics__image">
-                            <h3 className="title-fw800">Стиль</h3>
-                            <img
-                                src="/img/cardPage/style.jpeg"
-                                alt="style"
-                            />
-                        </div>
-                        <div className="characteristics__image">
-                            <h3 className="title-fw800">Окна и входные двери</h3>
-                            <img
-                                src="/img/cardPage/windows.jpeg"
-                                alt="win-doors-1"
-                            />
-                            <img
-                                src="/img/cardPage/doors.jpeg"
-                                alt="win-doors-2"
-                            />
-                        </div>
-                        <div className="characteristics__image">
-                            <h3 className="title-fw800">Внутренняя отделка</h3>
-                            <img
-                                src="/img/cardPage/decoration.jpeg"
-                                alt="decoration"
-                            />
-                        </div>
-                        <div className="characteristics__image">
-                            <h3 className="title-fw800">Фасад</h3>
-                            <img
-                                src="/img/cardPage/facade.jpeg"
-                                alt="facade"
-                            />
-                        </div>
-                        <div className="characteristics__image">
-                            <h3 className="title-fw800">Кровля</h3>
-                            <img
-                                src="/img/cardPage/roof.jpeg"
-                                alt="roof"
-                            />
-                        </div>
-                        <div className="characteristics__image">
-                            <h3 className="title-fw800">Электросеть</h3>
-                            <img
-                                src="/img/cardPage/electricity.jpeg"
-                                alt="electricity"
-                            />
-                        </div>
+                        <ul className="characteristics__info-ul">
+                            {info.links.map(({ text, url }, index) => (
+                                <li key={index} className="characteristics__info-li">
+                                    <span className="icon-right-open-big"></span>
+                                    <a href={`#${url}`}>{text}</a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
+                </div>
+
+                {/* Images block */}
+                <div className="characteristics__images">
+                    {images.map(({ title, src, alt, extraSrc, extraAlt, id }) => (
+                        <div className="characteristics__image" key={id} id={id}>
+                            <h3 className="title-fw800">{title}</h3>
+                            <img src={src} alt={alt} />
+                            {extraSrc && <img src={extraSrc} alt={extraAlt} />}
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

@@ -1,63 +1,74 @@
-import './cardPageSlider.scss';
+import { useEffect, useRef } from 'react';
+import { initializeSwiper } from 'utils/slider';
 
-const CardPageSlider = () => {
+import './cardPageSlider.scss';
+import { Link } from 'react-router-dom';
+import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import Spinner from 'components/spinner/Spinner';
+
+const CardPageSlider = ({ slides, loading, error }) => {
+    const thumbsRef = useRef([]);
+    const swiperRef = useRef(null);
+
+    useEffect(() => {
+        if (!slides || slides.length === 0) return;
+
+        swiperRef.current = initializeSwiper('.cardPageSlider__slider', '.cardPageSlider__slider-nav');
+        const swiperInstance = swiperRef.current;
+
+        thumbsRef.current.forEach((thumb, index) => {
+            if (!thumb) return;
+            thumb.onclick = () => {
+                swiperInstance.slideToLoop(index);
+            };
+        });
+
+        swiperInstance.on('slideChange', () => {
+            const realIndex = swiperInstance.realIndex;
+            thumbsRef.current.forEach((thumb, i) => {
+                if (thumb) thumb.classList.toggle('active', i === realIndex);
+            });
+        });
+
+        thumbsRef.current[0]?.classList.add('active');
+
+        return () => {
+            thumbsRef.current.forEach((thumb) => {
+                if (thumb) thumb.onclick = null;
+            });
+            if (swiperInstance) swiperInstance.destroy();
+        };
+    }, [slides]);
+
+    if (loading) return <Spinner />;
+    if (error || !slides || slides.length === 0) return <ErrorMessage message={error} />;
     return (
         <section className="cardPageSlider">
             <div className="container">
-                {/* Navigation */}
                 <div className="page__nav">
                     Главная страница / Жилое / Вариант ST-56 «Barcelona»
                 </div>
 
-                {/* Title and Back Button */}
                 <div className="title-wrapper">
                     <h1 className="cardPageSlider__title title-fw800">
                         Вариант ST-56 «Barcelona»
                     </h1>
-                    <a className="backButton">
+                    <Link className="backButton" to={'/catalog'}>
                         <div className="backButton-circle">
                             <span className="backButton-icon icon-left-open-big"></span>
                         </div>
                         <div className="backButton-text">Вернуться назад</div>
-                    </a>
+                    </Link>
                 </div>
 
-                {/* Slider Wrapper */}
                 <div className="cardPageSlider__wrapper pure-g">
-                    {/* Main Slider */}
                     <div className="swiper cardPageSlider__slider pure-u-1 pure-u-xl-5-6">
                         <div className="swiper-wrapper">
-                            {/* Updated image paths to use /img/ instead of /src/img/ */}
-                            <div className="swiper-slide cardPageSlider__img">
-                                <img
-                                    src="/img/secondPage/catalog/barcelona.jpeg"
-                                    alt="barcelona"
-                                />
-                            </div>
-                            <div className="swiper-slide cardPageSlider__img">
-                                <img
-                                    src="/img/secondPage/catalog/elegant.jpeg"
-                                    alt="elegant"
-                                />
-                            </div>
-                            <div className="swiper-slide cardPageSlider__img">
-                                <img
-                                    src="/img/secondPage/catalog/milano.jpeg"
-                                    alt="milano"
-                                />
-                            </div>
-                            <div className="swiper-slide cardPageSlider__img">
-                                <img
-                                    src="/img/secondPage/catalog/edinburgh.jpeg"
-                                    alt="edinburgh"
-                                />
-                            </div>
-                            <div className="swiper-slide cardPageSlider__img">
-                                <img
-                                    src="/img/secondPage/catalog/classic-plus.jpeg"
-                                    alt="classic-plus"
-                                />
-                            </div>
+                            {slides.map(({ src, alt, id }) => (
+                                <div className="swiper-slide cardPageSlider__img" key={id}>
+                                    <img src={src} alt={alt} />
+                                </div>
+                            ))}
                         </div>
 
                         <div className="cardPageSlider__nav">
@@ -67,57 +78,33 @@ const CardPageSlider = () => {
                         </div>
                     </div>
 
-                    {/* Thumbs Slider */}
-                    <div className="swiper cardPageSlider__thumbs pure-u-1 pure-u-xl-1-6">
-                        {/* Updated image paths to use /img/ instead of /src/img/ */}
-                        <img
-                            className="cardPageSlider__thumbs-thumb"
-                            src="/img/secondPage/catalog/barcelona.jpeg"
-                            alt="barcelona"
-                        />
-                        <img
-                            className="cardPageSlider__thumbs-thumb"
-                            src="/img/secondPage/catalog/elegant.jpeg"
-                            alt="elegant"
-                        />
-                        <img
-                            className="cardPageSlider__thumbs-thumb"
-                            src="/img/secondPage/catalog/milano.jpeg"
-                            alt="milano"
-                        />
-                        <img
-                            className="cardPageSlider__thumbs-thumb"
-                            src="/img/secondPage/catalog/edinburgh.jpeg"
-                            alt="edinburgh"
-                        />
-                        <img
-                            className="cardPageSlider__thumbs-thumb"
-                            src="/img/secondPage/catalog/classic-plus.jpeg"
-                            alt="classic-plus"
-                        />
+                    <div className="cardPageSlider__thumbs pure-u-1 pure-u-xl-1-6">
+                        {slides.map(({ src, alt, id }, i) => (
+                            <img
+                                key={id}
+                                src={src}
+                                alt={alt}
+                                className="cardPageSlider__thumbs-thumb"
+                                ref={(el) => (thumbsRef.current[i] = el)}
+                            />
+                        ))}
                     </div>
                 </div>
 
-                {/* Price Block */}
                 <div className="cardPageSlider__price">
-                    <h3 className="cardPageSlider__price-title title-fw400">
-                        от 1 000 000 грн
-                    </h3>
+                    <h3 className="cardPageSlider__price-title title-fw400">от 1 000 000 грн</h3>
                     <p className="cardPageSlider__price-text">
                         Стоимость строения зависит от комплектации
                     </p>
-                    <button data-openModal className="button-big">
-                        Получить точный расчет
-                    </button>
+                    <button className="button-big">Получить точный расчет</button>
                 </div>
 
-                {/* Consultation Form */}
-                <form data-form className="cardPageSlider__consultation">
+                <form className="cardPageSlider__consultation">
                     <h3 className="cardPageSlider__consultation-title title-fw400">
                         Закажите консультацию, если сомневаетесь
                     </h3>
                     <div className="cardPageSlider__consultation-block">
-                        <div action="#" className="cardPageSlider__consultation-phone">
+                        <div className="cardPageSlider__consultation-phone">
                             <div className="language">
                                 <span></span>
                                 <span></span>
@@ -126,12 +113,10 @@ const CardPageSlider = () => {
                             <input
                                 required
                                 type="tel"
-                                data-phone
                                 name="phone"
                                 placeholder="+38 XXX XXX XX XX"
                             />
                         </div>
-                        <div className="phone-error-message"></div>
                         <button
                             type="submit"
                             className="button-big cardPageSlider__consultation-button"
