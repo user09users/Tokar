@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useContext } from "react";
-import FiltersContext from "Context/filters/FiltersContext";
+import FiltersContext from "context/filters/FiltersContext";
 
 const CategoryBlock = ({ filters }) => {
 

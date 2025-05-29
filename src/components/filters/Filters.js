@@ -2,8 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
 import useTocarService from 'services/services';
-import FiltersContext from 'Context/filters/FiltersContext';
-import SearchPanelContext from 'Context/searchPanel/SearchPanelContext';
+import FiltersContext from 'context/filters/FiltersContext';
+import SearchPanelContext from 'context/searchPanel/SearchPanelContext';
 
 import FilterBlock from './FilterBlock';
 import CategoryBlock from './CategoryBlock';

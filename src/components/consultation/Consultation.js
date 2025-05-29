@@ -1,3 +1,4 @@
+import PhoneForm from 'components/PhoneForm/PhoneForm';
 import './consultation.scss';
 
 const Consultation = () => {
@@ -7,27 +8,12 @@ const Consultation = () => {
                 <div className="consultation__wrapper">
                     <div className="consultation-block">
                         <h3 className="consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
-                        <form data-form className="consultation-block-wrapper">
-                            <div className="consultation-item">
-                                <div className="language">
-                                    <span></span>
-                                    <span></span>
-                                    <span className="icon-down-open"></span>
-                                </div>
-                                <input
-                                    required
-                                    className="contacts__nav-item-input"
-                                    type="tel"
-                                    data-phone
-                                    name="phone"
-                                    placeholder="+38 XXX XXX XX XX"
-                                />
-                            </div>
-                            <div className="phone-error-message"></div>
+                        <div data-form className="consultation-block-wrapper phoneForm">
+                            <PhoneForm />
                             <button type="submit" className="button-big consultation-button">
                                 Заказать
                             </button>
-                        </form>
+                        </div>
                         <div className="consultation-text">
                             Отправляя данные, Вы соглашаетесь на обработку <span>персональных данных</span>
                         </div>

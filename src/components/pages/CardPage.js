@@ -8,6 +8,7 @@ import Processes from 'components/processes/Processes';
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const CardPage = () => {
     const [data, setData] = useState(null);
@@ -26,6 +27,11 @@ const CardPage = () => {
 
     return (
         <>
+            <Helmet>
+                <meta name="description" content={`${data.characteristics[0].info.name} page`} />
+
+                <title>{data.characteristics[0].info.name}</title>
+            </Helmet>
             <CardPageSlider
                 slides={data?.cardPageSlides}
                 loading={loading}

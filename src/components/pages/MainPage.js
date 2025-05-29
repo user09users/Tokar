@@ -1,6 +1,3 @@
-import { useState } from "react";
-
-
 import LastStates from "../lastStates/LastStates";
 import Reason from "../reason/Reason";
 import Materials from "../materials/Materials";
@@ -11,6 +8,7 @@ import CatalogFirstPage from "../catalogFirstPage/CatalogFirstPage";
 
 import PromoMain from "components/promoMain/PromoMain";
 import ErrorBoundary from "components/errorBoundary/ErrorBoundary";
+import { Helmet } from "react-helmet";
 
 const MainPage = () => {
 
@@ -21,6 +19,11 @@ const MainPage = () => {
 
     return (
         <>
+            <Helmet>
+                <meta name="description" content="Web site for Tocar company" />
+
+                <title>Tocar company page</title>
+            </Helmet>
             <PromoMain />
             <ErrorBoundary>
                 <Reason />

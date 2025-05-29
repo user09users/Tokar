@@ -1,18 +1,101 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import useTocarService from 'services/services';
+import Spinner from 'components/spinner/Spinner';
+import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import PhoneForm from 'components/PhoneForm/PhoneForm';
+
 import './contacts.scss';
 
 const Contacts = () => {
+  const { getData, clearError, loading, error } = useTocarService();
+  const [itemsList, setItemsList] = useState([]);
+
+  useEffect(() => {
+    clearError();
+    getData('contacts').then(onItemsLoaded);
+  }, []);
+
+  const onItemsLoaded = (items) => {
+    setItemsList(items);
+  };
+
+  const renderItems = (arr) => {
+    return arr.map((item) => {
+      const { type, icon, alt, items, buttonText, id, socials } = item;
+
+      if (type === 'Мессенджеры') {
+        return (
+          <li className="contacts__item" key={id}>
+            <div className="contacts__item-block">
+              <h4 className="contacts__item-title title-fw400">{type}</h4>
+              <ul className="social__list">
+                {socials?.map(({ name, href, icon, alt }) => (
+                  <li
+                    key={name}
+                    className={`social__list-item social__list-item_big ${name}`}
+                  >
+                    <a href={href} className={name}>
+                      <img src={icon} alt={alt} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a className="contacts__item-button" href="#">
+                {buttonText}
+              </a>
+            </div>
+            <img className="contacts__item-img" src={icon} alt={alt} />
+          </li>
+        );
+      }
+
+      return (
+        <li className="contacts__item" key={id}>
+          <div className="contacts__item-block">
+            <h4 className="contacts__item-title title-fw400">{type}</h4>
+            {items.map(({ label, value }, index) => (
+              <div className="contacts__item-elem" key={index}>
+                <div className="contacts__item-elem-name">{label}</div>
+                <div className="contacts__item-elem-link">{value}</div>
+              </div>
+            ))}
+            <a
+              className="contacts__item-button"
+              href={
+                type === 'Почта'
+                  ? `mailto:${items?.[0]?.value}`
+                  : type === 'Телефоны'
+                    ? `tel:${items?.[0]?.value?.replace(/\D/g, '')}`
+                    : '#'
+              }
+            >
+              {buttonText}
+            </a>
+          </div>
+          <img className="contacts__item-img" src={icon} alt={alt} />
+        </li>
+      );
+    });
+  };
+
+  const spinner = loading ? <Spinner /> : null;
+  const errorMessage = error ? <ErrorMessage /> : null;
+  const content = !(loading || error) ? renderItems(itemsList) : null;
+
   return (
     <section className="contacts">
       <div className="container">
         <div className="page__nav">Главная страница / Контакты</div>
         <div className="title-wrapper">
           <h1 className="contacts__title title-fw700">Контакты, как с нами связаться</h1>
-          <a className="backButton" href="/home">
+          <Link to='/' className="backButton" href="/home">
             <div className="backButton-circle">
               <span className="backButton-icon icon-left-open-big"></span>
             </div>
             <div className="backButton-text">Вернуться назад</div>
-          </a>
+          </Link>
         </div>
 
         <div className="contacts__wrapper">
@@ -20,92 +103,11 @@ const Contacts = () => {
             <h3 className="contacts__contacts-title title-fw400">
               Связаться с компанией TokarMebel вы сможете с помощью одного из этих способов:
             </h3>
+
             <ul className="contacts__contacts-list">
-              {/* Телефоны */}
-              <li className="contacts__item">
-                <div className="contacts__item-block">
-                  <h4 className="contacts__item-title title-fw400">Телефоны:</h4>
-                  <div className="contacts__item-elem">
-                    <div className="contacts__item-elem-name">Отдел продаж:</div>
-                    <div className="contacts__item-elem-link">+38 (098) 188 55 66</div>
-                  </div>
-                  <div className="contacts__item-elem">
-                    <div className="contacts__item-elem-name">Отдел логистики:</div>
-                    <div className="contacts__item-elem-link">+38 (068) 704 37 77</div>
-                  </div>
-                  <a className="contacts__item-button" href="tel:+380981885566">
-                    Позвонить компании
-                  </a>
-                </div>
-                <img className="contacts__item-img" src="/img/icons/contacts/phone.svg" alt="phone" />
-              </li>
-
-              {/* Почта */}
-              <li className="contacts__item">
-                <div className="contacts__item-block">
-                  <h4 className="contacts__item-title title-fw400">Почта:</h4>
-                  <div className="contacts__item-elem">
-                    <div className="contacts__item-elem-name">Отдел продаж:</div>
-                    <div className="contacts__item-elem-link">sales.tokarmebel@gmail.com</div>
-                  </div>
-                  <div className="contacts__item-elem">
-                    <div className="contacts__item-elem-name">Отдел логистики:</div>
-                    <div className="contacts__item-elem-link">logistics.tokarmebel@gmail.com</div>
-                  </div>
-                  <a
-                    className="contacts__item-button"
-                    href="mailto:sales.tokarmebel@gmail.com"
-                  >
-                    Написать на почту (отвечаем ...)
-                  </a>
-                </div>
-                <img className="contacts__item-img" src="/img/icons/contacts/email.svg" alt="email" />
-              </li>
-
-              {/* График работы */}
-              <li className="contacts__item">
-                <div className="contacts__item-block">
-                  <h4 className="contacts__item-title title-fw400">График работы:</h4>
-                  <div className="contacts__item-elem">
-                    <div className="contacts__item-elem-name">Пн. - Пт.:</div>
-                    <div className="contacts__item-elem-link">с 9:00 до 18:00</div>
-                  </div>
-                  <div className="contacts__item-elem">
-                    <div className="contacts__item-elem-name">Сб. - Вс.:</div>
-                    <div className="contacts__item-elem-link">Выходной</div>
-                  </div>
-                  <a className="contacts__item-button" href="https://maps.google.com">
-                    Посетить лично в офис
-                  </a>
-                </div>
-                <img className="contacts__item-img" src="/img/icons/contacts/schedule.svg" alt="schedule" />
-              </li>
-
-              {/* Мессенджеры */}
-              <li className="contacts__item">
-                <div className="contacts__item-block">
-                  <h4 className="contacts__item-title title-fw400">Мессенджеры:</h4>
-                  <ul className="social__list">
-                    <li className="social__list-item social__list-item_big telegram">
-                      <a href="https://t.me/your_telegram" className="telegram">
-                        <img src="/img/icons/social/telegram.svg" alt="telegram" />
-                      </a>
-                    </li>
-                    <li className="social__list-item social__list-item_big whatsapp">
-                      <a href="https://wa.me/your_whatsapp" className="whatsapp">
-                        <img src="/img/icons/social/whatsapp.svg" alt="whatsapp" />
-                      </a>
-                    </li>
-                    <li className="social__list-item social__list-item_big viber">
-                      <a href="viber://chat?number=your_viber" className="viber">
-                        <img src="/img/icons/social/viber.svg" alt="viber" />
-                      </a>
-                    </li>
-                  </ul>
-                  <a className="contacts__item-button" href="#">Написать в соцсети (отвечаем ...)</a>
-                </div>
-                <img className="contacts__item-img" src="/img/icons/contacts/messengers.svg" alt="messengers" />
-              </li>
+              {spinner}
+              {errorMessage}
+              {content}
             </ul>
 
             <div className="contacts__addr">
@@ -115,16 +117,24 @@ const Contacts = () => {
                   Украина, Тячевский район. г. Тячев, ТЦ "Стиль"
                 </span>
               </div>
-              <a href="https://maps.google.com" className="contacts__addr-route">Проложить маршрут</a>
+              <a href="https://maps.google.com" className="contacts__addr-route">
+                Проложить маршрут
+              </a>
             </div>
           </div>
 
           <div className="contacts__nav">
             <form data-form className="contacts__nav-wrapper">
-              <h3 className="contacts__title title-fw400">Закажите консультацию, если сомневаетесь</h3>
+              <h3 className="contacts__title title-fw400">
+                Закажите консультацию, если сомневаетесь
+              </h3>
 
               <div className="contacts__nav-item">
-                <img className="contacts__nav-item-img" src="/img/icons/User.svg" alt="User" />
+                <img
+                  className="contacts__nav-item-img"
+                  src="/icons/User.svg"
+                  alt="User"
+                />
                 <input
                   required
                   className="contacts__nav-item-input"
@@ -153,7 +163,9 @@ const Contacts = () => {
               </div>
               <div className="phone-error-message"></div>
 
-              <button type="submit" className="button-big contacts__nav-button">Получить точный расчет</button>
+              <button type="submit" className="button-big contacts__nav-button">
+                Получить точный расчет
+              </button>
               <div className="contacts__nav-text">
                 Отправляя данные, Вы соглашаетесь на обработку <span>персональных данных</span>
               </div>

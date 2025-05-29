@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useContext } from "react";
-import ModalContext from "Context/modal/ModalContext";
+import ModalContext from "context/modal/ModalContext";
+import { useFormik } from "formik";
 import './modal.scss';
+import PhoneForm from "components/PhoneForm/PhoneForm";
 
 const Modal = () => {
     const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
@@ -52,27 +54,12 @@ const Modal = () => {
                     <h3 className="modal__title title-fw400">
                         Получите ответы на все свои вопросы за 15 минут
                     </h3>
-                    <form action="#" data-form>
-                        <div className="input">
-                            <div className="input-language">
-                                <span></span>
-                                <span></span>
-                                <span className="icon-down-open"></span>
-                            </div>
-                            <input
-                                required
-                                className="input-input"
-                                type="tel"
-                                data-phone
-                                name="phone"
-                                placeholder="+38 XXX XXX XX XX"
-                            />
-                        </div>
-                        <div className="phone-error-message"></div>
+                    <div data-form>
+                        <PhoneForm />
                         <button type="submit" className="button-big modal__button">
                             Заказать
                         </button>
-                    </form>
+                    </div>
                     <div className="modal__text">
                         Отправляя данные, Вы соглашаетесь на обработку{" "}
                         <span>персональных данных</span>

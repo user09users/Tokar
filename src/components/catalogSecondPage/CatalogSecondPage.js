@@ -1,36 +1,37 @@
-import { useEffect, useState, useRef, useMemo } from 'react';
+import React, { useEffect, useState, useRef, useMemo, useContext } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 
 import useTocarService from 'services/services';
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
-import { useContext } from "react";
-import FiltersContext from "Context/filters/FiltersContext";
+import FiltersContext from "context/filters/FiltersContext";
 
 import './catalogSecondPage.scss';
 
 const CatalogSecondPage = () => {
     const { inputValue, activeCategories, sort, area, price } = useContext(FiltersContext);
     const [itemsEnded, setItemsEnded] = useState(false);
-    const [itemsList, setItemsList] = useState([]); // all items
+    const [itemsList, setItemsList] = useState([]); // all items loaded so far
     const [newItemsLoading, setNewItemsLoading] = useState(false);
     const [start, setStart] = useState(0);
-    const hasFetched = useRef(false);/* 
-    const [currentSort, setCurrentSort] = useState(null); */
+
+    const hasFetched = useRef(false);
 
     const { loading, error, getCatalog, clearError } = useTocarService();
 
+    // Fetch first batch of items once on mount
     useEffect(() => {
         if (hasFetched.current) return;
         hasFetched.current = true;
-        onRequest('catalog', start);
+        onRequest('catalog', 0);
     }, []);
 
-    const onRequest = (url, start) => {
+    const onRequest = (url, startParam) => {
         clearError();
         setNewItemsLoading(true);
 
-        getCatalog(url, start, 4)
+        getCatalog(url, startParam, 4)
             .then(newItems => {
                 setItemsList(prev => [...prev, ...newItems]);
                 setNewItemsLoading(false);
@@ -39,11 +40,11 @@ const CatalogSecondPage = () => {
             });
     };
 
-    // ✨ фильтруем список на лету, не мутируя оригинальный itemsList
+    // Filter and sort items without mutating original list
     const filteredItems = useMemo(() => {
-        let filtered = itemsList.filter(item => {
+        return itemsList.filter(item => {
             const matchesSearch = inputValue
-                ? item.subtitle.toLowerCase().includes(inputValue.toLowerCase())
+                ? item.subtitle?.toLowerCase().includes(inputValue.toLowerCase())
                 : true;
 
             const matchesCategory = activeCategories.length > 0
@@ -53,61 +54,54 @@ const CatalogSecondPage = () => {
                     .some(cat => activeCategories.includes(cat))
                 : true;
 
-            const matchesArea = item.area >= area;     // filter by area
-            const matchesPrice = item.price >= price;  // filter by price
+            // Assuming area and price filter means minimum thresholds
+            const matchesArea = typeof area === 'number' ? item.area >= area : true;
+            const matchesPrice = typeof price === 'number' ? item.price >= price : true;
 
             return matchesSearch && matchesCategory && matchesArea && matchesPrice;
+        }).sort((a, b) => {
+            if (!sort) return 0;
+            if (sort === 'Алфавиту') return a.subtitle.localeCompare(b.subtitle);
+            if (sort === 'Цене') return a.price - b.price;
+            if (sort === 'Популярности') return b.popularity - a.popularity;
+            return 0;
         });
-
-        // sort logic unchanged
-        if (sort) {
-            filtered = [...filtered].sort((a, b) => {
-                if (sort === 'Алфавиту') {
-                    return a.subtitle.localeCompare(b.subtitle);
-                } else if (sort === 'Цене') {
-                    return a.price - b.price;
-                } else if (sort === 'Популярности') {
-                    return b.popularity - a.popularity;
-                }
-                return 0;
-            });
-        }
-
-        return filtered;
     }, [inputValue, itemsList, activeCategories, sort, area, price]);
 
-
+    // Render each item wrapped in CSSTransition for fade animation
     const renderItems = (arr) => (
         <div className="catalogSecondPage__wrapper">
             {arr.map(item => {
                 const { title, subtitle, category, price, popularity, area, dimensions, image, id } = item;
+
                 return (
-                    <div
-                        className="catalogSecondPage__item"
-                        key={id}
-                        data-popularity={popularity}
-                        data-price={price}
-                        data-category={category}
-                        data-area={area}
-                        data-dimensions={dimensions}
-                    >
-                        <img className="catalogSecondPage__item-img" src={image} alt={subtitle} />
-                        <div className="catalogSecondPage__item-content">
-                            <h3 className="catalogSecondPage__item-title">{title} <span>{subtitle}</span></h3>
-                            <div className="catalogSecondPage__item-content-wrapper">
-                                <div className="catalogSecondPage__item-size">
-                                    <div><img src="/icons/sizes/area.svg" alt="area" /></div>
-                                    <span>{dimensions}</span>
+                    <CSSTransition key={id} classNames="fade" timeout={3000}>
+                        <div
+                            className="catalogSecondPage__item"
+                            data-popularity={popularity}
+                            data-price={price}
+                            data-category={category}
+                            data-area={area}
+                            data-dimensions={dimensions}
+                        >
+                            <img className="catalogSecondPage__item-img" src={image} alt={subtitle} />
+                            <div className="catalogSecondPage__item-content">
+                                <h3 className="catalogSecondPage__item-title">{title} <span>{subtitle}</span></h3>
+                                <div className="catalogSecondPage__item-content-wrapper">
+                                    <div className="catalogSecondPage__item-size">
+                                        <div><img src="/icons/sizes/area.svg" alt="area" /></div>
+                                        <span>{dimensions}</span>
+                                    </div>
+                                    <div className="catalogSecondPage__item-size">
+                                        <div><img src="/icons/sizes/length.svg" alt="length" /></div>
+                                        <span>{area} м²</span>
+                                    </div>
+                                    <Link to={`/catalog/${id}`} className="button-item catalogSecondPage__item-btn">Ознакомиться</Link>
+                                    <div className="catalogSecondPage__item-price">{price} грн</div>
                                 </div>
-                                <div className="catalogSecondPage__item-size">
-                                    <div><img src="/icons/sizes/length.svg" alt="length" /></div>
-                                    <span>{area} м2</span>
-                                </div>
-                                <Link to={`/catalog/${id}`} className="button-item catalogSecondPage__item-btn">Ознакомиться</Link>
-                                <div className="catalogSecondPage__item-price">{price} грн</div>
                             </div>
                         </div>
-                    </div>
+                    </CSSTransition>
                 );
             })}
         </div>
@@ -121,26 +115,38 @@ const CatalogSecondPage = () => {
             <div className="container">
                 {errorMessage}
                 {spinner}
-                {renderItems(filteredItems)}
+                <TransitionGroup>
+                    {renderItems(filteredItems)}
+                </TransitionGroup>
+
                 <div className="catalogSecondPage__create">
                     <div className="catalogSecondPage__create-info">
-                        <h3 className="catalogSecondPage__create-title title-fw400">Нет подходящего проекта?
-                        </h3>
+                        <h3 className="catalogSecondPage__create-title title-fw400">Нет подходящего проекта?</h3>
                         <p className="catalogSecondPage__create-text tex-fw300">
                             Мы разработаем проект индивидуально под ваш запрос с помощью 3D-макета
                         </p>
-                        <a href="#" className="button-big catalogSecondPage__item-btn">Разработать проект</a>
+                        {/* Prefer button for accessibility */}
+                        <button className="button-big catalogSecondPage__item-btn" onClick={() => alert('Создать проект')}>
+                            Разработать проект
+                        </button>
                     </div>
                     <div className="catalogSecondPage__create-block">
-                        <img className="catalogSecondPage__create-img" src="/img/secondPage/create-man.jpeg"
-                            alt="create-man" />
+                        <img
+                            className="catalogSecondPage__create-img"
+                            src="/img/secondPage/create-man.jpeg"
+                            alt="create-man"
+                        />
                     </div>
                 </div>
-                {!itemsEnded && !loading && (
 
-                    <button data-button-more className="button-more"
+                {!itemsEnded && !loading && (
+                    <button
+                        data-button-more
+                        className="button-more"
                         disabled={newItemsLoading}
-                        onClick={() => onRequest('catalog', start)}>
+                        onClick={() => onRequest('catalog', start)}
+                        aria-busy={newItemsLoading}
+                    >
                         <span className="icon-arrows-cw"></span>
                         <div>Показать еще больше</div>
                     </button>

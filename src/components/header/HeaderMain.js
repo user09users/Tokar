@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ModalContext from 'Context/modal/ModalContext';
+import ModalContext from 'context/modal/ModalContext';
 import Menu from 'components/menu/Menu';
 
 import './header.scss';

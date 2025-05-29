@@ -2,7 +2,7 @@ import ModalProvider from "./modal/ModalProvider";
 import FiltersProvider from "./filters/FiltersProvider";
 import SearchPanelProvider from "./searchPanel/SearchPanelProvider";
 
-const AppContextProvider = ({ children }) => {
+const AppContextsProvider = ({ children }) => {
     return (
         <ModalProvider>
             <FiltersProvider>
@@ -14,4 +14,4 @@ const AppContextProvider = ({ children }) => {
     );
 };
 
-export default AppContextProvider;
+export default AppContextsProvider;

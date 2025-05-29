@@ -6,7 +6,7 @@ import Footer from "../footer/Footer";
 import HeaderMain from "components/header/HeaderMain";
 import Spinner from "components/spinner/Spinner";
 import Modal from "components/modal/Modal";
-import AppContextProvider from "Context/AppContextProvider ";
+import AppContextsProvider from "context/AppContextsProvider";
 
 
 import "../../sass/libs/modern-normalize.min.css";
@@ -33,7 +33,7 @@ const App = () => {
   /*useNavigate */
 
   return (
-    <AppContextProvider>
+    <AppContextsProvider>
       <Router>
         <div className="App">
           <header>
@@ -58,77 +58,8 @@ const App = () => {
           <Modal />
         </div>
       </Router>
-    </AppContextProvider >
+    </AppContextsProvider >
   );
 }
 
 export default App;
-
-
-/*  {
-      "id": "d8e2",
-      "title": "Характеристики",
-      "intro": {
-        "technologies": "Дом из газоблока и кирпича",
-        "constructionTime": "30 дней"
-      },
-      "description": [
-        {
-          "label": "Стиль",
-          "value": "Финский"
-        },
-        {
-          "label": "Фундамент",
-          "value": "Свайно-винтовой"
-        },
-        {
-          "label": "Утепление стен",
-          "value": "RockWool, 150 мм"
-        },
-        {
-          "label": "Кровля",
-          "value": "GrandLine"
-        },
-        {
-          "label": "Окна",
-          "value": "Двойной стеклопакет Rehau"
-        },
-        {
-          "label": "Отделка фасада",
-          "value": "Имитация бруса"
-        },
-        {
-          "label": "Наружная покраска",
-          "value": "Tikkurila"
-        },
-        {
-          "label": "Чистовая отделка",
-          "value": "Имитация бруса"
-        },
-        {
-          "label": "Отделка парной",
-          "value": "Осина"
-        },
-        {
-          "label": "Печь",
-          "value": "Термофор Витрувия"
-        }
-      ],
-      "features": [
-        {
-          "icon": "/icons/sizes/length-big.svg",
-          "alt": "length",
-          "text": "20м²"
-        },
-        {
-          "icon": "/icons/sizes/floors-big.svg",
-          "alt": "floors",
-          "text": "2 этажа"
-        },
-        {
-          "icon": "/icons/sizes/area-big.svg",
-          "alt": "area",
-          "text": "4x5м"
-        }
-      ]
-    } */

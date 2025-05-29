@@ -1,7 +1,7 @@
 
 import './searchPanel.scss';
 import { useContext } from 'react';
-import SearchPanelContext from 'Context/searchPanel/SearchPanelContext';
+import SearchPanelContext from 'context/searchPanel/SearchPanelContext';
 
 const SearchPanel = () => {
 

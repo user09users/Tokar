@@ -2,8 +2,9 @@ import Filters from "../filters/Filters";
 import CatalogSecondPage from "../catalogSecondPage/CatalogSecondPage";
 import SearchPanel from '../searchPanel/SearchPanel';
 import { useContext } from "react";
-import FiltersContext from "Context/filters/FiltersContext";
-import SearchPanelContext from "Context/searchPanel/SearchPanelContext";
+import FiltersContext from "context/filters/FiltersContext";
+import SearchPanelContext from "context/searchPanel/SearchPanelContext";
+import { Helmet } from "react-helmet";
 
 const CatalogPage = () => {
 
@@ -13,6 +14,11 @@ const CatalogPage = () => {
 
      return (
           <>
+               <Helmet>
+                    <meta name="description" content="Page with catalog of houses" />
+
+                    <title>Catalog</title>
+               </Helmet>
                <div className="container" >
                     <div className="page__nav" style={{ marginTop: 30 }}>Главная страница / Жилое </div>
                     <h1 className="catalogSecondPage__title title-fw800">Каталог жилых строений</h1>
