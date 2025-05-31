@@ -3,7 +3,7 @@
 @use "../sass/ui/text.scss";
 @use "/src/sass/variables.scss" as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilroy:wght@300..900&display=swap');
 
 h1,
 h2,
@@ -67,6 +67,20 @@ a {
     font-weight: 400;
     line-height: 17px;
     text-align: center;
+}
+
+.policy-text {
+    margin-top: 10px;
+    font-weight: 300;
+    text-align: center;
+    cursor: pointer;
+
+    span {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 20px;
+        color: $main-color-dark;
+    }
 }
 
 .language {

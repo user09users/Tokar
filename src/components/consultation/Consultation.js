@@ -9,13 +9,13 @@ const Consultation = () => {
                     <div className="consultation-block">
                         <h3 className="consultation-title title-fw400">Закажите консультацию, если сомневаетесь</h3>
                         <div data-form className="consultation-block-wrapper phoneForm">
-                            <PhoneForm />
-                            <button type="submit" className="button-big consultation-button">
-                                Заказать
-                            </button>
-                        </div>
-                        <div className="consultation-text">
-                            Отправляя данные, Вы соглашаетесь на обработку <span>персональных данных</span>
+                            <PhoneForm
+                                btnClass={'button-big consultation-button'}
+                                extraFieldClass={'consultation-item'}
+                                extraFormClass='consultation-items'
+                                policyClass={'policy-text'}
+                            />
+
                         </div>
                     </div>
                     <img

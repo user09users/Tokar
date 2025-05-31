@@ -1,25 +1,23 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import useTocarService from 'services/TocarService';
+import setContent from 'utils/setContent';
 import PhoneForm from 'components/PhoneForm/PhoneForm';
 
 import './contacts.scss';
 
 const Contacts = () => {
-  const { getData, clearError, loading, error } = useTocarService();
+
+  const { getData, clearError, process, setProcess } = useTocarService();
   const [itemsList, setItemsList] = useState([]);
 
   useEffect(() => {
     clearError();
-    getData('contacts').then(onItemsLoaded);
-  }, []);
-
-  const onItemsLoaded = (items) => {
-    setItemsList(items);
-  };
+    getData('contacts').then(res => {
+      setItemsList(res);
+    })
+      .then(() => setProcess('confirmed'));
+  }, [getData, clearError]);
 
   const renderItems = (arr) => {
     return arr.map((item) => {
@@ -80,10 +78,6 @@ const Contacts = () => {
     });
   };
 
-  const spinner = loading ? <Spinner /> : null;
-  const errorMessage = error ? <ErrorMessage /> : null;
-  const content = !(loading || error) ? renderItems(itemsList) : null;
-
   return (
     <section className="contacts">
       <div className="container">
@@ -105,9 +99,7 @@ const Contacts = () => {
             </h3>
 
             <ul className="contacts__contacts-list">
-              {spinner}
-              {errorMessage}
-              {content}
+              {setContent(process, renderItems, itemsList)}
             </ul>
 
             <div className="contacts__addr">
@@ -124,52 +116,19 @@ const Contacts = () => {
           </div>
 
           <div className="contacts__nav">
-            <form data-form className="contacts__nav-wrapper">
+            <div className='contacts__nav-wrapper'>
               <h3 className="contacts__title title-fw400">
                 Закажите консультацию, если сомневаетесь
               </h3>
 
-              <div className="contacts__nav-item">
-                <img
-                  className="contacts__nav-item-img"
-                  src="/icons/User.svg"
-                  alt="User"
-                />
-                <input
-                  required
-                  className="contacts__nav-item-input"
-                  type="text"
-                  name="name"
-                  data-name
-                  placeholder="Введите имя"
-                />
-              </div>
-              <div className="name-error-message"></div>
+              <PhoneForm
+                btnClass={'button-big contacts__nav-button'}
+                extraFormClass='contacts__items'
+                extraFieldClass=''
+                extraField={true}
+                policyClass={'policy-text'} />
+            </div>
 
-              <div className="input">
-                <div className="input-language">
-                  <span></span>
-                  <span></span>
-                  <span className="icon-down-open"></span>
-                </div>
-                <input
-                  required
-                  className="input-input"
-                  type="tel"
-                  data-phone
-                  name="phone"
-                  placeholder="+38 XXX XXX XX XX"
-                />
-              </div>
-              <div className="phone-error-message"></div>
-
-              <button type="submit" className="button-big contacts__nav-button">
-                Получить точный расчет
-              </button>
-              <div className="contacts__nav-text">
-                Отправляя данные, Вы соглашаетесь на обработку <span>персональных данных</span>
-              </div>
-            </form>
 
             <iframe
               className="contacts__nav-map"

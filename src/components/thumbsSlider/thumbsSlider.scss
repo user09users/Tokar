@@ -1,14 +1,9 @@
 @use "/src/sass/variables.scss" as *;
 
-.cardPageSlider {
+.thumbsSlider {
     background-color: $white;
     padding-top: 13px;
 
-    &__title {
-        margin-top: 15px;
-
-        text-align: center;
-    }
 
     &__wrapper {
         margin-top: 20px;
@@ -24,6 +19,7 @@
         left: 50%;
         transform: translateX(-50%);
         z-index: 10;
+        width: 200px;
 
         .swiper-pagination-bullet {
             background-color: $white;
@@ -31,10 +27,7 @@
         }
     }
 
-    .swiper-pagination {
-        position: relative;
-        bottom: 0;
-    }
+
 
     &__slider {
         width: 340px;
@@ -76,73 +69,10 @@
         }
     }
 
-    &__price {
-        margin: 30px auto 0 auto;
-        width: 300px;
-        padding: 30px;
-        min-height: 230px;
-        border-radius: 8px;
-        box-shadow: 0px 0px 30px 0px rgba(43, 42, 40, 0.08);
-        background-color: $white;
-
-        &-text {
-            margin-top: 9px;
-            text-align: center;
-        }
-
-        button {
-            margin-top: 22px;
-            cursor: pointer;
-        }
-    }
-
-    &__consultation {
-        margin: 40px auto 0 auto;
-        width: 300px;
-
-        &-title {
-            text-align: center;
-        }
-
-        &-block {
-            margin-top: 15px;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        &-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        &-phone {
-            display: flex;
-            align-items: center;
-            border: 1px solid $pale;
-            border-radius: 4px;
-            height: 58px;
-            gap: 20px;
-            padding: 12px;
-
-            input {
-                border: none;
-                width: 160px;
-                height: 17px;
-            }
-        }
-
-        &-button {
-            margin-top: 10px;
-            width: 300px;
-        }
-    }
-
 }
 
 @media screen and (min-width: 768px) {
-    .cardPageSlider {
+    .thumbsSlider {
 
         &__slider {
             width: 400px;
@@ -161,13 +91,12 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .cardPageSlider {
-        padding-top: 60px;
+    .removePagination {
+        display: none;
+    }
 
-        &__title {
-            margin-top: 30px;
-            text-align: left;
-        }
+    .thumbsSlider {
+        padding-top: 60px;
 
         &__wrapper {
             margin-top: 40px;
@@ -177,48 +106,6 @@
             left: 80%;
 
             transform: translateX(-50%);
-        }
-
-        &__price {
-            width: 370px;
-            height: 290px;
-            padding: 45px;
-            position: absolute;
-            top: 550px;
-            z-index: 2;
-        }
-
-        &__consultation {
-            padding-left: 20%;
-            align-items: end;
-            width: 100%;
-            min-height: 120px;
-
-            &-title {
-                text-align: right;
-                margin-right: 107px;
-            }
-
-            &-block {
-                align-items: end;
-            }
-
-
-            &-phone {
-                width: 440px;
-                height: 58px;
-            }
-
-            &-button {
-                margin-top: 0;
-                width: 280px;
-                height: 58px;
-            }
-
-            &-items {
-                gap: 20px;
-                flex-direction: row;
-            }
         }
 
         &__slider {
@@ -246,7 +133,7 @@
 }
 
 @media screen and (min-width: 1920px) {
-    .cardPageSlider {
+    .thumbsSlider {
         &__slider {
             width: 930px;
         }

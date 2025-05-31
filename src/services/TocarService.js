@@ -2,10 +2,10 @@ import { useCallback } from "react";
 import { useHttp } from "../hooks/http.hook";
 
 const useTocarService = () => {
-    const { loading, error, request, clearError } = useHttp();
+    const { request, clearError, process, setProcess } = useHttp();
 
     const postData = useCallback((data) => {
-        request(`http://localhost:5000/requests`, 'POST', data);
+        return request(`http://localhost:5000/requests`, 'POST', data);
     }, [request]);
 
     const getData = useCallback(async (url) => {
@@ -23,15 +23,21 @@ const useTocarService = () => {
         return res[0]; // json-server returns array for query
     }, [request]);
 
+    const getCasesHouseInfo = useCallback(async (id) => {
+        const res = await request(`http://localhost:5000/casesCardsInfo?id=${id}`);
+        return res[0]; // json-server returns array for query
+    }, [request]);
+
 
     return {
+        process,
+        setProcess,
         postData,
         getData,
         getCatalog,
-        loading,
-        error,
         clearError,
-        getHouseInfo
+        getHouseInfo,
+        getCasesHouseInfo
     };
 };
 

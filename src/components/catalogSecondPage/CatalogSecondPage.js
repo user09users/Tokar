@@ -1,48 +1,24 @@
-import React, { useEffect, useState, useRef, useMemo, useContext } from 'react';
+import React, { useMemo, useContext } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import setCatalog from 'utils/setCatalog';
 import FiltersContext from "context/filters/FiltersContext";
+import { useCatalogData } from 'hooks/catalogData.hook';
 
 import './catalogSecondPage.scss';
 
 const CatalogSecondPage = () => {
     const { inputValue, activeCategories, sort, area, price } = useContext(FiltersContext);
-    const [itemsEnded, setItemsEnded] = useState(false);
-    const [itemsList, setItemsList] = useState([]); // all items loaded so far
-    const [newItemsLoading, setNewItemsLoading] = useState(false);
-    const [start, setStart] = useState(0);
-
-    const hasFetched = useRef(false);
-
-    const { loading, error, getCatalog, clearError } = useTocarService();
-
-    // Fetch first batch of items once on mount
-    useEffect(() => {
-        if (hasFetched.current) return;
-        hasFetched.current = true;
-        onRequest('catalog', 0);
-    }, []);
-
-    const onRequest = (url, startParam) => {
-        clearError();
-        setNewItemsLoading(true);
-
-        getCatalog(url, startParam, 4)
-            .then(newItems => {
-                setItemsList(prev => [...prev, ...newItems]);
-                setNewItemsLoading(false);
-                setStart(prev => prev + 4);
-                setItemsEnded(newItems.length < 4);
-            });
-    };
+    const { dataList, dataEnded, newDataLoading, onRequest, process } = useCatalogData({
+        initialOffset: 0,
+        catalogBaseName: 'catalog',
+        limit: 4
+    });
 
     // Filter and sort items without mutating original list
     const filteredItems = useMemo(() => {
-        return itemsList.filter(item => {
+        return dataList.filter(item => {
             const matchesSearch = inputValue
                 ? item.subtitle?.toLowerCase().includes(inputValue.toLowerCase())
                 : true;
@@ -54,7 +30,6 @@ const CatalogSecondPage = () => {
                     .some(cat => activeCategories.includes(cat))
                 : true;
 
-            // Assuming area and price filter means minimum thresholds
             const matchesArea = typeof area === 'number' ? item.area >= area : true;
             const matchesPrice = typeof price === 'number' ? item.price >= price : true;
 
@@ -66,24 +41,24 @@ const CatalogSecondPage = () => {
             if (sort === 'Популярности') return b.popularity - a.popularity;
             return 0;
         });
-    }, [inputValue, itemsList, activeCategories, sort, area, price]);
+    }, [inputValue, dataList, activeCategories, sort, area, price]);
 
     // Render each item wrapped in CSSTransition for fade animation
-    const renderItems = (arr) => (
-        <div className="catalogSecondPage__wrapper">
-            {arr.map(item => {
-                const { title, subtitle, category, price, popularity, area, dimensions, image, id } = item;
+    const renderItems = (arr) => {
+        const items = arr.map(item => {
+            const { title, subtitle, category, price, popularity, area, dimensions, image, id } = item;
 
-                return (
-                    <CSSTransition key={id} classNames="fade" timeout={3000}>
-                        <div
-                            className="catalogSecondPage__item"
-                            data-popularity={popularity}
-                            data-price={price}
-                            data-category={category}
-                            data-area={area}
-                            data-dimensions={dimensions}
-                        >
+            return (
+                <CSSTransition key={id} classNames="fade" timeout={300}>
+                    <div
+                        className="catalogSecondPage__item"
+                        data-popularity={popularity}
+                        data-price={price}
+                        data-category={category}
+                        data-area={area}
+                        data-dimensions={dimensions}
+                    >
+                        <div className="catalogSecondPage__item-inner">
                             <img className="catalogSecondPage__item-img" src={image} alt={subtitle} />
                             <div className="catalogSecondPage__item-content">
                                 <h3 className="catalogSecondPage__item-title">{title} <span>{subtitle}</span></h3>
@@ -101,23 +76,23 @@ const CatalogSecondPage = () => {
                                 </div>
                             </div>
                         </div>
-                    </CSSTransition>
-                );
-            })}
-        </div>
-    );
+                    </div>
+                </CSSTransition>
+            );
+        })
+        return (
+            <TransitionGroup className="catalogSecondPage__wrapper">
+                {items}
+            </TransitionGroup>
+        )
+    };
 
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading && !newItemsLoading ? <Spinner /> : null;
 
     return (
         <section className="catalogSecondPage">
             <div className="container">
-                {errorMessage}
-                {spinner}
-                <TransitionGroup>
-                    {renderItems(filteredItems)}
-                </TransitionGroup>
+
+                {setCatalog(process, renderItems, filteredItems, newDataLoading)}
 
                 <div className="catalogSecondPage__create">
                     <div className="catalogSecondPage__create-info">
@@ -125,8 +100,7 @@ const CatalogSecondPage = () => {
                         <p className="catalogSecondPage__create-text tex-fw300">
                             Мы разработаем проект индивидуально под ваш запрос с помощью 3D-макета
                         </p>
-                        {/* Prefer button for accessibility */}
-                        <button className="button-big catalogSecondPage__item-btn" onClick={() => alert('Создать проект')}>
+                        <button className="button-big catalogSecondPage__create-btn" onClick={() => alert('Создать проект')}>
                             Разработать проект
                         </button>
                     </div>
@@ -139,13 +113,13 @@ const CatalogSecondPage = () => {
                     </div>
                 </div>
 
-                {!itemsEnded && !loading && (
+                {!dataEnded && (
                     <button
                         data-button-more
                         className="button-more"
-                        disabled={newItemsLoading}
-                        onClick={() => onRequest('catalog', start)}
-                        aria-busy={newItemsLoading}
+                        disabled={newDataLoading}
+                        onClick={() => onRequest()}
+                        aria-busy={newDataLoading}
                     >
                         <span className="icon-arrows-cw"></span>
                         <div>Показать еще больше</div>

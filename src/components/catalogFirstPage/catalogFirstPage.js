@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import useTocarService from 'services/TocarService';
 
 import './catalogFirstPage.scss';
+import setContent from 'utils/setContent';
 
 const CatalogFirstPage = () => {
 
     const [itemsList, setItemsList] = useState([]);
 
-    const { loading, error, getData } = useTocarService();
+    const { process, setProcess, getData } = useTocarService();
 
     useEffect(() => {
         getData('catalogFirstPage')
-            .then(onItemsLoaded)
+            .then(res => { setItemsList(res) })
+            .then(() => setProcess('confirmed'));
     }, []);
-
-    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -51,22 +49,12 @@ const CatalogFirstPage = () => {
         )
     }
 
-
-    const items = renderItems(itemsList);
-
-    const spinner = loading ? <Spinner /> : null;
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const content = !(loading || error) ? items : null;
-
     return (
         <section className="catalogFirstPage">
             <img src="/img/catalog-gazebo.jpeg" alt="gazebo" className="catalogFirstPage__bg" />
             <div className="container">
                 <h2 className="title-fw700">Каталог проектов</h2>
-
-                {spinner}
-                {errorMessage}
-                {content}
+                {setContent(process, renderItems, itemsList)}
             </div>
         </section>
     );

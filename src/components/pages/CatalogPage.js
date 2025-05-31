@@ -1,16 +1,18 @@
+import { useContext } from "react";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+
 import Filters from "../filters/Filters";
 import CatalogSecondPage from "../catalogSecondPage/CatalogSecondPage";
 import SearchPanel from '../searchPanel/SearchPanel';
-import { useContext } from "react";
 import FiltersContext from "context/filters/FiltersContext";
 import SearchPanelContext from "context/searchPanel/SearchPanelContext";
-import { Helmet } from "react-helmet";
 
 const CatalogPage = () => {
 
      const { inputValue, setInputValue } = useContext(FiltersContext);
 
-     const { searchBtnActive, setSearchBtnActive } = useContext(SearchPanelContext);
+     const { searchBtnActive } = useContext(SearchPanelContext);
 
      return (
           <>
@@ -20,6 +22,12 @@ const CatalogPage = () => {
                     <title>Catalog</title>
                </Helmet>
                <div className="container" >
+                    <Link className="backButton" to="/">
+                         <div className="backButton-circle">
+                              <span className="backButton-icon icon-left-open-big"></span>
+                         </div>
+                         <div className="backButton-text">Вернуться назад</div>
+                    </Link>
                     <div className="page__nav" style={{ marginTop: 30 }}>Главная страница / Жилое </div>
                     <h1 className="catalogSecondPage__title title-fw800">Каталог жилых строений</h1>
                     <div className={`catalogSecondPage__search ${searchBtnActive ? 'active' : ''}`}>

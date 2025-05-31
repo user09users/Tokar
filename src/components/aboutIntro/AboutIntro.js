@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './aboutIntro.scss';
 
 const AboutIntro = () => {
@@ -8,12 +10,12 @@ const AboutIntro = () => {
 
                 <div className="title-wrapper">
                     <h1 className="aboutIntro__title title-fw800">О компании</h1>
-                    <a className="backButton">
+                    <Link to={'/'} className="backButton">
                         <div className="backButton-circle">
                             <span className="backButton-icon icon-left-open-big"></span>
                         </div>
                         <div className="backButton-text">Вернуться назад</div>
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="aboutIntro__block">

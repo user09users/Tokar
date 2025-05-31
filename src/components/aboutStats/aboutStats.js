@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import useTocarService from 'services/TocarService';
 
 import './aboutStats.scss';
+import setContent from 'utils/setContent';
 
 const AboutStats = () => {
 
     const [itemsList, setItemsList] = useState([]);
 
-    const { loading, error, getData } = useTocarService();
+    const { getData, process, setProcess } = useTocarService();
 
     useEffect(() => {
         getData('aboutStats')
-            .then(onItemsLoaded)
+            .then(res => setItemsList(res))
+            .then(() => setProcess('confirmed'));
     }, []);
-
-    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -39,16 +37,10 @@ const AboutStats = () => {
             </div>
         )
     }
-    const items = renderItems(itemsList);
-
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? items : null;
 
     return (
 
         <section className="about">
-            {errorMessage}
             <div className="container">
                 <h2 className="title-fw800">О компании TokarMebel</h2>
                 <div className="about__wrapper">
@@ -68,9 +60,7 @@ const AboutStats = () => {
                     </div>
                 </div>
 
-                {errorMessage}
-                {spinner}
-                {content}
+                {setContent(process, renderItems, itemsList)}
 
                 <div className="button-mix materials__buttons about__btns">
                     <a href="#" className="button-big">Перейти в каталог домов</a>

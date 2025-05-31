@@ -1,10 +1,7 @@
 import React from 'react';
 import './characteristics.scss';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
-const Characteristics = ({ characteristics, loading, error }) => {
-    if (loading) return <Spinner />;
-    if (error || !characteristics) return <ErrorMessage message={error} />;
+
+const Characteristics = ({ characteristics }) => {
 
     const { sizes, info, images } = characteristics;
 

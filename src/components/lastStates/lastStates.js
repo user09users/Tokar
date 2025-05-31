@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import useTocarService from 'services/TocarService';
+import setContent from 'utils/setContent';
 import { initializeSwiper } from 'utils/slider';
 
 import './lastStates.scss';
@@ -11,9 +10,9 @@ const LastStates = () => {
     const [swiperInitialized, setSwiperInitialized] = useState(false);
     const [itemsList, setItemsList] = useState([]);
 
-    const { loading, error, getData } = useTocarService();
+    const { process, setProcess, getData } = useTocarService();
     useEffect(() => {
-        if (!loading && !error && !swiperInitialized && itemsList.length > 0) {
+        if (process === 'confirmed' && !swiperInitialized) {
             initializeSwiper(
                 '.lastStates__slider',
                 '.lastStates__slider-nav',
@@ -35,11 +34,13 @@ const LastStates = () => {
             );
             setSwiperInitialized(true);
         }
-    }, [itemsList, loading, error, swiperInitialized]);
+    }, [itemsList, swiperInitialized]);
 
-    useEffect(() => { getData('lastStates').then(onItemsLoaded) }, []);
-
-    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
+    useEffect(() => {
+        getData('lastStates')
+            .then(res => setItemsList(res))
+            .then(() => setProcess('confirmed'));
+    }, []);
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -69,12 +70,6 @@ const LastStates = () => {
         )
     }
 
-    const items = renderItems(itemsList);
-
-    const spinner = loading ? <Spinner /> : null;
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const content = !(loading || error) ? items : null;
-
     return (
         <section className="lastStates">
             <div className="container">
@@ -87,9 +82,7 @@ const LastStates = () => {
                             <div className="swiper-pagination lastStates__slider-nav"></div>
                             <span className="lastStates__slider-next icon-right-big"></span>
                         </div>
-                        {spinner}
-                        {errorMessage}
-                        {content}
+                        {setContent(process, renderItems, itemsList)}
                     </div>
                 </div>
             </div>

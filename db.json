@@ -217,186 +217,216 @@
       ]
     }
   ],
-  "casesCards": [
+  "casesCardsInfo": [
     {
-      "id": "d8e2",
-      "title": "Характеристики",
-      "intro": {
-        "technologies": "Дом из газоблока и кирпича",
-        "constructionTime": "30 дней"
-      },
-      "description": [
+      "id": "03b5",
+      "casesCardThumbs": [
         {
-          "label": "Стиль",
-          "value": "Финский"
+          "src": "/img/secondPage/catalog/barcelona.jpeg",
+          "alt": "barcelona",
+          "id": "0edc"
         },
         {
-          "label": "Фундамент",
-          "value": "Свайно-винтовой"
+          "src": "/img/secondPage/catalog/elegant.jpeg",
+          "alt": "elegant",
+          "id": "fc5a"
         },
         {
-          "label": "Утепление стен",
-          "value": "RockWool, 150 мм"
+          "src": "/img/secondPage/catalog/milano.jpeg",
+          "alt": "milano",
+          "id": "8850"
         },
         {
-          "label": "Кровля",
-          "value": "GrandLine"
+          "src": "/img/secondPage/catalog/edinburgh.jpeg",
+          "alt": "edinburgh",
+          "id": "5eea"
         },
         {
-          "label": "Окна",
-          "value": "Двойной стеклопакет Rehau"
-        },
-        {
-          "label": "Отделка фасада",
-          "value": "Имитация бруса"
-        },
-        {
-          "label": "Наружная покраска",
-          "value": "Tikkurila"
-        },
-        {
-          "label": "Чистовая отделка",
-          "value": "Имитация бруса"
-        },
-        {
-          "label": "Отделка парной",
-          "value": "Осина"
-        },
-        {
-          "label": "Печь",
-          "value": "Термофор Витрувия"
+          "src": "/img/secondPage/catalog/classic-plus.jpeg",
+          "alt": "classic-plus",
+          "id": "8e7a"
         }
       ],
-      "features": [
+      "casesCardDescr": [
         {
-          "icon": "/icons/sizes/length-big.svg",
-          "alt": "length",
-          "text": "20м²"
+          "intro": {
+            "technologies": "Дом из газоблока и кирпича",
+            "constructionTime": "30 дней"
+          },
+          "description": [
+            {
+              "label": "Стиль",
+              "value": "Финский"
+            },
+            {
+              "label": "Фундамент",
+              "value": "Свайно-винтовой"
+            },
+            {
+              "label": "Утепление стен",
+              "value": "RockWool, 150 мм"
+            },
+            {
+              "label": "Кровля",
+              "value": "GrandLine"
+            },
+            {
+              "label": "Окна",
+              "value": "Двойной стеклопакет Rehau"
+            },
+            {
+              "label": "Отделка фасада",
+              "value": "Имитация бруса"
+            },
+            {
+              "label": "Наружная покраска",
+              "value": "Tikkurila"
+            },
+            {
+              "label": "Чистовая отделка",
+              "value": "Имитация бруса"
+            },
+            {
+              "label": "Отделка парной",
+              "value": "Осина"
+            },
+            {
+              "label": "Печь",
+              "value": "Термофор Витрувия"
+            }
+          ],
+          "features": [
+            {
+              "icon": "/icons/sizes/length-big.svg",
+              "alt": "length",
+              "text": "20м²"
+            },
+            {
+              "icon": "/icons/sizes/floors-big.svg",
+              "alt": "floors",
+              "text": "2 этажа"
+            },
+            {
+              "icon": "/icons/sizes/area-big.svg",
+              "alt": "area",
+              "text": "4x5м"
+            }
+          ]
+        }
+      ],
+      "casesCardSlides": [
+        {
+          "images": [
+            {
+              "src": "/img/casesPhotos/casesPhoto-1.jpeg",
+              "alt": "casesPhoto-1"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-2.jpeg",
+              "alt": "casesPhoto-2"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-3.jpeg",
+              "alt": "casesPhoto-3"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-4.jpeg",
+              "alt": "casesPhoto-4"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-5.jpeg",
+              "alt": "casesPhoto-5"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-6.jpeg",
+              "alt": "casesPhoto-6"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-7.jpeg",
+              "alt": "casesPhoto-7"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-8.jpeg",
+              "alt": "casesPhoto-8"
+            }
+          ],
+          "id": "2f8b"
         },
         {
-          "icon": "/icons/sizes/floors-big.svg",
-          "alt": "floors",
-          "text": "2 этажа"
+          "images": [
+            {
+              "src": "/img/casesPhotos/casesPhoto-1.jpeg",
+              "alt": "casesPhoto-1"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-2.jpeg",
+              "alt": "casesPhoto-2"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-3.jpeg",
+              "alt": "casesPhoto-3"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-4.jpeg",
+              "alt": "casesPhoto-4"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-5.jpeg",
+              "alt": "casesPhoto-5"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-6.jpeg",
+              "alt": "casesPhoto-6"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-7.jpeg",
+              "alt": "casesPhoto-7"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-8.jpeg",
+              "alt": "casesPhoto-8"
+            }
+          ],
+          "id": "ce9c"
         },
         {
-          "icon": "/icons/sizes/area-big.svg",
-          "alt": "area",
-          "text": "4x5м"
+          "images": [
+            {
+              "src": "/img/casesPhotos/casesPhoto-1.jpeg",
+              "alt": "casesPhoto-1"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-2.jpeg",
+              "alt": "casesPhoto-2"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-3.jpeg",
+              "alt": "casesPhoto-3"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-4.jpeg",
+              "alt": "casesPhoto-4"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-5.jpeg",
+              "alt": "casesPhoto-5"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-6.jpeg",
+              "alt": "casesPhoto-6"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-7.jpeg",
+              "alt": "casesPhoto-7"
+            },
+            {
+              "src": "/img/casesPhotos/casesPhoto-8.jpeg",
+              "alt": "casesPhoto-8"
+            }
+          ],
+          "id": "1bf3"
         }
       ]
-    }
-  ],
-  "casesSlides": [
-    {
-      "images": [
-        {
-          "src": "/img/casesPhotos/casesPhoto-1.jpeg",
-          "alt": "casesPhoto-1"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-2.jpeg",
-          "alt": "casesPhoto-2"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-3.jpeg",
-          "alt": "casesPhoto-3"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-4.jpeg",
-          "alt": "casesPhoto-4"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-5.jpeg",
-          "alt": "casesPhoto-5"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-6.jpeg",
-          "alt": "casesPhoto-6"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-7.jpeg",
-          "alt": "casesPhoto-7"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-8.jpeg",
-          "alt": "casesPhoto-8"
-        }
-      ],
-      "id": "2f8b"
-    },
-    {
-      "images": [
-        {
-          "src": "/img/casesPhotos/casesPhoto-1.jpeg",
-          "alt": "casesPhoto-1"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-2.jpeg",
-          "alt": "casesPhoto-2"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-3.jpeg",
-          "alt": "casesPhoto-3"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-4.jpeg",
-          "alt": "casesPhoto-4"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-5.jpeg",
-          "alt": "casesPhoto-5"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-6.jpeg",
-          "alt": "casesPhoto-6"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-7.jpeg",
-          "alt": "casesPhoto-7"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-8.jpeg",
-          "alt": "casesPhoto-8"
-        }
-      ],
-      "id": "ce9c"
-    },
-    {
-      "images": [
-        {
-          "src": "/img/casesPhotos/casesPhoto-1.jpeg",
-          "alt": "casesPhoto-1"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-2.jpeg",
-          "alt": "casesPhoto-2"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-3.jpeg",
-          "alt": "casesPhoto-3"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-4.jpeg",
-          "alt": "casesPhoto-4"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-5.jpeg",
-          "alt": "casesPhoto-5"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-6.jpeg",
-          "alt": "casesPhoto-6"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-7.jpeg",
-          "alt": "casesPhoto-7"
-        },
-        {
-          "src": "/img/casesPhotos/casesPhoto-8.jpeg",
-          "alt": "casesPhoto-8"
-        }
-      ],
-      "id": "1bf3"
     }
   ],
   "contacts": [
@@ -664,7 +694,7 @@
     {
       "name": "telegram",
       "href": "#",
-      "icon": "/src/icons/social/telegram.svg",
+      "icon": "/icons/social/telegram.svg",
       "alt": "telegram",
       "id": "0791"
     },
@@ -737,7 +767,8 @@
           "id": 9,
           "label": "Особняки"
         }
-      ]
+      ],
+      "id": "754a"
     },
     {
       "filterName": "Коммерческие строения",
@@ -762,7 +793,8 @@
           "id": 14,
           "label": "Магазины"
         }
-      ]
+      ],
+      "id": "4517"
     },
     {
       "filterName": "Садовые и хоз постройки",
@@ -807,7 +839,8 @@
           "id": 24,
           "label": "Мангальные зоны и барбекю"
         }
-      ]
+      ],
+      "id": "e806"
     }
   ],
   "factoryPhotos": [
@@ -833,15 +866,13 @@
       "area": 135,
       "image": "/img/works/works-1.jpeg",
       "alt": "works-1",
-      "link": "#",
       "id": "03b5"
     },
     {
-      "title": "135 м2",
+      "title": "Дом в Гнедине (2020)",
       "area": 187,
       "image": "/img/works/works-2.jpeg",
       "alt": "works-2",
-      "link": "#",
       "id": "5b4f"
     },
     {
@@ -849,7 +880,6 @@
       "area": 135,
       "image": "/img/works/works-3.jpeg",
       "alt": "works-3",
-      "link": "#",
       "id": "5742"
     },
     {
@@ -857,7 +887,6 @@
       "area": 249,
       "image": "/img/works/works-4.jpeg",
       "alt": "works-4",
-      "link": "#",
       "id": "3175"
     },
     {
@@ -865,7 +894,6 @@
       "area": 135,
       "image": "/img/works/works-5.jpeg",
       "alt": "works-5",
-      "link": "#",
       "class": "big",
       "id": "0f31"
     },
@@ -874,7 +902,6 @@
       "area": 135,
       "image": "/img/works/works-6.jpeg",
       "alt": "works-6",
-      "link": "#",
       "id": "5a55"
     },
     {
@@ -882,7 +909,6 @@
       "area": 135,
       "image": "/img/works/works-7.jpeg",
       "alt": "works-7",
-      "link": "#",
       "id": "eadf"
     },
     {
@@ -890,7 +916,6 @@
       "area": 135,
       "image": "/img/works/works-8.jpeg",
       "alt": "works-8",
-      "link": "#",
       "id": "21ad"
     }
   ],
@@ -1404,12 +1429,39 @@
   ],
   "requests": [
     {
-      "id": "082e",
-      "phone": "4575786998"
+      "id": "08f0",
+      "phone": "6477767677",
+      "name": ""
     },
     {
-      "id": "93bd",
-      "phone": "54346654645"
+      "id": "ef80",
+      "phone": "4575555555555",
+      "name": ""
+    },
+    {
+      "id": "1d8e",
+      "phone": "6757576777",
+      "name": ""
+    },
+    {
+      "id": "7c4f",
+      "phone": "54645555555",
+      "name": ""
+    },
+    {
+      "id": "8da1",
+      "phone": "235257667777",
+      "name": ""
+    },
+    {
+      "id": "cafd",
+      "phone": "5252355555",
+      "name": ""
+    },
+    {
+      "id": "96b8",
+      "phone": "54346444444",
+      "name": ""
     }
   ]
 }

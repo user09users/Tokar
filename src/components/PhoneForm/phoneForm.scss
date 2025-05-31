@@ -1,14 +1,15 @@
 @use "/src/sass/variables.scss" as *;
 
 .phone-error-message {
-    color: red
+    color: red;
+    margin-top: 5px;
+    text-align: center;
 }
 
 .phoneForm {
     margin-top: 15px;
     display: flex;
     align-items: end;
-    gap: 20px;
 
     &-input {
         border: none;

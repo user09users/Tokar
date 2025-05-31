@@ -2,10 +2,6 @@ import Contacts from "components/contacts/Contacts";
 import Details from "components/details/Details";
 import { Helmet } from "react-helmet";
 
-
-
-
-
 const ContactsPage = () => {
 
     return (

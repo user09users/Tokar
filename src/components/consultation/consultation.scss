@@ -27,11 +27,24 @@
     &-block {
         margin-top: 15px;
         align-items: center;
+
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
     }
 
     &-button {
         margin: 10px auto 0 auto;
         width: 100%;
+    }
+
+    &-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 0 auto;
     }
 
 
@@ -67,6 +80,10 @@
             justify-content: space-between;
         }
 
+        &-text {
+            text-align: left;
+        }
+
         &-block {
             margin: 0;
             padding-left: 20px;
@@ -78,7 +95,10 @@
             }
         }
 
-
+        &-items {
+            flex-direction: row;
+            gap: 20px;
+        }
 
         &-title {
             margin-top: 60px;

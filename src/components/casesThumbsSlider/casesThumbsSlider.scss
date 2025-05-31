@@ -37,6 +37,12 @@
         background: $white;
         z-index: 100;
 
+        &-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
         &-item {
             margin: 10px auto 0 auto;
             padding: 12px 0;
@@ -52,31 +58,10 @@
                 width: 160px;
                 height: 17px;
             }
-
-            &-input {
-                padding: 10px;
-                width: 160px;
-                height: 17px;
-                border: 1px dotted $dark;
-                opacity: 0.5;
-            }
         }
 
         &-button {
             margin: 10px auto 0 auto;
-        }
-
-        &-text {
-            margin-top: 20px;
-            font-weight: 300;
-            text-align: center;
-
-            span {
-                font-size: 13px;
-                font-weight: 600;
-                line-height: 20px;
-                color: $main-color-dark;
-            }
         }
     }
 }
@@ -99,14 +84,11 @@
             height: 250px;
             padding: 50px 45px;
             z-index: 2;
+            margin: 20;
 
             &-button {
                 margin-top: 26px;
             }
-        }
-
-        .cardPageSlider__nav {
-            display: none;
         }
 
         &__consultation {
@@ -129,9 +111,6 @@
                 margin: 20px auto 0 auto;
             }
 
-            &-text {
-                margin-top: 30px;
-            }
         }
     }
 }

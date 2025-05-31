@@ -46,11 +46,12 @@ const App = () => {
                 <Route path="/" element={<MainPage />} />
                 <Route path="/catalog" element={<CatalogPage />} />
                 <Route path="/catalog/:cardId" element={<CardPage />} />
-                <Route path="/cases" element={<CasesPage />} />
+                <Route path="/cases/:casesCardId" element={<CasesPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contacts" element={<ContactsPage />} />
                 <Route path="/works" element={<WorksPage />} />
                 <Route path="*" element={<Page404 />} />
+                <Route path="/404" element={<Page404 />} />
               </Routes>
             </Suspense>
           </main>

@@ -1,41 +1,42 @@
 import { useState, useEffect, useRef } from 'react';
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import useTocarService from 'services/TocarService';
+import setContent from 'utils/setContent';
 import { initializeSwiper } from 'utils/slider';
 
 import './ceo.scss';
 
 const Ceo = () => {
-
     const [itemsList, setItemsList] = useState([]);
-
+    const [process, setProcess] = useState('waiting'); // для setContent
     const sliderRef = useRef();
 
-    const { loading, error, getData } = useTocarService();
-
-    useEffect(() => { getData('ceoSlider').then(onItemsLoaded) }, []);
-
-    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
+    const { getData, clearError } = useTocarService();
 
     useEffect(() => {
-        if (
-            loading ||
-            error ||
-            itemsList.length === 0
-        ) return;
+        clearError();
+        setProcess('loading');
+
+        getData('ceoSlider')
+            .then(onItemsLoaded)
+            .then(() => setProcess('confirmed'))
+    }, []);
+
+    const onItemsLoaded = (items) => {
+        setItemsList(items);
+    };
+
+    useEffect(() => {
+        if (process !== 'confirmed' || itemsList.length === 0) return;
 
         let cancelled = false;
 
         waitForImagesToLoad().then(() => {
             if (cancelled) return;
-
             initializeSwiper('.ceo__slider', '.ceo__slider-nav');
-
         });
 
         return () => { cancelled = true };
-    }, [loading, error, itemsList]);
+    }, [process, itemsList]);
 
     const waitForImagesToLoad = () => {
         return new Promise((resolve) => {
@@ -70,8 +71,17 @@ const Ceo = () => {
         });
     };
 
-    const spinner = loading ? <Spinner /> : null;
-    const errorMessage = error ? <ErrorMessage /> : null;
+    const renderSlider = (items) => (
+        <div className="swiper ceo__slider" ref={sliderRef}>
+            <div className="swiper-wrapper ceo__slider-items">
+                {items.map((item) => (
+                    <div className="swiper-slide ceo__img" key={item.id}>
+                        <img src={item.image} alt={item.alt} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 
     return (
         <section className="ceo">
@@ -92,24 +102,13 @@ const Ceo = () => {
                             <div className="swiper-pagination ceo__slider-nav"></div>
                             <span className="ceo__slider-next icon-right-big"></span>
                         </div>
-                        {spinner}
-                        {errorMessage}
-                        {!loading && !error && (
-                            <div className="swiper ceo__slider" ref={sliderRef}>
-                                <div className="swiper-wrapper ceo__slider-items">
-                                    {itemsList.map((item) => (
-                                        <div className="swiper-slide ceo__img" key={item.id}>
-                                            <img src={item.image} alt={item.alt} />
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
+
+                        {setContent(process, renderSlider, itemsList)}
                     </div>
                 </div>
             </div>
         </section>
     );
-}
+};
 
 export default Ceo;

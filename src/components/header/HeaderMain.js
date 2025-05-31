@@ -4,10 +4,11 @@ import ModalContext from 'context/modal/ModalContext';
 import Menu from 'components/menu/Menu';
 
 import './header.scss';
+import SocialList from 'components/socialList/SocialList';
 
 const HeaderMain = () => {
 
-    const { toggleModal } = useContext(ModalContext);
+    const { toggleModal, openModal } = useContext(ModalContext);
     const [active, setActive] = useState(false);
 
     const handleMenuClose = () => {
@@ -30,7 +31,7 @@ const HeaderMain = () => {
                             <div className="header__mobile-logo">
                                 <img src="/icons/logo.png" alt="TokarCompany Logo" className="header__mobile-block-logo" />
                             </div>
-                            <div className="header__mobile-phone">
+                            <div className="header__mobile-phone" onClick={() => openModal()}>
                                 <span className="icon-phone-1" aria-label="Phone contact"></span>
                             </div>
                         </div>
@@ -51,23 +52,7 @@ const HeaderMain = () => {
                             {/* Social Media Links */}
                             <div className="social__desktop">
                                 <div className="social__desktop-text">Связаться напрямую:</div>
-                                <ul className="social__list">
-                                    <li className="social__list-item telegram">
-                                        <a href="https://t.me/yourTelegramLink" className="telegram" aria-label="Telegram">
-                                            <img src="/icons/social/telegram.svg" alt="Telegram" />
-                                        </a>
-                                    </li>
-                                    <li className="social__list-item whatsapp">
-                                        <a href="https://wa.me/yourWhatsAppNumber" className="whatsapp" aria-label="WhatsApp">
-                                            <img src="/icons/social/whatsapp.svg" alt="WhatsApp" />
-                                        </a>
-                                    </li>
-                                    <li className="social__list-item viber">
-                                        <a href="viber://chat?number=yourViberNumber" className="viber" aria-label="Viber">
-                                            <img src="/icons/social/viber.svg" alt="Viber" />
-                                        </a>
-                                    </li>
-                                </ul>
+                                <SocialList />
                             </div>
 
                             {/* Contact Information */}

@@ -1,13 +1,18 @@
-import { useState, useEffect } from 'react';
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import { useState, useEffect, useContext } from 'react';
+import useTocarService from 'services/TocarService';
+import setContent from 'utils/setContent';
 
 import './footer.scss';
-import '../social/social.scss';
+import '../socialList/social.scss';
+import SocialList from 'components/socialList/SocialList';
+import ModalContext from 'context/modal/ModalContext';
+
+import './footer.scss';
 
 const Footer = () => {
-    const { loading, error, getData } = useTocarService();
+
+    const { process, setProcess, getData } = useTocarService();
+    const { openModal } = useContext(ModalContext);
 
     const [itemsList, setItemsList] = useState([]);
     const [openIndexes, setOpenIndexes] = useState([]);
@@ -21,9 +26,9 @@ const Footer = () => {
     }
     useEffect(() => {
         getData('navigation')
-            .then(onItemsLoaded);
+            .then(res => setItemsList(res))
+            .then(() => setProcess('confirmed'));
     }, []);
-    const onItemsLoaded = (itemsList) => setItemsList(itemsList);
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -59,12 +64,6 @@ const Footer = () => {
         )
     }
 
-    const items = renderItems(itemsList);
-
-    const spinner = loading ? <Spinner /> : null;
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const content = !(loading || error) ? items : null;
-
     return (
         <section className="footer">
             <div className="container">
@@ -82,9 +81,7 @@ const Footer = () => {
                 <div className="footer__wrapper">
                     <nav>
                         <ul className="footer__items">
-                            {spinner}
-                            {errorMessage}
-                            {content}
+                            {setContent(process, renderItems, itemsList)}
 
                             <li>
                                 <a href="#" className="footer__item-link footer__item-header">
@@ -97,30 +94,17 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <button data-openmodal className="button">Заказать звонок</button>
+                                <button
+                                    className="button"
+                                    onClick={() => openModal()}
+                                >Заказать звонок</button>
                             </li>
                         </ul>
                     </nav>
                     <div className="footer__contacts">
                         <div className="footer__social">
                             <div className="social__title">Связаться напрямую:</div>
-                            <ul className="social__list">
-                                <li className="social__list-item telegram">
-                                    <a href="https://t.me/yourTelegramLink" className="telegram" aria-label="Telegram">
-                                        <img src="/icons/social/telegram.svg" alt="Telegram" />
-                                    </a>
-                                </li>
-                                <li className="social__list-item whatsapp">
-                                    <a href="https://wa.me/yourWhatsAppNumber" className="whatsapp" aria-label="WhatsApp">
-                                        <img src="/icons/social/whatsapp.svg" alt="WhatsApp" />
-                                    </a>
-                                </li>
-                                <li className="social__list-item viber">
-                                    <a href="viber://chat?number=yourViberNumber" className="viber" aria-label="Viber">
-                                        <img src="/icons/social/viber.svg" alt="Viber" />
-                                    </a>
-                                </li>
-                            </ul>
+                            <SocialList />
                         </div>
                         <a href="tel:+380671755630" className="footer__tel"> +3 80 (67) 175 56 30</a>
                         <div className="footer__date">с 09:00 до 18:00 (пн-вс)</div>

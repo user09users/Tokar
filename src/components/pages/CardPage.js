@@ -1,49 +1,50 @@
 import { useEffect, useState } from 'react';
-import useTocarService from 'services/services';
+import useTocarService from 'services/TocarService';
 
 import Characteristics from 'components/characteristics/Characteristics';
 import CardPageSlider from 'components/cardPageSlider/CardPageSlider';
 import Consultation from 'components/consultation/Consultation';
 import Processes from 'components/processes/Processes';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import setContent from 'utils/setContent';
 
 const CardPage = () => {
     const [data, setData] = useState(null);
-    const { getHouseInfo, loading, error, clearError } = useTocarService();
+    const { getHouseInfo, process, setProcess, clearError } = useTocarService();
 
     const { cardId } = useParams();
 
     useEffect(() => {
         clearError();
+
         getHouseInfo(cardId)
-            .then(setData);
-    }, [cardId, getHouseInfo, clearError]);
+            .then(res => {
+                setData(res);
+                setProcess('confirmed');
+            })
+    }, [cardId, getHouseInfo, clearError, setProcess]);
 
-    if (loading) return <Spinner />;
-    if (error || !data) return <ErrorMessage message={error} />;
-
+    // Render content based on `process` state via setContent utility
     return (
         <>
-            <Helmet>
-                <meta name="description" content={`${data.characteristics[0].info.name} page`} />
+            {process === 'confirmed' && data && (
+                <Helmet>
+                    <meta name="description" content={`${data.characteristics[0].info.name} page`} />
+                    <title>{data.characteristics[0].info.name}</title>
+                </Helmet>
+            )}
 
-                <title>{data.characteristics[0].info.name}</title>
-            </Helmet>
-            <CardPageSlider
-                slides={data?.cardPageSlides}
-                loading={loading}
-                error={error}
-            />
-            <Characteristics
-                characteristics={data?.characteristics?.[0]}
-                loading={loading}
-                error={error}
-            />
-            <Consultation />
-            <Processes />
+            {setContent(process, () => (
+                <>
+
+                    <CardPageSlider thumbs={data?.cardPageSlides} process={process} />
+
+                    <Characteristics characteristics={data.characteristics[0]} />
+                    <Consultation />
+                    <Processes />
+                </>
+            ), data)}
         </>
     );
 };

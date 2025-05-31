@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import useTocarService from 'services/services';
-import Spinner from 'components/spinner/Spinner';
-import ErrorMessage from 'components/errorMessage/ErrorMessage';
+import useTocarService from 'services/TocarService';
+import setContent from 'utils/setContent';
 import { initializeSwiper } from 'utils/slider';
 
 import './materials.scss';
@@ -12,11 +11,13 @@ const Materials = () => {
     const [sliderList, setSliderList] = useState([]);
     const [swiperInitialized, setSwiperInitialized] = useState(false);
 
-    const { loading, error, getData } = useTocarService();
+    const { process, setProcess, getData, clearError } = useTocarService();
 
     const requestData = (link, onSuccess) => {
+        clearError();
         getData(link)
             .then(onSuccess)
+            .then(() => setProcess('confirmed'))
     };
 
     const handleDataLoaded = (key, data) => {
@@ -28,16 +29,25 @@ const Materials = () => {
     };
 
     useEffect(() => {
-        requestData('materials', (data) => handleDataLoaded('itemsList', data));
-        requestData('materialsSlider', (data) => handleDataLoaded('sliderList', data));
+        Promise.all([
+            getData('materials'),
+            getData('materialsSlider')
+        ])
+            .then(([materialsData, sliderData]) => {
+                setItemsList(materialsData);
+                setSliderList(sliderData);
+                setProcess('confirmed');
+            });
+
     }, []);
 
+
     useEffect(() => {
-        if (!loading && !error && !swiperInitialized && sliderList.length > 0) {
+        if (process === 'confirmed' && !swiperInitialized && sliderList.length > 0) {
             initializeSwiper('.materials__slider', '.materials__slider-nav');
             setSwiperInitialized(true);
         }
-    }, [sliderList, loading, error, swiperInitialized]);
+    }, [sliderList, swiperInitialized]);
 
     function renderItems(arr) {
         return (
@@ -66,23 +76,12 @@ const Materials = () => {
         );
     }
 
-
-    const items = renderItems(itemsList);
-    const renderedSlider = renderSlides(sliderList);
-
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? items : null;
-    const slider = !(loading || error) ? renderedSlider : null;
-
     return (
         <section className="materials">
             <div className="container">
                 <h2 className="title-fw800">Из чего состоят наши строения?</h2>
 
-                {errorMessage}
-                {spinner}
-                {content}
+                {setContent(process, renderItems, itemsList)}
 
                 <div className="materials__slider-wrapper">
                     <div className="swiper materials__slider">
@@ -91,7 +90,7 @@ const Materials = () => {
                             <div className="swiper-pagination materials__slider-nav"></div>
                             <span className="materials__slider-next icon-right-big"></span>
                         </div>
-                        {slider}
+                        {setContent(process, renderSlides, sliderList)}
                     </div>
                 </div>
 

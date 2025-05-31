@@ -16,13 +16,17 @@
     }
 }
 
+.backButton {
+    display: none;
+}
+
 .button-big {
     @include button;
     display: flex;
     font-size: 16px;
     width: 230px;
     height: 58px;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .button-mix {
@@ -114,7 +118,7 @@
     }
 
     &:disabled {
-        filter: grayscale(.5);
+        background-color: $main-color;
     }
 }
 
@@ -127,6 +131,44 @@
 }
 
 @media screen and (min-width: 1200px) {
+
+    .backButton {
+        height: 40px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        cursor: pointer;
+        justify-content: end;
+        margin-top: 20px;
+
+        &-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            align-items: center;
+            border: 1px solid rgb(203, 135, 52);
+            position: relative;
+
+            span {
+                position: absolute;
+                font-size: 13px;
+                left: 17%;
+                transform: translateX(-50%);
+                top: 50%;
+                transform: translatey(-50%);
+                color: rgb(203, 135, 52);
+            }
+        }
+
+        &-text {
+            color: rgb(203, 135, 52);
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 16px;
+            text-align: left;
+        }
+    }
+
     .button-big {
         width: 280px;
         height: 66px;

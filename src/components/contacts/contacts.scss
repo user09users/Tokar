@@ -18,6 +18,11 @@
         }
     }
 
+    &__items {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__item {
         margin-top: 20px;
         padding: 35px 30px;
@@ -80,7 +85,7 @@
 
         &-wrapper {
             margin-top: 20px;
-            padding: 40px 0;
+            padding: 40px 10px;
             display: flex;
             flex-direction: column;
             gap: 0;
@@ -89,16 +94,7 @@
             box-shadow: 0px 0px 30px 0px $shadow;
             background: $white;
 
-            &:nth-child(2) {
-                .contacts__nav-item-input {
-                    padding: 10px;
-                    padding-left: 100px;
-                    width: 160px;
-                    height: 17px;
-                    border: none;
-                    opacity: 0.5;
-                }
-            }
+
         }
 
         &-item {
@@ -127,18 +123,7 @@
             }
         }
 
-        &-text {
-            margin-top: 20px;
-            font-weight: 300;
-            text-align: center;
 
-            span {
-                font-size: 13px;
-                font-weight: 600;
-                line-height: 20px;
-                color: $main-color-dark;
-            }
-        }
 
         &-map {
             width: 100%;
@@ -189,6 +174,11 @@
 
         &__title {
             margin-top: 30px;
+        }
+
+        &__items {
+            flex-direction: column;
+            width: 100%;
         }
 
         &__item {
