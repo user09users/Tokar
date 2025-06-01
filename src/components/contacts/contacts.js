@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useTocarService from 'services/TocarService';
 import setContent from 'utils/setContent';
-import PhoneForm from 'components/PhoneForm/PhoneForm';
+import Form from 'components/form/Form';
 
 import './contacts.scss';
 
@@ -121,7 +121,7 @@ const Contacts = () => {
                 Закажите консультацию, если сомневаетесь
               </h3>
 
-              <PhoneForm
+              <Form
                 btnClass={'button-big contacts__nav-button'}
                 extraFormClass='contacts__items'
                 extraFieldClass=''

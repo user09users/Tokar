@@ -30,7 +30,6 @@ const App = () => {
   /*
    json-server --watch db.json --port 5000
    */
-  /*useNavigate */
 
   return (
     <AppContextsProvider>
@@ -50,8 +49,8 @@ const App = () => {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contacts" element={<ContactsPage />} />
                 <Route path="/works" element={<WorksPage />} />
-                <Route path="*" element={<Page404 />} />
                 <Route path="/404" element={<Page404 />} />
+                <Route path="*" element={<Page404 />} />
               </Routes>
             </Suspense>
           </main>

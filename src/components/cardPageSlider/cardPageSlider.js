@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import ThumbsSlider from 'components/thumbsSlider/ThumbsSlider';
-import PhoneForm from 'components/PhoneForm/PhoneForm';
+import Form from 'components/form/Form';
 import useTocarService from 'services/TocarService';
 
 import './cardPageSlider.scss';
@@ -53,12 +53,13 @@ const CardPageSlider = ({ thumbs }) => {
                         Закажите консультацию, если сомневаетесь
                     </h3>
                     <div className="cardPageSlider__consultation-block">
-                        <PhoneForm
+                        <Form
                             onSubmit={handleSubmit}
                             btnClass="button-big cardPageSlider__consultation-button"
                             extraFieldClass="cardPageSlider__consultation-phone"
                             extraFormClass="cardPageSlider__consultation-items"
                             policyClass={'policy-text'}
+                            extraBtnPlace={true}
                         />
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import ThumbsSlider from 'components/thumbsSlider/ThumbsSlider';
-import PhoneForm from 'components/PhoneForm/PhoneForm';
+import Form from 'components/form/Form';
 
 import './casesThumbsSlider.scss';
 import '../cardPageSlider/cardPageSlider.scss';
@@ -50,7 +50,7 @@ const CasesThumbsSlider = ({ thumbs }) => {
                         <h3 className="cases__consultation-title title-fw400">
                             Закажите консультацию, если сомневаетесь
                         </h3>
-                        <PhoneForm
+                        <Form
                             extraFormClass='cases__consultation-items'
                             btnClass={'button-big cases__consultation-button'}
                             policyClass={'policy-text'}

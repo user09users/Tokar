@@ -1,7 +1,7 @@
 // components/Modal/Modal.jsx
 import { useState, useEffect, useCallback, useContext } from 'react';
 import ModalContext from 'context/modal/ModalContext';
-import PhoneForm from 'components/PhoneForm/PhoneForm';
+import PhoneForm from 'components/form/Form';
 import './modal.scss';
 
 const Modal = () => {

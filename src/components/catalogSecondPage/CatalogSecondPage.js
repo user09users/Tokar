@@ -120,6 +120,12 @@ const CatalogSecondPage = () => {
                         disabled={newDataLoading}
                         onClick={() => onRequest()}
                         aria-busy={newDataLoading}
+                        onKeyDown={(e) => {
+                            if (e.key === ' ' || e.key === 'Enter') {
+                                e.preventDefault(); // prevent scroll on space
+                                onRequest();
+                            }
+                        }}
                     >
                         <span className="icon-arrows-cw"></span>
                         <div>Показать еще больше</div>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Navigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
 import useTocarService from 'services/TocarService';
 
 import Characteristics from 'components/characteristics/Characteristics';
 import CardPageSlider from 'components/cardPageSlider/CardPageSlider';
 import Consultation from 'components/consultation/Consultation';
 import Processes from 'components/processes/Processes';
-import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import setContent from 'utils/setContent';
 
 const CardPage = () => {
@@ -20,10 +21,20 @@ const CardPage = () => {
 
         getHouseInfo(cardId)
             .then(res => {
-                setData(res);
-                setProcess('confirmed');
+                if (!res || !res.characteristics || res.characteristics.length === 0) {
+                    setProcess('error');
+                } else {
+                    setData(res);
+                    setProcess('confirmed');
+                }
             })
-    }, [cardId, getHouseInfo, clearError, setProcess]);
+            .catch(() => setProcess('error'));
+    }, [cardId]);
+
+
+    if (process === 'error') {
+        return <Navigate to={'/404'} />
+    }
 
     // Render content based on `process` state via setContent utility
     return (
