@@ -21,27 +21,27 @@ const PromoMain = () => {
                         </div>
                         <div className="button-mix">
                             <Link to="/catalog" className="button-big">Перейти в каталог домов</Link>
-                            <a href="#" className="button-circe">
+                            <Link to={'/works'} className="button-circe">
                                 <div className="button-circe__circle">
                                     <span className="icon-right-open-big"></span>
                                 </div>
-                                <div className="button-circe__text">Каталог бань</div>
-                            </a>
+                                <div className="button-circe__text">Каталог работ</div>
+                            </Link>
                         </div>
                     </div>
 
                     <div className="promoMain__wrapper-img pure-u-1 pure-u-xl-1-2">
                         <div className="promoMain__img">
                             <picture>
-                                <source media="(max-width: 576px)" srcSet="/img/main-house-min.png" /> {/* Corrected path */}
-                                <source media="(min-width: 576px)" srcSet="/img/main-house.png" /> {/* Corrected path */}
-                                <img src="/img/main-house.png" alt="house" /> {/* Corrected path */}
+                                <source media="(max-width: 576px)" srcSet="/img/main-house-min.png" />
+                                <source media="(min-width: 576px)" srcSet="/img/main-house.png" />
+                                <img src="/img/main-house.png" alt="house" />
                             </picture>
                             <div className="promoMain__tree">
-                                <img src="/img/tree.png" alt="tree" /> {/* Corrected path */}
+                                <img src="/img/tree.png" alt="tree" />
                             </div>
                             <div className="promoMain__scoop">
-                                <img src="/img/scoop.png" alt="scoop" /> {/* Corrected path */}
+                                <img src="/img/scoop.png" alt="scoop" />
                             </div>
                         </div>
                     </div>

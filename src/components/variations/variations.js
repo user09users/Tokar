@@ -1,19 +1,14 @@
-import { useEffect, useState } from 'react';
-import useTocarService from 'services/TocarService';
-import setContent from 'utils/setContent';
+import QueryWrapper from 'utils/QueryWrapper';
+import { useGetVariationsQuery } from 'api/apiSlice';
 import './variations.scss';
 
 const Variations = () => {
-    const [itemsList, setItemsList] = useState([]);
-
-    const { process, setProcess, clearError, getData } = useTocarService();
-
-    useEffect(() => {
-        clearError();
-        getData('variations')
-            .then(res => setItemsList(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
+    const {
+        data: variations = [],
+        isFetching,
+        isLoading,
+        isError
+    } = useGetVariationsQuery();
 
     const renderItems = (arr) => {
         return (
@@ -48,7 +43,14 @@ const Variations = () => {
         <section className="variations">
             <div className="container">
                 <h2 className="title-fw700">Мы разделяем 3 вида строений</h2>
-                {setContent(process, renderItems, itemsList)}
+                <QueryWrapper
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                    isError={isError}
+                    data={variations}>
+
+                    {renderItems(variations)}
+                </QueryWrapper>
             </div>
         </section>
     );

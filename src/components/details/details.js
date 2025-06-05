@@ -14,7 +14,7 @@ const Details = () => {
         getData('details')
             .then(res => setItemsList(res))
             .then(() => setProcess('confirmed'));
-    }, [itemsList]);
+    }, []);
 
     const renderDetails = (items) => {
         return (

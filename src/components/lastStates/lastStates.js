@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
-import useTocarService from 'services/TocarService';
-import setContent from 'utils/setContent';
+
+import QueryWrapper from 'utils/QueryWrapper';
+import { useGetLastStatesQuery } from 'api/apiSlice';
+
 import { initializeSwiper } from 'utils/slider';
 
 import './lastStates.scss';
 
 const LastStates = () => {
 
-    const [swiperInitialized, setSwiperInitialized] = useState(false);
-    const [itemsList, setItemsList] = useState([]);
+    const { data: lastStates = [], isLoading, isFetching, isError } = useGetLastStatesQuery();
 
-    const { process, setProcess, getData } = useTocarService();
+    const [swiperInitialized, setSwiperInitialized] = useState(false);
+
     useEffect(() => {
-        if (process === 'confirmed' && !swiperInitialized) {
+        if (lastStates.length > 0 && !swiperInitialized) {
             initializeSwiper(
                 '.lastStates__slider',
                 '.lastStates__slider-nav',
@@ -34,13 +36,7 @@ const LastStates = () => {
             );
             setSwiperInitialized(true);
         }
-    }, [itemsList, swiperInitialized]);
-
-    useEffect(() => {
-        getData('lastStates')
-            .then(res => setItemsList(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
+    }, [lastStates, swiperInitialized]);
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -82,7 +78,14 @@ const LastStates = () => {
                             <div className="swiper-pagination lastStates__slider-nav"></div>
                             <span className="lastStates__slider-next icon-right-big"></span>
                         </div>
-                        {setContent(process, renderItems, itemsList)}
+                        <QueryWrapper
+                            data={lastStates}
+                            isLoading={isLoading}
+                            isFetching={isFetching}
+                            isError={isError}>
+
+                            {renderItems(lastStates)}
+                        </QueryWrapper>
                     </div>
                 </div>
             </div>

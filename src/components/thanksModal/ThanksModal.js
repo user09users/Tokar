@@ -25,7 +25,7 @@ const ThanksModal = ({ result, onClose }) => {
     return (
         <div className="modal active" data-thanks-modal>
             <div className="modal__overlay" onClick={handleOverlayClick}></div>
-            <div className="modal__wrapper" onClick={stopPropagation}>
+            <div className=" thanksModal__wrapper" onClick={stopPropagation}>
                 <span className="modal__close icon-cancel" onClick={onClose}></span>
                 <div className="modal__content modal__content--thanks">
                     <h3 className="modal__title title-fw400">

@@ -1,78 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
-import useTocarService from 'services/TocarService';
-import setContent from 'utils/setContent';
+
+import QueryWrapper from 'utils/QueryWrapper';
+import { useGetCeoQuery } from 'api/apiSlice';
+
 import { initializeSwiper } from 'utils/slider';
 
 import './ceo.scss';
 
 const Ceo = () => {
-    const [itemsList, setItemsList] = useState([]);
-    const [process, setProcess] = useState('waiting'); // для setContent
-    const sliderRef = useRef();
+    const { data: ceoSlides = [], isLoading, isFetching, isError } = useGetCeoQuery();
 
-    const { getData, clearError } = useTocarService();
+    const [swiperInitialized, setSwiperInitialized] = useState(false);
 
     useEffect(() => {
-        clearError();
-        setProcess('loading');
-
-        getData('ceoSlider')
-            .then(onItemsLoaded)
-            .then(() => setProcess('confirmed'))
-    }, []);
-
-    const onItemsLoaded = (items) => {
-        setItemsList(items);
-    };
-
-    useEffect(() => {
-        if (process !== 'confirmed' || itemsList.length === 0) return;
-
-        let cancelled = false;
-
-        waitForImagesToLoad().then(() => {
-            if (cancelled) return;
+        if (ceoSlides.length > 0 && !swiperInitialized) {
             initializeSwiper('.ceo__slider', '.ceo__slider-nav');
-        });
+            setSwiperInitialized(true);
+        }
+    }, [ceoSlides, swiperInitialized]);
 
-        return () => { cancelled = true };
-    }, [process, itemsList]);
-
-    const waitForImagesToLoad = () => {
-        return new Promise((resolve) => {
-            const slider = sliderRef.current;
-            if (!slider) {
-                resolve();
-                return;
-            }
-
-            const images = slider.querySelectorAll('img');
-            if (images.length === 0) {
-                resolve();
-                return;
-            }
-
-            let loadedCount = 0;
-            const onLoadOrError = () => {
-                loadedCount++;
-                if (loadedCount === images.length) {
-                    resolve();
-                }
-            };
-
-            images.forEach((img) => {
-                if (img.complete) {
-                    onLoadOrError();
-                } else {
-                    img.addEventListener('load', onLoadOrError);
-                    img.addEventListener('error', onLoadOrError);
-                }
-            });
-        });
-    };
 
     const renderSlider = (items) => (
-        <div className="swiper ceo__slider" ref={sliderRef}>
+        <div className="swiper ceo__slider">
             <div className="swiper-wrapper ceo__slider-items">
                 {items.map((item) => (
                     <div className="swiper-slide ceo__img" key={item.id}>
@@ -103,7 +52,14 @@ const Ceo = () => {
                             <span className="ceo__slider-next icon-right-big"></span>
                         </div>
 
-                        {setContent(process, renderSlider, itemsList)}
+                        <QueryWrapper
+                            data={ceoSlides}
+                            isLoading={isLoading}
+                            isFetching={isFetching}
+                            isError={isError}>
+
+                            {renderSlider(ceoSlides)}
+                        </QueryWrapper>
                     </div>
                 </div>
             </div>

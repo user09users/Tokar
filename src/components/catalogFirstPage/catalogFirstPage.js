@@ -1,20 +1,10 @@
-import { useState, useEffect } from 'react';
-import useTocarService from 'services/TocarService';
+import QueryWrapper from 'utils/QueryWrapper';
+import { useGetCatalogFirstPageQuery } from 'api/apiSlice';
 
 import './catalogFirstPage.scss';
-import setContent from 'utils/setContent';
 
 const CatalogFirstPage = () => {
-
-    const [itemsList, setItemsList] = useState([]);
-
-    const { process, setProcess, getData } = useTocarService();
-
-    useEffect(() => {
-        getData('catalogFirstPage')
-            .then(res => { setItemsList(res) })
-            .then(() => setProcess('confirmed'));
-    }, []);
+    const { data: catalogFirstPage = [], isLoading, isFetching, isError } = useGetCatalogFirstPageQuery();
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -54,7 +44,14 @@ const CatalogFirstPage = () => {
             <img src="/img/catalog-gazebo.jpeg" alt="gazebo" className="catalogFirstPage__bg" />
             <div className="container">
                 <h2 className="title-fw700">Каталог проектов</h2>
-                {setContent(process, renderItems, itemsList)}
+                <QueryWrapper
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                    isError={isError}
+                    data={catalogFirstPage}>
+
+                    {renderItems(catalogFirstPage)}
+                </QueryWrapper>
             </div>
         </section>
     );

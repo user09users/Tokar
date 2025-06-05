@@ -1,6 +1,7 @@
-import { useState, useEffect, useContext } from 'react';
-import useTocarService from 'services/TocarService';
-import setContent from 'utils/setContent';
+import { useState, useContext } from 'react';
+
+import QueryWrapper from 'utils/QueryWrapper';
+import { useGetFooterNavigationQuery } from 'api/apiSlice';
 
 import './footer.scss';
 import '../socialList/social.scss';
@@ -11,11 +12,9 @@ import './footer.scss';
 
 const Footer = () => {
 
-    const { process, setProcess, getData } = useTocarService();
     const { openModal } = useContext(ModalContext);
-
-    const [itemsList, setItemsList] = useState([]);
     const [openIndexes, setOpenIndexes] = useState([]);
+    const { data: footerNavigation = [], isLoading, isFetching, isError } = useGetFooterNavigationQuery();
 
     const toggleOpenIndexes = id => {
         setOpenIndexes(prev =>
@@ -24,11 +23,6 @@ const Footer = () => {
                 : [...prev, id]
         )
     }
-    useEffect(() => {
-        getData('navigation')
-            .then(res => setItemsList(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -77,11 +71,17 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Navigation Items */}
                 <div className="footer__wrapper">
                     <nav>
                         <ul className="footer__items">
-                            {setContent(process, renderItems, itemsList)}
+                            <QueryWrapper
+                                data={footerNavigation}
+                                isLoading={isLoading}
+                                isFetching={isFetching}
+                                isError={isError}>
+
+                                {renderItems(footerNavigation)}
+                            </QueryWrapper>
 
                             <li>
                                 <a href="#" className="footer__item-link footer__item-header">
@@ -111,7 +111,6 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Rights */}
                 <p className="rights">
                     © 2020. Все права защищены. TokarCompany - Производственно-строительная компания.
                     Информация, представленная на сайте, не является публичной офертой.

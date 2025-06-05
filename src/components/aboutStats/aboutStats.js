@@ -1,20 +1,11 @@
-import { useState, useEffect } from 'react';
-import useTocarService from 'services/TocarService';
+import QueryWrapper from 'utils/QueryWrapper';
+import { useGetAboutStatsQuery } from 'api/apiSlice';
 
 import './aboutStats.scss';
-import setContent from 'utils/setContent';
+import { Link } from 'react-router-dom';
 
 const AboutStats = () => {
-
-    const [itemsList, setItemsList] = useState([]);
-
-    const { getData, process, setProcess } = useTocarService();
-
-    useEffect(() => {
-        getData('aboutStats')
-            .then(res => setItemsList(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
+    const { data: aboutStats = [], isLoading, isFetching, isError } = useGetAboutStatsQuery();
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -60,16 +51,23 @@ const AboutStats = () => {
                     </div>
                 </div>
 
-                {setContent(process, renderItems, itemsList)}
+                <QueryWrapper
+                    data={aboutStats}
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                    isError={isError}>
+
+                    {renderItems(aboutStats)}
+                </QueryWrapper>
 
                 <div className="button-mix materials__buttons about__btns">
-                    <a href="#" className="button-big">Перейти в каталог домов</a>
-                    <a href="#" className="button-circe">
+                    <Link to={'/catalog'} className="button-big">Перейти в каталог домов</Link>
+                    <Link to={'/works'} className="button-circe">
                         <div className="button-circe__circle">
                             <span className="icon-right-open-big"></span>
                         </div>
-                        <div className="button-circe__text">Каталог бань</div>
-                    </a>
+                        <div className="button-circe__text">Каталог работ</div>
+                    </Link>
                 </div>
             </div>
         </section>
