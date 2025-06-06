@@ -5,6 +5,7 @@ export const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
     tagTypes: [
+        'Menu',
         'Reasons',
         'Variations',
         'CatalogFirstPage',
@@ -18,6 +19,10 @@ export const apiSlice = createApi({
         'Catalog'
     ],
     endpoints: builder => ({
+        getMenu: builder.query({
+            query: () => '/menu',
+            providesTags: ['Menu']
+        }),
         getReasons: builder.query({
             query: () => '/reasons',
             providesTags: ['Reasons']
@@ -62,6 +67,7 @@ export const apiSlice = createApi({
 })
 
 export const {
+    useGetMenuQuery,
     useGetReasonsQuery,
     useGetVariationsQuery,
     useGetCatalogFirstPageQuery,

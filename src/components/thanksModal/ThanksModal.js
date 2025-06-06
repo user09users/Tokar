@@ -1,14 +1,14 @@
-import { useContext, useEffect } from 'react';
-import ModalContext from 'context/modal/ModalContext';
+import { useEffect } from 'react';
 import './thanksModal.scss';
-
+import { closeModal } from 'components/modal/modalSlice';
+import { useDispatch } from 'react-redux';
 const ThanksModal = ({ result, onClose }) => {
 
-    const { closeModal } = useContext(ModalContext);
+    const dispatch = useDispatch();
     useEffect(() => {
         const timer = setTimeout(() => {
             onClose();
-            closeModal();
+            dispatch(closeModal());
         }, 4000);
 
         return () => clearTimeout(timer);
@@ -17,15 +17,10 @@ const ThanksModal = ({ result, onClose }) => {
     const handleOverlayClick = () => {
         onClose();
     };
-
-    const stopPropagation = (e) => {
-        e.stopPropagation();
-    };
-
     return (
         <div className="modal active" data-thanks-modal>
             <div className="modal__overlay" onClick={handleOverlayClick}></div>
-            <div className=" thanksModal__wrapper" onClick={stopPropagation}>
+            <div className=" thanksModal__wrapper">
                 <span className="modal__close icon-cancel" onClick={onClose}></span>
                 <div className="modal__content modal__content--thanks">
                     <h3 className="modal__title title-fw400">

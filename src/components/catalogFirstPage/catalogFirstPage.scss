@@ -46,11 +46,14 @@
         padding: 5px;
         text-align: center;
 
-        a {
+        button {
             margin-top: 10px;
             display: flex;
             align-items: center;
             justify-content: start;
+            background-color: transparent;
+            border: none;
+            padding: 0;
         }
 
         &-img {

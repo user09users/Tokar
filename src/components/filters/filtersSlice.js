@@ -40,6 +40,14 @@ const filtersSlice = createSlice({
         changePrice: (state, action) => { state.price = action.payload },
         changeArea: (state, action) => { state.area = action.payload },
         toggleSearchBtnActive: state => { state.searchBtnActive = !state.searchBtnActive },
+        resetFilters: (state) => {
+            state.activeFilters = [];
+            state.activeSort = null;
+            state.price = 5000;
+            state.area = 1;
+            state.inputValue = '';
+            state.searchBtnActive = false;
+        }
     }
 })
 
@@ -56,5 +64,6 @@ export const {
     changeActiveSort,
     changePrice,
     changeArea,
-    toggleSearchBtnActive
+    toggleSearchBtnActive,
+    resetFilters
 } = actions;

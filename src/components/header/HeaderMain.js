@@ -1,14 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
+import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import ModalContext from 'context/modal/ModalContext';
-import Menu from 'components/menu/Menu';
 
-import './header.scss';
+import Menu from 'components/menu/Menu';
+import { openModal } from '../modal/modalSlice';
 import SocialList from 'components/socialList/SocialList';
+import './header.scss';
 
 const HeaderMain = () => {
 
-    const { toggleModal, openModal } = useContext(ModalContext);
+    const dispatch = useDispatch();
     const [active, setActive] = useState(false);
 
     const handleMenuClose = () => {
@@ -31,7 +32,7 @@ const HeaderMain = () => {
                             <div className="header__mobile-logo">
                                 <img src="/icons/logo.png" alt="TokarCompany Logo" className="header__mobile-block-logo" />
                             </div>
-                            <div className="header__mobile-phone" onClick={() => openModal()}>
+                            <div className="header__mobile-phone" onClick={() => dispatch(openModal())}>
                                 <span className="icon-phone-1" aria-label="Phone contact"></span>
                             </div>
                         </div>
@@ -65,7 +66,7 @@ const HeaderMain = () => {
 
                             {/* Call Request Button */}
                             <div className="header__desktop-order">
-                                <button data-openmodal="true" onClick={toggleModal} className="button">Заказать звонок</button>
+                                <button onClick={() => dispatch(openModal())} className="button">Заказать звонок</button>
                                 <div className="header__desktop-order-text">Бесплатно по Украине</div>
                             </div>
 
@@ -96,7 +97,6 @@ const HeaderMain = () => {
                     </div>
                 </div>
             </section>
-
 
             <Menu isActive={active} onClose={handleMenuClose} />
         </>

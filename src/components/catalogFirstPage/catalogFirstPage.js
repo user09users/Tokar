@@ -1,10 +1,51 @@
 import QueryWrapper from 'utils/QueryWrapper';
-import { useGetCatalogFirstPageQuery } from 'api/apiSlice';
+import { useGetCatalogFirstPageQuery, useGetFiltersDataQuery } from 'api/apiSlice';
 
 import './catalogFirstPage.scss';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeActiveFilters } from 'components/filters/filtersSlice';
 
 const CatalogFirstPage = () => {
-    const { data: catalogFirstPage = [], isLoading, isFetching, isError } = useGetCatalogFirstPageQuery();
+    const {
+        data: catalogFirstPage = [],
+        isLoading,
+        isFetching,
+        isError } = useGetCatalogFirstPageQuery();
+    const {
+        data: filterItemsData = [],
+        isLoading: isLoadingFilers,
+        isFetching: isFetchingFilers,
+        isError: isErrorFilers } = useGetFiltersDataQuery();
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleClick = (title) => {
+        if (!filterItemsData?.filters) return;
+
+        switch (title) {
+            case 'Жилое':
+                filterItemsData.filters[0].items.forEach(filter => {
+                    dispatch(changeActiveFilters(filter.label));
+                });
+                break;
+            case 'Коммерческое':
+                filterItemsData.filters[1].items.forEach(filter => {
+                    dispatch(changeActiveFilters(filter.label));
+                });
+                break;
+            case 'Садовое':
+                filterItemsData.filters[2].items.forEach(filter => {
+                    dispatch(changeActiveFilters(filter.label));
+                });
+                break;
+            default:
+                break;
+        }
+
+        navigate('/catalog');
+    };
 
     function renderItems(arr) {
         const items = arr.map(item => {
@@ -21,12 +62,12 @@ const CatalogFirstPage = () => {
                         <p className="catalogFirstPage__item-text text-fw300">
                             {description}
                         </p>
-                        <a href={linkHref} className="button-circe">
+                        <button className="button-circe" onClick={() => handleClick(title)}>
                             <div className="button-circe__circle">
                                 <span className="icon-right-open-big"></span>
                             </div>
                             <div className="button-circe__text">{linkText}</div>
-                        </a>
+                        </button>
                     </div>
                 </div>
             )

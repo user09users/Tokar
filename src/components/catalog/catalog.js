@@ -27,7 +27,6 @@ const Catalog = () => {
         isFetching,
         isError
     } = useGetCatalogQuery({ catalogBaseName: 'catalog', offset, limit: 4 });
-    console.log('Fetched catalog:', catalog);
 
     const handleRequest = () => {
         if (catalog.length < 4) {

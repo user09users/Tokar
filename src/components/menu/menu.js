@@ -1,22 +1,21 @@
-import { useState, useEffect } from 'react';
-
-import useTocarService from 'services/TocarService';
+import { useState } from 'react';
+import QueryWrapper from 'utils/QueryWrapper';
+import SocialList from 'components/socialList/SocialList';
+import { useGetMenuQuery } from 'api/apiSlice';
 
 import './menu.scss';
-import setContent from 'utils/setContent';
-import SocialList from 'components/socialList/SocialList';
+import { useDispatch } from 'react-redux';
+import { openModal } from 'components/modal/modalSlice';
 
 const Menu = ({ isActive, onClose }) => {
-    const { process, setProcess, clearError, getData } = useTocarService();
-    const [itemsList, setItemsList] = useState([]);
     const [openIndices, setOpenIndices] = useState(new Set());
-
-    useEffect(() => {
-        clearError();
-        getData('menu')
-            .then(res => setItemsList(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
+    const dispatch = useDispatch();
+    const {
+        data: menuItems = [],
+        isLoading,
+        isFetching,
+        isError
+    } = useGetMenuQuery();
 
     const toggleItem = (index) => {
         setOpenIndices((prev) => {
@@ -30,11 +29,11 @@ const Menu = ({ isActive, onClose }) => {
         });
     };
 
-    const renderItems = (items) => {
+    const renderItems = (menuItems) => {
         return (
             <nav>
                 <ul className="menu__items">
-                    {itemsList.map(({ title, items }, index) => {
+                    {menuItems.map(({ title, items }, index) => {
                         const isOpen = openIndices.has(index);
                         return (
                             <li
@@ -77,8 +76,14 @@ const Menu = ({ isActive, onClose }) => {
             </div>
 
             <div className="menu__wrapper">
-                {setContent(process, renderItems, itemsList)}
+                <QueryWrapper
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                    isError={isError}
+                    data={menuItems}>
 
+                    {renderItems(menuItems)}
+                </QueryWrapper>
 
             </div>
             <div className="menu__contacts">
@@ -88,7 +93,7 @@ const Menu = ({ isActive, onClose }) => {
                 </div>
                 <a href="tel:+380671755630" className="footer__tel"> +3 80 (67) 175 56 30</a>
 
-                <button className="button">Заказать звонок</button>
+                <button className="button" onClick={() => dispatch(openModal())}>Заказать звонок</button>
                 <div className="menu__date">с 09:00 до 18:00 (пн-вс)</div>
             </div>
         </section>

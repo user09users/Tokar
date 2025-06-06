@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 
 import QueryWrapper from 'utils/QueryWrapper';
 import { useGetFooterNavigationQuery } from 'api/apiSlice';
@@ -6,13 +6,12 @@ import { useGetFooterNavigationQuery } from 'api/apiSlice';
 import './footer.scss';
 import '../socialList/social.scss';
 import SocialList from 'components/socialList/SocialList';
-import ModalContext from 'context/modal/ModalContext';
-
+import { openModal } from 'components/modal/modalSlice';
 import './footer.scss';
+import { useDispatch } from 'react-redux';
 
 const Footer = () => {
-
-    const { openModal } = useContext(ModalContext);
+    const dispatch = useDispatch();
     const [openIndexes, setOpenIndexes] = useState([]);
     const { data: footerNavigation = [], isLoading, isFetching, isError } = useGetFooterNavigationQuery();
 
@@ -96,7 +95,7 @@ const Footer = () => {
                             <li>
                                 <button
                                     className="button"
-                                    onClick={() => openModal()}
+                                    onClick={() => dispatch(openModal())}
                                 >Заказать звонок</button>
                             </li>
                         </ul>
