@@ -1,6 +1,6 @@
 @use "/src/sass/variables.scss" as *;
 
-.catalogSecondPage {
+.catalog {
     background-color: $white;
     padding: 20px 0 60px 0;
     margin-top: 11px;
@@ -39,7 +39,7 @@
 
 
     &__wrapper {
-        margin: 17px;
+        margin: 0;
         display: grid;
         grid-template-columns: 1fr;
         gap: 15px;
@@ -48,14 +48,14 @@
 
     &__item {
         padding: 5px;
-        width: 300px;
+        width: 285px;
         min-height: 397px;
         border-radius: 0px 40px 0px 0px;
         box-shadow: 0px 0px 30px 0px $shadow;
         background: $white;
 
         &-img {
-            width: 290px;
+            width: 285px;
             height: 180px;
             object-fit: cover;
         }
@@ -154,7 +154,7 @@
 
 @media screen and (min-width: 768px) {
 
-    .catalogSecondPage {
+    .catalog {
 
         &__wrapper {
             margin: 20px 0;
@@ -195,7 +195,7 @@
 
 @media screen and (min-width: 1200px) {
 
-    .catalogSecondPage {
+    .catalog {
         margin-top: 7px;
         padding: 20px 0 150px 0;
 
@@ -213,7 +213,7 @@
         }
 
         &__search {
-            display: flex;
+            display: flex !important;
             gap: 5px;
             margin: 0;
             position: absolute;
@@ -247,40 +247,40 @@
                 box-shadow: 0px 0px 30px 0px $main-color-dark;
                 border-radius: 5px;
 
-                .catalogSecondPage__item-size:nth-child(1) {
+                .catalog__item-size:nth-child(1) {
                     flex-direction: column;
                     gap: 0;
                     order: 1;
                     color: $white;
                 }
 
-                .catalogSecondPage__item-size:nth-child(2) {
+                .catalog__item-size:nth-child(2) {
                     flex-direction: column;
                     gap: 0;
                     order: 3;
                 }
 
-                .catalogSecondPage__item-btn {
+                .catalog__item-btn {
                     order: 4;
                     width: 100%;
                     height: 58px;
                 }
 
-                .catalogSecondPage__item-img {
+                .catalog__item-img {
                     width: 100%;
                 }
 
-                .catalogSecondPage__item-price {
+                .catalog__item-price {
                     margin-bottom: 15px;
                     order: 2;
                 }
 
-                .catalogSecondPage__item-title {
+                .catalog__item-title {
                     text-align: center;
                     width: 100%;
                 }
 
-                .catalogSecondPage__item-content-wrapper {
+                .catalog__item-content-wrapper {
                     display: flex;
                     flex-wrap: wrap;
                     align-items: center;

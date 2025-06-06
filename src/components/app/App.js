@@ -1,4 +1,3 @@
-
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -13,6 +12,7 @@ import "../../sass/libs/modern-normalize.min.css";
 import "../../sass/libs/grids-min.css";
 import "../../sass/libs/fontello.css";
 import "../../sass/libs/grids-responsive-min.css";
+import "../../sass/style.scss";
 
 const Page404 = lazy(() => import('../pages/404'));
 const MainPage = lazy(() => import('../pages/MainPage'));

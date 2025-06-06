@@ -12,7 +12,10 @@ export const apiSlice = createApi({
         'AboutStats',
         'LastStates',
         'CeoSlider',
-        'FooterNavigation'
+        'FooterNavigation',
+        'Catalog',
+        'FiltersData',
+        'Catalog'
     ],
     endpoints: builder => ({
         getReasons: builder.query({
@@ -46,7 +49,15 @@ export const apiSlice = createApi({
         getFooterNavigation: builder.query({
             query: () => '/navigation',
             providesTags: ['FooterNavigation']
-        })
+        }),
+        getCatalog: builder.query({
+            query: ({ catalogBaseName, offset = 0, limit = 4 }) =>
+                `${catalogBaseName}?_start=${offset}&_limit=${limit}`,
+        }),
+        getFiltersData: builder.query({
+            query: () => '/filtersData',
+            providesTags: ['FiltersData']
+        }),
     })
 })
 
@@ -58,5 +69,7 @@ export const {
     useGetAboutStatsQuery,
     useGetLastStatesQuery,
     useGetCeoQuery,
-    useGetFooterNavigationQuery
+    useGetFooterNavigationQuery,
+    useGetCatalogQuery,
+    useGetFiltersDataQuery,
 } = apiSlice;

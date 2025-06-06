@@ -1,12 +1,11 @@
 import Spinner from 'components/spinner/Spinner';
 import ErrorMessage from 'components/errorMessage/ErrorMessage';
 
-const QueryWrapper = ({ isLoading, isFetching, isError, data, children }) => {
-    if (isLoading || isFetching) return <Spinner />;
+const QueryWrapper = ({ isLoading, isError, data, children }) => {
+    if (isLoading) return <Spinner />;
     if (isError) return <ErrorMessage />;
-    if (!data || (Array.isArray(data) && data.length === 0)) return <div>Ничего не найдено.</div>;
+    if (!data || (Array.isArray(data) && data.length === 0)) return null; // или <p>Нет результатов</p>
 
-    // Render children when data is ready
     return children;
 };
 

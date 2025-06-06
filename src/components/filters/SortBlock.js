@@ -1,25 +1,19 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeActiveSort } from "./filtersSlice";
 
-const SortBlock = ({ sortOptions, onSortSelected }) => {
-    const [activeLabel, setActiveLabel] = useState(null);
-
+const SortBlock = () => {
+    const dispatch = useDispatch();
+    const { activeSort, sortOptionsData } = useSelector(state => state.filters);
     const handleClick = (label) => {
-        if (activeLabel === label) {
-            setActiveLabel(null);           // Remove active
-            onSortSelected(null);           // Clear filter
-        } else {
-            setActiveLabel(label);          // Set new active
-            onSortSelected(label);          // Apply filter
-        }
+        dispatch(changeActiveSort(label))
     };
-
     return (
         <ul className="filters__filter-items">
-            {sortOptions.map(opt => (
+            {sortOptionsData.map(opt => (
                 <li className="filters__filter-item" key={opt.id}>
                     <span className="icon-right-open-big" />
                     <button
-                        className={`sortBtn ${activeLabel === opt.label ? 'active' : ''}`}
+                        className={`sortBtn ${activeSort === opt.label ? 'active' : ''}`}
                         onClick={() => handleClick(opt.label)}
                     >
                         {opt.label}
@@ -31,3 +25,38 @@ const SortBlock = ({ sortOptions, onSortSelected }) => {
 };
 
 export default SortBlock;
+/* 
+import { useDispatch, useSelector } from "react-redux";
+import { changeActiveSort } from "./filtersSlice";
+
+const SortBlock = ({ sortOptions }) => {
+    const dispatch = useDispatch();
+    const activeSort = useSelector(state => state.filters.sort);
+
+    const handleClick = (label) => {
+        if (activeSort === label) {
+            dispatch(changeActiveSort(null)); // Сброс сортировки
+        } else {
+            dispatch(changeActiveSort(label)); // Установить сортировку
+        }
+    };
+
+    return (
+        <ul className="filters__filter-items">
+            {sortOptions.map(opt => (
+                <li className="filters__filter-item" key={opt.id}>
+                    <span className="icon-right-open-big" />
+                    <button
+                        className={`sortBtn ${activeSort === opt.label ? 'active' : ''}`}
+                        onClick={() => handleClick(opt.label)}
+                    >
+                        {opt.label}
+                    </button>
+                </li>
+            ))}
+        </ul>
+    );
+};
+
+export default SortBlock;
+ */

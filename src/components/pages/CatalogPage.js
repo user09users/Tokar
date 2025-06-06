@@ -1,18 +1,16 @@
-import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import Filters from "../filters/Filters";
-import CatalogSecondPage from "../catalogSecondPage/CatalogSecondPage";
+import Catalog from "../catalog/catalog";
 import SearchPanel from '../searchPanel/SearchPanel';
-import FiltersContext from "context/filters/FiltersContext";
-import SearchPanelContext from "context/searchPanel/SearchPanelContext";
+import { changeInputValue } from "components/filters/filtersSlice";
 
 const CatalogPage = () => {
 
-     const { inputValue, setInputValue } = useContext(FiltersContext);
-
-     const { searchBtnActive } = useContext(SearchPanelContext);
+     const dispatch = useDispatch();
+     const { searchBtnActive, inputValue } = useSelector(state => state.filters);
 
      return (
           <>
@@ -29,8 +27,8 @@ const CatalogPage = () => {
                          <div className="backButton-text">Вернуться назад</div>
                     </Link>
                     <div className="page__nav" style={{ marginTop: 30 }}>Главная страница / Жилое </div>
-                    <h1 className="catalogSecondPage__title title-fw800">Каталог жилых строений</h1>
-                    <div className={`catalogSecondPage__search ${searchBtnActive ? 'active' : ''}`}>
+                    <h1 className="catalog__title title-fw800">Каталог жилых строений</h1>
+                    <div className={`catalog__search ${searchBtnActive ? 'active' : ''}`}>
                          <span className="icon-search"></span>
                          <input
                               required
@@ -39,17 +37,17 @@ const CatalogPage = () => {
                               name="search"
                               placeholder="Поиск по жилым строениям..."
                               value={inputValue}
-                              onChange={(e) => setInputValue(e.target.value)}
+                              onChange={(e) => dispatch(changeInputValue(e.target.value))}
                          />
                     </div>
                </div>
 
-               <section className="catalogSecondPage">
+               <section className="catalog">
                     <div className="container">
-                         <div className="catalogSecondPage__blocks">
+                         <div className="catalog__blocks">
                               <SearchPanel />
                               <Filters />
-                              <CatalogSecondPage />
+                              <Catalog />
                          </div>
                     </div>
                </section>

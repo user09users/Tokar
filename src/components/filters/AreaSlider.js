@@ -1,13 +1,13 @@
+import { changeArea } from './filtersSlice';
 import SliderWithLabel from './SliderWithLabel';
-import { useContext } from "react";
-import FiltersContext from "context/filters/FiltersContext";
+import { useDispatch, useSelector } from "react-redux";
 
 const AreaSlider = () => {
-
-    const { area, setArea } = useContext(FiltersContext);
+    const dispatch = useDispatch();
+    const { area } = useSelector(state => state.filters);
 
     const onChange = (value) => {
-        setArea(value);
+        dispatch(changeArea(value));
     };
 
     return (

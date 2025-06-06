@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 const SliderWithLabel = ({ min, max, step, value, setValue }) => {
     const inputRef = useRef(null);
     const labelRef = useRef(null);
-
     useEffect(() => {
         const updateSliderUI = () => {
             if (!inputRef.current || !labelRef.current) return;
@@ -39,7 +38,7 @@ const SliderWithLabel = ({ min, max, step, value, setValue }) => {
                 step={step}
                 value={value}
                 ref={inputRef}
-                onInput={(e) => setValue(Number(e.target.value))}
+                onChange={(e) => setValue(Number(e.target.value))}
                 className="styled-slider"
             />
             <div ref={labelRef} className="value-indicator" />

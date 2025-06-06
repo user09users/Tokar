@@ -1,14 +1,19 @@
+
+import { useDispatch, useSelector } from "react-redux";
+
 import SliderWithLabel from './SliderWithLabel';
-import { useContext } from "react";
-import FiltersContext from "context/filters/FiltersContext";
+import { changePrice } from './filtersSlice';
+
 
 
 const PriceSlider = () => {
+    const dispatch = useDispatch();
+    const { price } = useSelector(state => state.filters);
 
-    const { price, setPrice } = useContext(FiltersContext);
     const onChange = (value) => {
-        setPrice(value);
+        dispatch(changePrice(value));
     };
+    console.log(price)
 
     return (
         <ul className="filters__filter-items">
