@@ -1,23 +1,18 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useTocarService from 'services/TocarService';
-import setContent from 'utils/setContent';
 import Form from 'components/form/Form';
+import { useGetContactsQuery } from 'api/apiSlice';
+import QueryWrapper from 'utils/QueryWrapper';
 
 import './contacts.scss';
 
 const Contacts = () => {
+  const {
+    data: contactsData = [],
+    isLoading,
+    isFetching,
+    isError
+  } = useGetContactsQuery();
 
-  const { getData, clearError, process, setProcess } = useTocarService();
-  const [itemsList, setItemsList] = useState([]);
-
-  useEffect(() => {
-    clearError();
-    getData('contacts').then(res => {
-      setItemsList(res);
-    })
-      .then(() => setProcess('confirmed'));
-  }, [getData, clearError]);
 
   const renderItems = (arr) => {
     return arr.map((item) => {
@@ -99,7 +94,14 @@ const Contacts = () => {
             </h3>
 
             <ul className="contacts__contacts-list">
-              {setContent(process, renderItems, itemsList)}
+              <QueryWrapper
+                isLoading={isLoading}
+                isFetching={isFetching}
+                isError={isError}
+                data={contactsData}>
+
+                {renderItems(contactsData)}
+              </QueryWrapper>
             </ul>
 
             <div className="contacts__addr">

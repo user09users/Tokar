@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { initializeSwiper } from 'utils/slider';
 import './casesPhotos.scss';
 
-const CasesPhotos = ({ photos, process }) => {
+const CasesPhotos = ({ photos }) => {
     useEffect(() => {
-        if (process === 'confirmed' && photos?.length > 0) {
+        if (photos?.length > 0) {
             initializeSwiper('.casesPhotos__slider', '.casesPhotos__slider-nav');
         }
-    }, [process, photos]);
+    }, [photos]);
 
     const renderSlides = (photos) => {
         return photos.map(({ images, id }, index) => (

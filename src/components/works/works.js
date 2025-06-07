@@ -1,33 +1,71 @@
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useCatalogData } from 'hooks/catalogData.hook';
-import setCatalog from 'utils/setCatalog';
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetCatalogQuery } from 'api/apiSlice';
+import {
+    setWorksData,
+    addWorksData,
+    setWorksEnded,
+    incrementOffset,
+    selectWorksCards,
+} from './worksSlice';
+import QueryWrapper from 'utils/QueryWrapper'; // Your loading/error wrapper
 import './works.scss';
 
 const Works = () => {
-    const { dataList, dataEnded, newDataLoading, onRequest, process } = useCatalogData({
-        initialOffset: 0,
+    const dispatch = useDispatch();
+
+    const { offset, isWorksDataEnded } = useSelector((state) => state.works);
+    const worksCards = useSelector(selectWorksCards);
+
+    const { data = [], isFetching, isLoading, isError } = useGetCatalogQuery({
         catalogBaseName: 'works',
-        limit: 3
+        offset,
+        limit: 3,
     });
 
+    // When data changes, update Redux store
+    useEffect(() => {
+        if (!data.length) return;
 
-    const renderItems = (arr) => {
-        return arr.map(({ title, area, image, alt, id, ...props }) => (
+        if (offset === 0) {
+            dispatch(setWorksData(data)); // first load: replace data
+        } else {
+            dispatch(addWorksData(data)); // load more: append data
+        }
+
+        // If fetched data count less than limit, no more data
+        if (data.length < 3) {
+            dispatch(setWorksEnded(true));
+        } else {
+            dispatch(setWorksEnded(false));
+        }
+    }, [data, dispatch, offset]);
+
+    const handleLoadMore = () => {
+        dispatch(incrementOffset(3)); // increase offset by limit
+    };
+
+    const renderItems = (arr) =>
+        arr.map(({ title, area, image, alt, id, ...props }) => (
             <div className={`works__card ${props.class || ''}`} key={id}>
                 <img src={image} alt={alt} className="works__card-img" />
                 <div className="works__card-content">
                     <h3 className="works__card-title title-card">{title}</h3>
                     <div className="works__card-wrapper">
-                        <Link to={`/cases/${id}`} className="works__card-btn button-works">Подробнее</Link>
+                        <Link to={`/cases/${id}`} className="works__card-btn button-works">
+                            Подробнее
+                        </Link>
                         <div className="works__card-size">
-                            <div><img src="/icons/sizes/area.svg" alt="width-height" /></div>
+                            <div>
+                                <img src="/icons/sizes/area.svg" alt="width-height" />
+                            </div>
                             <span>{area}м²</span>
                         </div>
                     </div>
                 </div>
             </div>
         ));
-    };
 
     return (
         <section className="works">
@@ -44,18 +82,24 @@ const Works = () => {
                 </div>
 
                 <div className="works__wrapper">
-                    {setCatalog(process, renderItems, dataList, newDataLoading)}
+                    <QueryWrapper
+                        isLoading={isLoading}
+                        isFetching={isFetching}
+                        isError={isError}
+                        data={worksCards}>
+                        {renderItems(worksCards)}
+                    </QueryWrapper>
                 </div>
 
-                {!dataEnded && (
+                {!isWorksDataEnded && (
                     <button
                         className="button-more"
-                        disabled={newDataLoading}
-                        onClick={onRequest}
+                        disabled={isFetching || isLoading}
+                        onClick={handleLoadMore}
                         onKeyDown={(e) => {
                             if (e.key === ' ' || e.key === 'Enter') {
-                                e.preventDefault(); // prevent scroll on space
-                                onRequest();
+                                e.preventDefault();
+                                handleLoadMore();
                             }
                         }}
                     >

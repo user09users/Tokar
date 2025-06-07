@@ -1,6 +1,9 @@
+
+import { Helmet } from "react-helmet";
+
 import Contacts from "components/contacts/Contacts";
 import Details from "components/details/Details";
-import { Helmet } from "react-helmet";
+import LastStates from "components/lastStates/LastStates";
 
 const ContactsPage = () => {
 
@@ -13,6 +16,7 @@ const ContactsPage = () => {
             </Helmet>
             <Contacts />
             <Details />
+            <LastStates />
         </>
     )
 

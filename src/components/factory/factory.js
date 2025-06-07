@@ -1,21 +1,14 @@
-import { useState, useEffect } from 'react';
-
-import setContent from 'utils/setContent';
-import useTocarService from 'services/TocarService';
+import QueryWrapper from 'utils/QueryWrapper';
 import './factory.scss';
-
+import { useGetFactoryPhotosQuery } from 'api/apiSlice';
 const Factory = () => {
 
-    const [photos, setPhotos] = useState([]);
-
-    const { clearError, getData, process, setProcess } = useTocarService();
-
-    useEffect(() => {
-        clearError();
-        getData('factoryPhotos')
-            .then(res => setPhotos(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
+    const {
+        data: factoryPhotos = [],
+        isLoading,
+        isError,
+        isFetching
+    } = useGetFactoryPhotosQuery();
 
     const renderPhotos = (photos) => {
         return (
@@ -37,7 +30,14 @@ const Factory = () => {
             <div className="container">
                 <h2 className="factory__title title-fw700">Фотографии производства</h2>
                 <div className="factory__wrapper">
-                    {setContent(process, renderPhotos, photos)}
+                    <QueryWrapper
+                        isLoading={isLoading}
+                        isFetching={isFetching}
+                        isError={isError}
+                        data={factoryPhotos}>
+
+                        {renderPhotos(factoryPhotos)}
+                    </QueryWrapper>
                 </div>
             </div>
         </section>

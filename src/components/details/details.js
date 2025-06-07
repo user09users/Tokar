@@ -1,20 +1,15 @@
-import { useState, useEffect } from 'react';
-import useTocarService from 'services/TocarService';
 import './details.scss';
-import setContent from 'utils/setContent';
+import { useGetDetailsQuery } from 'api/apiSlice';
+import QueryWrapper from 'utils/QueryWrapper';
 
 const Details = () => {
 
-    const { getData, clearError, process, setProcess } = useTocarService();
-
-    const [itemsList, setItemsList] = useState([]);
-
-    useEffect(() => {
-        clearError();
-        getData('details')
-            .then(res => setItemsList(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
+    const {
+        data: detailsData = [],
+        isFetching,
+        isLoading,
+        isError
+    } = useGetDetailsQuery();
 
     const renderDetails = (items) => {
         return (
@@ -45,8 +40,14 @@ const Details = () => {
             <div className="container">
                 <div className="details__title title-fw700">Реквизиты компании:</div>
                 <div className="details__wrapper">
-                    {setContent(process, renderDetails, itemsList)}
+                    <QueryWrapper
+                        isLoading={isLoading}
+                        isFetching={isFetching}
+                        isError={isError}
+                        data={detailsData}>
 
+                        {renderDetails(detailsData)}
+                    </QueryWrapper>
                 </div>
             </div>
         </section>

@@ -3,22 +3,21 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import QueryWrapper from 'utils/QueryWrapper';
 
-import { useGetCatalogQuery } from 'api/apiSlice'; import {
+import { useGetCatalogQuery } from 'api/apiSlice';
+import {
     catalogItemsSelector,
     setCatalogEnded,
     incrementOffset,
     uploadCatalog,
-    setNewCatalogItemsLoading,
 } from './catalogSlice';
 
 import './catalog.scss';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Catalog = () => {
-
     const dispatch = useDispatch();
     const { inputValue, activeFilters, activeSort, area, price } = useSelector(state => state.filters);
-    const { offset, catalogEnded, newCatalogItemsLoading } = useSelector(state => state.catalog);
+    const { offset, catalogEnded } = useSelector(state => state.catalog);
     const items = useSelector(catalogItemsSelector);
 
     const {
@@ -28,22 +27,21 @@ const Catalog = () => {
         isError
     } = useGetCatalogQuery({ catalogBaseName: 'catalog', offset, limit: 4 });
 
-    const handleRequest = () => {
-        if (catalog.length < 4) {
+    useEffect(() => {
+        if (!catalog) return;
+
+        if (catalog.length === 0) {
             dispatch(setCatalogEnded(true));
         } else {
-            dispatch(incrementOffset(4));
-        }
-    };
-    useEffect(() => {
-        dispatch(setNewCatalogItemsLoading(isFetching));
-    }, [isFetching, dispatch]);
-
-    useEffect(() => {
-        if (catalog.length > 0) {
             dispatch(uploadCatalog(catalog));
+            dispatch(setCatalogEnded(catalog.length < 4));
         }
     }, [catalog, dispatch]);
+
+    const handleRequest = () => {
+        dispatch(incrementOffset(4));
+    };
+
     const filteredItems = useMemo(() => {
         return items.filter(item => {
             const matchesSearch = inputValue
@@ -70,7 +68,6 @@ const Catalog = () => {
         });
     }, [inputValue, items, activeFilters, activeSort, area, price]);
 
-    // Render each item wrapped in CSSTransition for fade animation
     const renderItems = (arr) => {
         const items = arr.map(item => {
             const { title, subtitle, category, price, popularity, area, dimensions, image, id } = item;
@@ -114,7 +111,6 @@ const Catalog = () => {
         )
     };
 
-
     return (
         <section className="catalog">
             <div className="container">
@@ -150,9 +146,9 @@ const Catalog = () => {
                     <button
                         data-button-more
                         className="button-more"
-                        disabled={newCatalogItemsLoading}
-                        onClick={() => { handleRequest() }}
-                        aria-busy={newCatalogItemsLoading}
+                        disabled={isFetching}
+                        onClick={handleRequest}
+                        aria-busy={isFetching}
                         onKeyDown={(e) => {
                             if (e.key === ' ' || e.key === 'Enter') {
                                 e.preventDefault(); // prevent scroll on space

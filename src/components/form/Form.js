@@ -1,6 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import useTocarService from 'services/TocarService';
+import { usePostDataMutation } from 'api/apiSlice';
 import ThanksModal from 'components/thanksModal/ThanksModal';
 import './form.scss';
 
@@ -12,14 +12,15 @@ const Form = ({
     extraBtnPlace = false,
     extraField = false,
 }) => {
-    const { postData, clearError } = useTocarService();
+    const [postData, { isLoading }] = usePostDataMutation(); // RTK Query
     const [success, setSuccess] = useState(null);
 
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting },
+        formState: { errors },
         reset,
+
     } = useForm();
 
     const closeModal = useCallback(() => {
@@ -27,15 +28,10 @@ const Form = ({
     }, []);
 
     const onSubmit = async (data) => {
-        clearError();
         try {
-            const res = await postData(data);
-            if (res) {
-                setSuccess(true);
-                reset();
-            } else {
-                setSuccess(false);
-            }
+            const res = await postData(data).unwrap(); // <- unwrap to catch errors
+            setSuccess(true);
+            reset();
         } catch (error) {
             console.error('Ошибка отправки:', error);
             setSuccess(false);
@@ -111,8 +107,8 @@ const Form = ({
                     <div className="error-message">{errors.phone.message}</div>
                 )}
 
-                <button type="submit" className={btnClass} disabled={isSubmitting}>
-                    {isSubmitting ? 'Отправка...' : 'Заказать'}
+                <button type="submit" className={btnClass} disabled={isLoading}>
+                    {isLoading ? 'Отправка...' : 'Заказать'}
                 </button>
             </form>
             {errors.phone && extraBtnPlace && (

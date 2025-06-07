@@ -1,6 +1,8 @@
 @use "/src/sass/variables.scss" as *;
 
 .aboutIntro {
+    padding: 60px;
+
     &__block {
         display: grid;
 
@@ -17,6 +19,8 @@
 @media screen and (min-width: 1200px) {
 
     .aboutIntro {
+        padding: 100px;
+
         &__block {
             grid-template-columns: repeat(2, 1fr);
             gap: 85px;

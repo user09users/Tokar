@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import filters from 'components/filters/filtersSlice';
 import catalog from 'components/catalog/catalogSlice';
 import modal from 'components/modal/modalSlice';
+import works from 'components/works/worksSlice';
 import { apiSlice } from '../api/apiSlice';
 
 const stringMiddleware = () => (next) => (action) => {
@@ -18,6 +19,7 @@ const store = configureStore({
         filters,
         catalog,
         modal,
+        works,
         [apiSlice.reducerPath]: apiSlice.reducer
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware, apiSlice.middleware),

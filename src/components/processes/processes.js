@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from 'react';
+
+import QueryWrapper from 'utils/QueryWrapper';
+import { useGetProcessesQuery } from 'api/apiSlice';
+
 import './processes.scss';
-import useTocarService from "services/TocarService";
-import setContent from "utils/setContent";
 
 const Processes = () => {
-    const { process, setProcess, clearError, getData } = useTocarService();
-    const [itemsList, setItemsList] = useState([]);
-    const [openIndexes, setOpenIndexes] = useState([]);  // <-- multiple open
 
-    useEffect(() => {
-        getData('processes')
-            .then(res => setItemsList(res))
-            .then(() => setProcess('confirmed'));
-    }, []);
+    const {
+        data: processes = [],
+        isFetching,
+        isLoading,
+        isError
+    } = useGetProcessesQuery();
+
+    const [openIndexes, setOpenIndexes] = useState([]);
 
     const toggleAccordion = (index) => {
         setOpenIndexes(prev =>
@@ -21,6 +23,7 @@ const Processes = () => {
                 : [...prev, index]
         );
     };
+
 
     const renderProcesses = (items) => {
         return (
@@ -67,7 +70,14 @@ const Processes = () => {
         <section className="processes" id="work-processes">
             <div className="container">
                 <h2 className="processes__title title-fw800">Процесс работы</h2>
-                {setContent(process, renderProcesses, itemsList)}
+                <QueryWrapper
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                    isError={isError}
+                    data={processes}>
+
+                    {renderProcesses(processes)}
+                </QueryWrapper>
             </div>
         </section>
     );

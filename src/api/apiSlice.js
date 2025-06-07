@@ -16,9 +16,25 @@ export const apiSlice = createApi({
         'FooterNavigation',
         'Catalog',
         'FiltersData',
-        'Catalog'
+        'Catalog',
+        'CardPageData',
+        'Processes',
+        'CasesPageData',
+        'PostData',
+        'FactoryPhotos',
+        'Contacts',
+        'Details',
+        'Social'
     ],
     endpoints: builder => ({
+        postData: builder.mutation({
+            query: (data) => ({
+                url: '/requests',
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ['PostData'], // optional: for refetching related data
+        }),
         getMenu: builder.query({
             query: () => '/menu',
             providesTags: ['Menu']
@@ -63,11 +79,39 @@ export const apiSlice = createApi({
             query: () => '/filtersData',
             providesTags: ['FiltersData']
         }),
+        getCardPageData: builder.query({
+            query: (id) => `/catalogCardsInfo/${id}`,
+            providesTags: ['CardPageData']
+        }),
+        getProcesses: builder.query({
+            query: () => '/processes',
+            providesTags: ['Processes']
+        }),
+        getCasesPageData: builder.query({
+            query: (id) => `/casesCardsInfo/${id}`,
+            providesTags: ['CasesPageData']
+        }),
+        getFactoryPhotos: builder.query({
+            query: () => '/factoryPhotos',
+            providesTags: ['FactoryPhotos']
+        }),
+        getContacts: builder.query({
+            query: () => '/contacts',
+            providesTags: ['Contacts']
+        }),
+        getDetails: builder.query({
+            query: () => '/details',
+            providesTags: ['Details']
+        }),
+        getSocial: builder.query({
+            query: () => '/social',
+            providesTags: ['Social']
+        }),
     })
 })
-
 export const {
     useGetMenuQuery,
+    usePostDataMutation,
     useGetReasonsQuery,
     useGetVariationsQuery,
     useGetCatalogFirstPageQuery,
@@ -78,4 +122,11 @@ export const {
     useGetFooterNavigationQuery,
     useGetCatalogQuery,
     useGetFiltersDataQuery,
+    useGetCardPageDataQuery,
+    useGetProcessesQuery,
+    useGetCasesPageDataQuery,
+    useGetFactoryPhotosQuery,
+    useGetContactsQuery,
+    useGetDetailsQuery,
+    useGetSocialQuery
 } = apiSlice;

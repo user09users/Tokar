@@ -1,18 +1,10 @@
 import { Link } from 'react-router-dom';
 import ThumbsSlider from 'components/thumbsSlider/ThumbsSlider';
 import Form from 'components/form/Form';
-import useTocarService from 'services/TocarService';
 
 import './cardPageSlider.scss';
 
 const CardPageSlider = ({ thumbs }) => {
-    const { postData, clearError } = useTocarService();
-
-    const handleSubmit = (phone) => {
-        clearError();
-        postData(phone);
-    };
-
     return (
         <section className="cardPageSlider">
             <div className="container">
@@ -54,7 +46,6 @@ const CardPageSlider = ({ thumbs }) => {
                     </h3>
                     <div className="cardPageSlider__consultation-block">
                         <Form
-                            onSubmit={handleSubmit}
                             btnClass="button-big cardPageSlider__consultation-button"
                             extraFieldClass="cardPageSlider__consultation-phone"
                             extraFormClass="cardPageSlider__consultation-items"

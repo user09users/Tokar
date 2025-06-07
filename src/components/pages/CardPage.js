@@ -1,61 +1,51 @@
-import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
-import useTocarService from 'services/TocarService';
 
 import Characteristics from 'components/characteristics/Characteristics';
 import CardPageSlider from 'components/cardPageSlider/CardPageSlider';
 import Consultation from 'components/consultation/Consultation';
+import { useGetCardPageDataQuery } from 'api/apiSlice';
+import QueryWrapper from 'utils/QueryWrapper';
 import Processes from 'components/processes/Processes';
-import setContent from 'utils/setContent';
 
 const CardPage = () => {
-    const [data, setData] = useState(null);
-    const { getHouseInfo, process, setProcess, clearError } = useTocarService();
 
     const { cardId } = useParams();
 
-    useEffect(() => {
-        clearError();
+    const {
+        data: CardPageData,
+        isLoading,
+        isFetching,
+        isError,
+        isSuccess
+    } = useGetCardPageDataQuery(cardId);
 
-        getHouseInfo(cardId)
-            .then(res => {
-                if (!res || !res.characteristics || res.characteristics.length === 0) {
-                    setProcess('error');
-                } else {
-                    setData(res);
-                    setProcess('confirmed');
-                }
-            })
-            .catch(() => setProcess('error'));
-    }, [cardId]);
-
-
-    if (process === 'error') {
+    if (isError) {
         return <Navigate to={'/404'} />
     }
+    if (!CardPageData) return null;
 
-    // Render content based on `process` state via setContent utility
     return (
         <>
-            {process === 'confirmed' && data && (
+            {isSuccess && CardPageData && (
                 <Helmet>
-                    <meta name="description" content={`${data.characteristics[0].info.name} page`} />
-                    <title>{data.characteristics[0].info.name}</title>
+                    <meta name="description" content={`${CardPageData.characteristics[0].info.name} page`} />
+                    <title>{CardPageData.characteristics[0].info.name}</title>
                 </Helmet>
             )}
+            <QueryWrapper
+                isLoading={isLoading}
+                isFetching={isFetching}
+                isError={isError}
+                data={CardPageData}>
 
-            {setContent(process, () => (
-                <>
 
-                    <CardPageSlider thumbs={data?.cardPageSlides} process={process} />
+                <CardPageSlider thumbs={CardPageData?.cardPageSlides} />
 
-                    <Characteristics characteristics={data.characteristics[0]} />
-                    <Consultation />
-                    <Processes />
-                </>
-            ), data)}
+                <Characteristics characteristics={CardPageData.characteristics[0]} />
+                <Consultation />
+                <Processes />
+            </QueryWrapper>
         </>
     );
 };
